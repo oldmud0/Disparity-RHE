@@ -1,0 +1,11 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Windows... sigh #
+*.tmp
+desktop.ini
+Thumbs.db
