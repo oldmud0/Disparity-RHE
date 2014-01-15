@@ -1,6 +1,6 @@
 public class Gnome extends Race{
 
-    public Gnome() {
+    public Gnome(Being b) {
     	name = "Gnome";
     	b.agi += 2;
     	b.str += 1;

@@ -1,6 +1,6 @@
 public class Elf extends Race{
 
-    public Elf(being b) {
+    public Elf(Being b) {
     	name = "Elf";
     	b.wis += 2;
     	b.tMP += 5;

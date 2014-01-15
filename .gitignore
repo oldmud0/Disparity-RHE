@@ -1,4 +1,9 @@
 *.class
+*.gdoc
+
+Backups/
+Compiled version/
+Local/
 
 # Package Files #
 *.jar
