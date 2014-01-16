@@ -15,3 +15,6 @@ Local/
 *.tmp
 desktop.ini
 Thumbs.db
+
+# For IntelliJ IDEA #
+.idea/
