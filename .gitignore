@@ -2,7 +2,8 @@
 *.gdoc
 
 Backups/
-Compiled version/
+COMPILED VERSION/
+bin/
 Local/
 
 # Package Files #

@@ -2,6 +2,10 @@ public abstract class Being{
 	public String name;
 	public Race race;
 	public int str = 10, agi = 10, con = 10, wis = 10, HP, MP, tHP, tMP, lvl;
+	public Archery arc;
+	public OneHanded oneHand;
+	public TwoHanded twoHand;
+	public Magic magic;
 	
 	//Object Creator
 
@@ -13,6 +17,13 @@ public abstract class Being{
 		HP = tHP;
 		MP = tMP;
 		lvl = 1;
+		arc = new Archery(this);
+		oneHand = new OneHanded(this);
+		twoHand = new TwoHanded(this);
+		magic = new Magic(this);
+	}
+
+	public Being(){
 	}
 
 	public Race getRace(String rce, Being b){
@@ -33,6 +44,7 @@ public abstract class Being{
 	public void stats(){
 		System.out.println("--"+name+"--");
 		System.out.println("Race " + race.name);
+		System.out.println("Level " + lvl);
 		System.out.println("---");
 		System.out.println("HP " + HP + "/" + tHP);
 		System.out.println("MP " + MP + "/" + tMP);
@@ -42,5 +54,14 @@ public abstract class Being{
 		System.out.println("Constitution " + con);
 		System.out.println("Wisdom " + wis);
 		System.out.println();
+	}
+
+	//LEVELING
+
+	public void getAllSkills(){
+		System.out.println(arc.name + " " + arc.lvl);
+		System.out.println(oneHand.name + " " + oneHand.lvl);
+		System.out.println(twoHand.name + " " + twoHand.lvl);
+		System.out.println(magic.name + " " + magic.lvl);
 	}
 }
