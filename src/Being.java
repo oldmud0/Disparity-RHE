@@ -2,6 +2,7 @@ public abstract class Being{
 	public String name;
 	public Race race;
 	public int str = 10, agi = 10, con = 10, wis = 10, HP, MP, tHP, tMP, lvl;
+	public double dodge, ac;
 	public Archery arc;
 	public OneHanded oneHand;
 	public TwoHanded twoHand;
@@ -21,9 +22,8 @@ public abstract class Being{
 		oneHand = new OneHanded(this);
 		twoHand = new TwoHanded(this);
 		magic = new Magic(this);
-	}
-
-	public Being(){
+		ac = 0;
+		dodge = (double)(agi) / 100;
 	}
 
 	public Race getRace(String rce, Being b){
@@ -41,6 +41,12 @@ public abstract class Being{
 		}
 	}
 
+	//DO NOT ERASE NEED FOR MONSTERS
+	public Being(){
+	}
+
+
+
 	public void stats(){
 		System.out.println("--"+name+"--");
 		System.out.println("Race " + race.name);
@@ -48,6 +54,8 @@ public abstract class Being{
 		System.out.println("---");
 		System.out.println("HP " + HP + "/" + tHP);
 		System.out.println("MP " + MP + "/" + tMP);
+		System.out.println("Dodge " + dodge);
+		System.out.println("AC " + ac);
 		System.out.println("---");
 		System.out.println("Strength " + str);
 		System.out.println("Agility " + agi);
