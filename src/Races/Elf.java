@@ -5,6 +5,7 @@ public class Elf extends Race{
     	b.wis += 2;
     	b.tMP += 5;
     	b.tHP -= 2;
+    	b.wep = new Dagger(0);
     }
     
     

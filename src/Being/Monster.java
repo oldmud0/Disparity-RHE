@@ -20,7 +20,8 @@ public class Monster extends Being{
 			m.agi = input.nextInt(); input.nextLine();
 			m.con = input.nextInt(); input.nextLine();
 			m.wis = input.nextInt();
-			m.race = getMonsterRace(rce, m);
+			if(rce.equals("Random")) m.race = getRandomHumanoidRace(m);
+			else m.race = getMonsterRace(rce, m);
 			m.MP = m.tMP;	
 			m.HP = m.tHP;	
 			return m;
@@ -37,5 +38,11 @@ public class Monster extends Being{
 			default:
 				throw new IllegalArgumentException(mRace + " is not a valid race...");
 		}
+	}
+
+	private static Race getRandomHumanoidRace(Monster m){
+		Race l[] = {new Elf(m), new Human(m), new Gnome(m), new Dwarf(m)}; 
+		int i = (int)(0 + Math.random() * ((l.length - 1) + 1));
+		return l[i];
 	}
 }

@@ -1,5 +1,4 @@
-public class Magic extends Skill{
-	public int damBonus;
+public class Magic extends OffensiveSkill{
 	public Magic(Being b){
 		name = "One Handed";
 		lvl = 5;
@@ -8,10 +7,6 @@ public class Magic extends Skill{
 		desc = "Skill that governors all abilities in magic.";
 		damBonus = this.getDamBonus();
 		addAbilities(b);
-	}
-
-	public int getDamBonus(){
-		return lvl/2;
 	}
 
 	public void level(Being b){
@@ -37,11 +32,5 @@ public class Magic extends Skill{
 				System.out.println("Does not have any Abilitys to add...");
 				break;
 		}
-	}
-
-	public void skillStats(){
-		super.skillStats();
-		System.out.println("Damage Bonus "+ damBonus);
-		System.out.println();
 	}
 }

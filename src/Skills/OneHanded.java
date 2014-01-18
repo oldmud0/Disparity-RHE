@@ -1,22 +1,10 @@
-public class OneHanded extends Skill{
-	public int damBonus;
+public class OneHanded extends OffensiveSkill{
 	public OneHanded(Being b){
 		name = "One Handed";
 		lvl = 5;
 		exp = 0;
 		lvlXp = 20;
 		desc = "Skill that is the basis of all physical One handed attacks.";
-		damBonus = this.getDamBonus();
-		addAbilities(b);
-	}
-
-	public int getDamBonus(){
-		return lvl/2;
-	}
-
-	public void level(Being b){
-		if(exp >= lvlXp)
-			lvl++;
 		damBonus = this.getDamBonus();
 		addAbilities(b);
 	}
@@ -37,11 +25,5 @@ public class OneHanded extends Skill{
 				System.out.println("Does not have any skills to add...");
 				break;
 		}
-	}
-
-	public void skillStats(){
-		super.skillStats();
-		System.out.println("Damage Bonus "+ damBonus);
-		System.out.println();
 	}
 }

@@ -1,0 +1,5 @@
+You can't really use NetBeans in Google Drive without messing everyone else up. This is where Git comes in handy. Believe me, it'll save you a lot of time. Setup is pretty simple since you're using an IDE. Just look here https://netbeans.org/kb/docs/ide/git.html#github and ask me if you need any help in doing anything.
+
+
+
+in other words, move your netbeans folder somewhere else.

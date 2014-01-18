@@ -7,6 +7,7 @@ public abstract class Being{
 	public OneHanded oneHand;
 	public TwoHanded twoHand;
 	public Magic magic;
+	public Weapon wep;
 	
 	//Object Creator
 
@@ -24,7 +25,7 @@ public abstract class Being{
 		magic = new Magic(this);
 		ac = 0;
 		dodge = (double)(agi) / 100;
-	}
+		}
 
 	public Race getRace(String rce, Being b){
 		switch(rce.toUpperCase()){

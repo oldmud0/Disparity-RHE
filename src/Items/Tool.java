@@ -1,7 +1,7 @@
 public class Tool extends Item{
 	String quality;
-	public Tool(String n, int a, String qal){
-		super(n, a);
+	public Tool(String n, String qal){
+		super(n, 1);
 		quality = qal;
 	}
 }

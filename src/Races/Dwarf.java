@@ -6,5 +6,6 @@ public class Dwarf extends Race{
 		b.tHP += 2;
 		b.tMP -= 3;
 		b.wis -= 2;
+		b.wep = new Warhammer(0);
 	}
 }

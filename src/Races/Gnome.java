@@ -5,6 +5,7 @@ public class Gnome extends Race{
     	b.agi += 2;
     	b.str += 1;
     	b.tHP -= 1;
+    	b.wep = new Dagger(0);
     }
     
     
