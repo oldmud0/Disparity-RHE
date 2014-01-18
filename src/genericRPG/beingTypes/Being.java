@@ -1,3 +1,16 @@
+package genericRPG.beingTypes;
+
+import genericRPG.items.Weapon;
+import genericRPG.races.Dwarf;
+import genericRPG.races.Elf;
+import genericRPG.races.Gnome;
+import genericRPG.races.Human;
+import genericRPG.races.Race;
+import genericRPG.skills.Archery;
+import genericRPG.skills.Magic;
+import genericRPG.skills.OneHanded;
+import genericRPG.skills.TwoHanded;
+
 public abstract class Being{
 	public String name;
 	public Race race;

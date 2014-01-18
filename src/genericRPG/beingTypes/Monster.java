@@ -1,4 +1,13 @@
-import java.io.*;
+package genericRPG.beingTypes;
+import genericRPG.races.Dwarf;
+import genericRPG.races.Elf;
+import genericRPG.races.Gnome;
+import genericRPG.races.Gryphon;
+import genericRPG.races.Human;
+import genericRPG.races.Race;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Monster extends Being{

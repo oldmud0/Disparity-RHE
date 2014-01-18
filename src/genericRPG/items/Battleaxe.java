@@ -1,3 +1,8 @@
+package genericRPG.items;
+
+import genericRPG.beingTypes.Being;
+import genericRPG.skills.OffensiveSkill;
+
 public class Battleaxe extends Weapon{
 	public Battleaxe(int quality){
 		super("Battleaxe", 2);

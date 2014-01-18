@@ -1,3 +1,8 @@
+package genericRPG.races;
+
+import genericRPG.beingTypes.Being;
+import genericRPG.items.Dagger;
+
 public class Gnome extends Race{
 
     public Gnome(Being b) {

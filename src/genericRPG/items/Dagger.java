@@ -1,5 +1,10 @@
+package genericRPG.items;
+
+import genericRPG.beingTypes.Being;
+import genericRPG.skills.OffensiveSkill;
+
 public class Dagger extends Weapon{
-	public Shortsword(int quality){
+	public Dagger(int quality){
 		super("Dagger", 1);
 		base_dmg = 4 + quality;
 	}

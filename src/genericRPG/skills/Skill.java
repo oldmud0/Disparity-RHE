@@ -1,3 +1,8 @@
+package genericRPG.skills;
+
+import genericRPG.beingTypes.Being;
+import genericRPG.items.Weapon;
+
 public abstract class Skill{
 	public String name;
 	public double exp, lvlXp;

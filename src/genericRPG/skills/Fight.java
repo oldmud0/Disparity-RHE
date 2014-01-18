@@ -1,3 +1,8 @@
+package genericRPG.skills;
+
+import genericRPG.beingTypes.Being;
+import genericRPG.items.Weapon;
+
 public class Fight{
 	public static byte doesHit(Being a, Weapon w, Being b){
 		int i = 0;

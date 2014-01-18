@@ -1,3 +1,5 @@
+package genericRPG.items;
+
 public class Item{
 	public String name;
 	public int qnt;

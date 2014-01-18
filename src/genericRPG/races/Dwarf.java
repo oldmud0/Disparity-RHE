@@ -1,3 +1,8 @@
+package genericRPG.races;
+
+import genericRPG.beingTypes.Being;
+import genericRPG.items.Warhammer;
+
 public class Dwarf extends Race{
 
 	public Dwarf(Being b){
@@ -6,6 +11,6 @@ public class Dwarf extends Race{
 		b.tHP += 2;
 		b.tMP -= 3;
 		b.wis -= 2;
-		b.wep = new Warhammer(0);
+		b.wep = new Warhammer(0, 3);
 	}
 }

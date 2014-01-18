@@ -1,3 +1,7 @@
+package genericRPG.skills;
+
+import genericRPG.beingTypes.Being;
+
 public class TwoHanded extends OffensiveSkill{
 	public TwoHanded(Being b){
 		name = "Two Handed";

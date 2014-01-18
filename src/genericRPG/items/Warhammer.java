@@ -1,3 +1,8 @@
+package genericRPG.items;
+
+import genericRPG.beingTypes.Being;
+import genericRPG.skills.OffensiveSkill;
+
 public class Warhammer extends Weapon{
 	public Warhammer(int qnt,  int quality){
 		super("Warhammer", 2);

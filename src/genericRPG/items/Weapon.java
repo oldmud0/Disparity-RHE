@@ -1,8 +1,13 @@
+package genericRPG.items;
+
+import genericRPG.beingTypes.Being;
+import genericRPG.skills.OffensiveSkill;
+
 public class Weapon extends Item{
 	public int hand, base_dmg;
-	public Weapon(String n, int h){
+	public Weapon(String n, int hand){
 		super(n, 1);
-		hand = h;
+		this.hand = hand;
 	}
 	public void giveName(String mat, String qDesc){
 		name = mat + " " + name + " " + qDesc;

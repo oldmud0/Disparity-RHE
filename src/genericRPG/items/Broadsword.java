@@ -1,3 +1,8 @@
+package genericRPG.items;
+
+import genericRPG.beingTypes.Being;
+import genericRPG.skills.OffensiveSkill;
+
 public class Broadsword extends Weapon{
 	public Broadsword(int quality){
 		super("Broadsword", 2);
