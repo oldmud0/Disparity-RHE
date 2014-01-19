@@ -10,9 +10,11 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
+import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import javax.swing.AbstractAction;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +22,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
 import javax.swing.UIManager;
@@ -31,6 +34,7 @@ public class RPGDevMainWindow {
 
 	private JFrame frmJustAnotherRpg;
 	private JList<?> list = new JList<Object>();
+	@SuppressWarnings("rawtypes")
 	private DefaultListModel listModel = new DefaultListModel();
 	
 	private HashMap<JTextField,GhostText> textBoxes = new HashMap<JTextField,GhostText>();
@@ -64,12 +68,20 @@ public class RPGDevMainWindow {
 	 */
 	@SuppressWarnings("unchecked")
 	private void initialize() {
+		
+		//Set look and feel
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		
 		frmJustAnotherRpg = new JFrame();
 		frmJustAnotherRpg.setTitle("Just Another RPG Editor");
 		frmJustAnotherRpg.setBounds(100, 100, 525, 565);
 		frmJustAnotherRpg.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
-		springLayout.putConstraint(SpringLayout.SOUTH, list, -379, SpringLayout.SOUTH, frmJustAnotherRpg.getContentPane());
 		frmJustAnotherRpg.getContentPane().setLayout(springLayout);
 		
 		list.addListSelectionListener(new ListSelectionListener() { //Change when character is selected
@@ -88,13 +100,22 @@ public class RPGDevMainWindow {
 						textBox.getKey().setText( characters.get( list.getSelectedValue().toString() ).getStat( getKeyFromValue(textBox.getValue().ghostText) ).toString() ); //Get the values of each stat
 						textBox.getValue().focusLost(new FocusEvent(new Canvas(), 1));
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
 				
 			}
 		});
+		
+		list.getInputMap().put( KeyStroke.getKeyStroke(KeyEvent.VK_DELETE,0), "delete" );
+		list.getActionMap().put("delete", new AbstractAction() {
+			private static final long serialVersionUID = 1L; //required
+
+			public void actionPerformed(ActionEvent e) {
+				removeCharacter((Character)list.getSelectedValue());
+			}
+		});
+		
 		springLayout.putConstraint(SpringLayout.NORTH, list, 10, SpringLayout.NORTH, frmJustAnotherRpg.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, list, 10, SpringLayout.WEST, frmJustAnotherRpg.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, list, -10, SpringLayout.EAST, frmJustAnotherRpg.getContentPane());
@@ -106,10 +127,17 @@ public class RPGDevMainWindow {
 		
 		
 		JButton btnNewCharacter = new JButton("New character");
+		springLayout.putConstraint(SpringLayout.NORTH, btnNewCharacter, -33, SpringLayout.SOUTH, frmJustAnotherRpg.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, btnNewCharacter, 10, SpringLayout.WEST, frmJustAnotherRpg.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, btnNewCharacter, -10, SpringLayout.SOUTH, frmJustAnotherRpg.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, btnNewCharacter, -10, SpringLayout.EAST, frmJustAnotherRpg.getContentPane());
 		btnNewCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String name;
-				name = JOptionPane.showInputDialog(null, "Character name:","Player",JOptionPane.PLAIN_MESSAGE);
+				name = (String)JOptionPane.showInputDialog(null, "Character name:","New character",JOptionPane.PLAIN_MESSAGE,null,null,"Player");
+				while(characters.containsKey(name)) {
+					name = (String)JOptionPane.showInputDialog(null, "That name is already used.\nCharacter name:","New character",JOptionPane.ERROR_MESSAGE,null,null,"Player");
+				}
 				if(name == null || name.length() == 0) return;
 				
 				Object[] races = Race.getRaces().toArray();
@@ -118,10 +146,6 @@ public class RPGDevMainWindow {
 				addCharacter(new Character(name, race));
 			}
 		});
-		springLayout.putConstraint(SpringLayout.NORTH, btnNewCharacter, -33, SpringLayout.SOUTH, frmJustAnotherRpg.getContentPane());
-		springLayout.putConstraint(SpringLayout.WEST, btnNewCharacter, 10, SpringLayout.WEST, frmJustAnotherRpg.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, btnNewCharacter, -10, SpringLayout.SOUTH, frmJustAnotherRpg.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, btnNewCharacter, -10, SpringLayout.EAST, frmJustAnotherRpg.getContentPane());
 		frmJustAnotherRpg.getContentPane().add(btnNewCharacter);
 		
 		JButton btnUpdateCharacter = new JButton("Update character");
@@ -132,6 +156,8 @@ public class RPGDevMainWindow {
 		
 		btnUpdateCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) { //Update our character stats
+				if(list.isSelectionEmpty())return;
+				
 				Character c = (Character)list.getSelectedValue(); //Apparently we have to cast our Object into a Character first
 				String oldName = c.name;
 				
@@ -153,37 +179,39 @@ public class RPGDevMainWindow {
 		frmJustAnotherRpg.getContentPane().add(btnUpdateCharacter);
 		
 		JPanel statsPanel = new JPanel();
-		springLayout.putConstraint(SpringLayout.NORTH, statsPanel, 6, SpringLayout.SOUTH, list);
+		springLayout.putConstraint(SpringLayout.NORTH, statsPanel, 208, SpringLayout.NORTH, frmJustAnotherRpg.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, list, -6, SpringLayout.NORTH, statsPanel);
 		springLayout.putConstraint(SpringLayout.WEST, statsPanel, 10, SpringLayout.WEST, frmJustAnotherRpg.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, statsPanel, -10, SpringLayout.EAST, frmJustAnotherRpg.getContentPane());
 		frmJustAnotherRpg.getContentPane().add(statsPanel);
 		statsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnShowStats = new JButton("Show me the stats");
+		springLayout.putConstraint(SpringLayout.WEST, btnShowStats, 10, SpringLayout.WEST, frmJustAnotherRpg.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, btnShowStats, -10, SpringLayout.EAST, frmJustAnotherRpg.getContentPane());
 		btnShowStats.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) { //When "Show me the stats" button is pressed
 				if(list.getSelectedValue() == null || !characters.containsKey( list.getSelectedValue().toString() ))JOptionPane.showMessageDialog(null, "No character was selected.","Character Stats",JOptionPane.ERROR_MESSAGE);
 				else JOptionPane.showMessageDialog(null, characters.get(list.getSelectedValue().toString()).printStats(), "Character Stats", JOptionPane.INFORMATION_MESSAGE); 
 			}
 		});
-		springLayout.putConstraint(SpringLayout.WEST, btnShowStats, 10, SpringLayout.WEST, frmJustAnotherRpg.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, btnShowStats, -8, SpringLayout.NORTH, btnUpdateCharacter);
-		springLayout.putConstraint(SpringLayout.EAST, btnShowStats, -10, SpringLayout.EAST, frmJustAnotherRpg.getContentPane());
 		frmJustAnotherRpg.getContentPane().add(btnShowStats);
 		
-		JButton btnNewButton = new JButton("Delete character");
-		btnNewButton.addActionListener(new ActionListener() {
+		
+		JButton btnDeleteCharacter = new JButton("Delete character");
+		springLayout.putConstraint(SpringLayout.WEST, btnDeleteCharacter, 10, SpringLayout.WEST, frmJustAnotherRpg.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, btnDeleteCharacter, -10, SpringLayout.EAST, frmJustAnotherRpg.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, statsPanel, -6, SpringLayout.NORTH, btnDeleteCharacter);
+		springLayout.putConstraint(SpringLayout.NORTH, btnShowStats, 6, SpringLayout.SOUTH, btnDeleteCharacter);
+		springLayout.putConstraint(SpringLayout.NORTH, btnDeleteCharacter, -124, SpringLayout.SOUTH, frmJustAnotherRpg.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, btnDeleteCharacter, -99, SpringLayout.SOUTH, frmJustAnotherRpg.getContentPane());
+		btnDeleteCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				removeCharacter((Character)list.getSelectedValue());
 			}
 		});
-		springLayout.putConstraint(SpringLayout.SOUTH, statsPanel, -18, SpringLayout.NORTH, btnNewButton);
-		springLayout.putConstraint(SpringLayout.WEST, btnNewButton, 10, SpringLayout.WEST, frmJustAnotherRpg.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, btnNewButton, -10, SpringLayout.EAST, frmJustAnotherRpg.getContentPane());
-		springLayout.putConstraint(SpringLayout.NORTH, btnShowStats, 6, SpringLayout.SOUTH, btnNewButton);
-		springLayout.putConstraint(SpringLayout.NORTH, btnNewButton, -124, SpringLayout.SOUTH, frmJustAnotherRpg.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, btnNewButton, -99, SpringLayout.SOUTH, frmJustAnotherRpg.getContentPane());
-		frmJustAnotherRpg.getContentPane().add(btnNewButton);
+		frmJustAnotherRpg.getContentPane().add(btnDeleteCharacter);
 		
 		
 		//Let's add some text boxes, shall we?
@@ -193,6 +221,7 @@ public class RPGDevMainWindow {
 		for(Entry<String,String> field : Being.getStatFields().entrySet()) {
 			tempTextBox = new JTextField();
 			tempTextBox.setColumns(15);
+			tempTextBox.setToolTipText(String.valueOf(field.getValue().toCharArray()[0]).toUpperCase() + field.getValue().substring(1)); //Make first letter uppercase
 			textBoxes.put( tempTextBox, new GhostText(tempTextBox,field.getValue()) );
 			statsPanel.add(tempTextBox);
 		}
@@ -200,14 +229,19 @@ public class RPGDevMainWindow {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void addCharacter(Character c) {
 		listModel.addElement(c);
 		characters.put(c.name,c);
 	}
 	
 	public void removeCharacter(Character c) {
-		listModel.removeElement(c);
-		characters.remove(c.name);
+		if(list.isSelectionEmpty())return;
+		
+		if(JOptionPane.showConfirmDialog(null, "Are you sure you want to delete \""+c.name+"\"?","Character Stats",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+			listModel.removeElement(c);
+			characters.remove(c.name);
+		}
 	}
 	
 	public String getKeyFromValue(String val) {
@@ -216,5 +250,6 @@ public class RPGDevMainWindow {
 		}
 		return null;
 	}
+
 	
 }
