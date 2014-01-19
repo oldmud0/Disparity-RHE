@@ -16,7 +16,7 @@ public class Monster extends Being{
 	private static Monster m = new Monster();
 	private static String rce;
 	private static Scanner input;
-	public static Monster Get(String mName, String name){
+	public static Monster get(String mName, String name){
 		try{
 			file = "Monsters/" + mName + ".txt";
 			input = new Scanner(new File(file));
@@ -31,8 +31,8 @@ public class Monster extends Being{
 			m.wis = input.nextInt();
 			if(rce.equals("Random")) m.race = getRandomHumanoidRace(m);
 			else m.race = getMonsterRace(rce, m);
-			m.MP = m.tMP;	
-			m.HP = m.tHP;	
+			m.mp = m.tMP;	
+			m.hp = m.tHP;	
 			return m;
 		}catch(FileNotFoundException e){
 			System.out.println("Monster "+mName+" not found...");
