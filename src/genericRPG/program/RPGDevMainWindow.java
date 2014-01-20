@@ -140,7 +140,7 @@ public class RPGDevMainWindow {
 				}
 				if(name == null || name.length() == 0) return;
 				
-				Object[] races = Race.getRaces().toArray();
+				Object[] races = Race.getCharacterRaces().toArray();
 				String race = (String)JOptionPane.showInputDialog(null, "Race:", "Select race",JOptionPane.PLAIN_MESSAGE,null,races,"HUMAN");
 				
 				addCharacter(new Character(name, race));
@@ -233,6 +233,7 @@ public class RPGDevMainWindow {
 	public void addCharacter(Character c) {
 		listModel.addElement(c);
 		characters.put(c.name,c);
+		list.setSelectedValue(characters.get(c.name), true); //Select our new character
 	}
 	
 	public void removeCharacter(Character c) {

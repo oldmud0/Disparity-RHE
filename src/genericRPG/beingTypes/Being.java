@@ -1,10 +1,12 @@
 package genericRPG.beingTypes;
 
 import java.util.HashMap;
+
 import genericRPG.items.Weapon;
 import genericRPG.races.Dwarf;
 import genericRPG.races.Elf;
 import genericRPG.races.Gnome;
+import genericRPG.races.Gryphon;
 import genericRPG.races.Human;
 import genericRPG.races.Race;
 import genericRPG.skills.Archery;
@@ -49,6 +51,8 @@ public abstract class Being{
 				return new Human(b);
 			case "GNOME":
 				return new Gnome(b);
+			case "GRYPHON":
+				return new Gryphon((Monster)b); //Just a little hack until somebody tells me what I should do
 			default:
 				throw new IllegalArgumentException(rce + " is not a valid Race...");
 		}
