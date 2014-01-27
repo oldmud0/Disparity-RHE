@@ -1,4 +1,4 @@
-package genericRPG.program;
+package genericRPG.program.editor;
 
 import genericRPG.beingTypes.Being;
 import genericRPG.beingTypes.Character;
@@ -131,7 +131,7 @@ public class RPGDevMainWindow {
 		springLayout.putConstraint(SpringLayout.WEST, btnNewCharacter, 10, SpringLayout.WEST, frmJustAnotherRpg.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, btnNewCharacter, -10, SpringLayout.SOUTH, frmJustAnotherRpg.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, btnNewCharacter, -10, SpringLayout.EAST, frmJustAnotherRpg.getContentPane());
-		btnNewCharacter.addActionListener(new ActionListener() {
+		btnNewCharacter.addActionListener(new ActionListener() { //Character creation menu
 			public void actionPerformed(ActionEvent arg0) {
 				String name;
 				name = (String)JOptionPane.showInputDialog(null, "Character name:","New character",JOptionPane.PLAIN_MESSAGE,null,null,"Player");
