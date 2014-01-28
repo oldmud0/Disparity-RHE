@@ -1,7 +1,7 @@
 package genericRPG.races;
 
 import genericRPG.beingTypes.Being;
-import genericRPG.items.Shortsword;
+import genericRPG.items.weapons.Shortsword;
 
 public class Human extends Race{
 

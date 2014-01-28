@@ -1,6 +1,7 @@
-package genericRPG.items;
+package genericRPG.items.weapons;
 
 import genericRPG.beingTypes.Being;
+import genericRPG.items.Weapon;
 import genericRPG.skills.OffensiveSkill;
 
 public class Dagger extends Weapon{

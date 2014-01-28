@@ -1,7 +1,5 @@
 package genericRPG.beingTypes;
 
-import java.util.HashMap;
-
 import genericRPG.items.Weapon;
 import genericRPG.races.Dwarf;
 import genericRPG.races.Elf;
@@ -14,11 +12,14 @@ import genericRPG.skills.Magic;
 import genericRPG.skills.OneHanded;
 import genericRPG.skills.TwoHanded;
 
+import java.util.HashMap;
+
 public abstract class Being{
 	public String name;
 	public Race race;
 	public int str = 10, agi = 10, con = 10, wis = 10, hp, mp, tHP = (con/2) + 10, tMP = (wis/2) + 10, lvl;
-	public double dodge, ac;
+	public double dodge;
+	public double ac;
 	public Archery arc;
 	public OneHanded oneHand;
 	public TwoHanded twoHand;

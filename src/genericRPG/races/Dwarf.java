@@ -1,7 +1,7 @@
 package genericRPG.races;
 
 import genericRPG.beingTypes.Being;
-import genericRPG.items.Warhammer;
+import genericRPG.items.weapons.Warhammer;
 
 public class Dwarf extends Race{
 

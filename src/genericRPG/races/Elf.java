@@ -1,7 +1,7 @@
 package genericRPG.races;
 
 import genericRPG.beingTypes.Being;
-import genericRPG.items.Dagger;
+import genericRPG.items.weapons.Dagger;
 
 public class Elf extends Race{
 
