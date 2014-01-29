@@ -1,6 +1,6 @@
 package genericRPG.races;
 
-import genericRPG.beingTypes.Monster;
+import genericRPG.being.Monster;
 
 public class Gryphon extends Race{
 	public Gryphon(Monster m){

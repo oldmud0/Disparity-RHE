@@ -1,6 +1,6 @@
 package genericRPG.skills;
 
-import genericRPG.beingTypes.Being;
+import genericRPG.being.Being;
 
 public class OffensiveSkill extends Skill{
 	public int damBonus;

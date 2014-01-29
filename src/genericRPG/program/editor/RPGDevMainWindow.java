@@ -1,7 +1,7 @@
 package genericRPG.program.editor;
 
-import genericRPG.beingTypes.Being;
-import genericRPG.beingTypes.Character;
+import genericRPG.being.Being;
+import genericRPG.being.Character;
 import genericRPG.races.Race;
 
 import java.awt.Canvas;
@@ -13,11 +13,13 @@ import java.awt.event.FocusEvent;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.Stack;
 
 import javax.swing.AbstractAction;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -38,6 +40,7 @@ public class RPGDevMainWindow {
 	private DefaultListModel listModel = new DefaultListModel();
 	
 	private HashMap<JTextField,GhostText> textBoxes = new HashMap<JTextField,GhostText>();
+	private Stack<JLabel> labels = new Stack<JLabel>();
 	private HashMap<String,Character> characters = new HashMap<String,Character>();
 	
 	/**
@@ -218,11 +221,17 @@ public class RPGDevMainWindow {
 		//For each stat field, make a text box for it
 		
 		JTextField tempTextBox;
+		JLabel tempLabel;
 		for(Entry<String,String> field : Being.getStatFields().entrySet()) {
+			tempLabel = new JLabel(field.getValue());
+			labels.push(tempLabel);
+			
 			tempTextBox = new JTextField();
 			tempTextBox.setColumns(15);
 			tempTextBox.setToolTipText(String.valueOf(field.getValue().toCharArray()[0]).toUpperCase() + field.getValue().substring(1)); //Make first letter uppercase
 			textBoxes.put( tempTextBox, new GhostText(tempTextBox,field.getValue()) );
+			
+			statsPanel.add(tempLabel);
 			statsPanel.add(tempTextBox);
 		}
 		

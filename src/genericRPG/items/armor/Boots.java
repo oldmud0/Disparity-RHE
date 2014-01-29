@@ -1,9 +1,10 @@
 package genericRPG.items.armor;
 
 import genericRPG.items.Armor;
+import genericRPG.skills.DefensiveSkill;
 
 public class Boots extends Armor{
-	public Boots(int quality){
+	public Boots(int quality, DefensiveSkill s){
 		super("Boots");
 		base_def = 2 + quality;
 	}

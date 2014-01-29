@@ -11,7 +11,7 @@ import genericRPG.program.game.RPGGame;
 
 public class Main {
 
-	private static int windowX = 1024, windowY = 768;
+	private static int windowX = 640, windowY = 480;
 	
 	public static void main(final String[] args) {
 		
@@ -22,6 +22,7 @@ public class Main {
 				try {
 					AppGameContainer appgc = new AppGameContainer(new RPGGame("RPG Game"));
 					appgc.setDisplayMode(windowX, windowY, false);
+					appgc.setVSync(true);
 					appgc.start();
 				} catch (SlickException e) {
 					Logger.getLogger(RPGGame.class.getName()).log(Level.SEVERE,

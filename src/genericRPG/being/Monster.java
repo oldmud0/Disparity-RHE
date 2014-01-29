@@ -1,4 +1,4 @@
-package genericRPG.beingTypes;
+package genericRPG.being;
 import genericRPG.races.Dwarf;
 import genericRPG.races.Elf;
 import genericRPG.races.Gnome;

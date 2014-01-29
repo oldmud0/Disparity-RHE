@@ -1,30 +1,32 @@
-package genericRPG.beingTypes;
+package genericRPG.being;
 
 import genericRPG.items.Weapon;
-import genericRPG.races.Dwarf;
-import genericRPG.races.Elf;
-import genericRPG.races.Gnome;
-import genericRPG.races.Gryphon;
-import genericRPG.races.Human;
-import genericRPG.races.Race;
-import genericRPG.skills.Archery;
-import genericRPG.skills.Magic;
-import genericRPG.skills.OneHanded;
-import genericRPG.skills.TwoHanded;
+import genericRPG.items.armor.*;
+import genericRPG.races.*;
+import genericRPG.skills.offensiveSkills.*;
+import genericRPG.skills.defensiveSkills.*;
 
 import java.util.HashMap;
 
 public abstract class Being{
 	public String name;
 	public Race race;
-	public int str = 10, agi = 10, con = 10, wis = 10, hp, mp, tHP = (con/2) + 10, tMP = (wis/2) + 10, lvl;
-	public double dodge;
-	public double ac;
-	public Archery arc;
-	public OneHanded oneHand;
-	public TwoHanded twoHand;
-	public Magic magic;
-	public Weapon wep;
+	//STATS
+		public int str = 10, agi = 10, con = 10, wis = 10, hp, mp, tHP = (con/2) + 10, tMP = (wis/2) + 10, lvl;
+		public double dodge, ac;
+	//SKILLS
+		public Archery arc;
+		public OneHanded oneHand;
+		public TwoHanded twoHand;
+		public Magic magic;
+		public Weapon wep;
+		public HeavyArmor hArmor;
+		public LightArmor lArmor;
+	//ARMOR
+		public Helmet helm;
+		public Chestplate chest;
+		public Leggings legs;
+		public Boots boots;
 	
 	//Object Creator
 
@@ -105,7 +107,7 @@ public abstract class Being{
 	public void setStat(String ident, Object stat) throws Exception {
 		if(!getStats().containsKey(ident)) return;
 		else
-			switch(ident) {
+			switch(ident.toLowerCase()) {
 			case "name": name=stat.toString(); break;
 			case "race": race=(Race)stat; break;
 			case "level": lvl=Integer.valueOf( (String)stat ); break; //You could actually do (int)stat, but that's only for Java 7.

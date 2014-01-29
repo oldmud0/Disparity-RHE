@@ -1,10 +1,13 @@
 package genericRPG.items;
-
 import genericRPG.skills.DefensiveSkill;
-import genericRPG.beingTypes.Being;
+import genericRPG.being.Being;
+import genericRPG.skills.defensiveSkills.*;
 
 public class Armor extends Item{
 	public int base_def;
+	
+	DefensiveSkill skill;
+	
 	public Armor(String n){
 		super(n, 1);
 	}
@@ -16,6 +19,9 @@ public class Armor extends Item{
 	}
 	//GET SKILL ARMOR DEFENSE BONUS
 	public DefensiveSkill getSADB(Being b){
-		return new DefensiveSkill();
+		if(skill instanceof LightArmor)
+			return new LightArmor();
+		else
+			return new HeavyArmor();
 	}
 }

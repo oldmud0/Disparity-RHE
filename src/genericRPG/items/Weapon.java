@@ -1,6 +1,6 @@
 package genericRPG.items;
 
-import genericRPG.beingTypes.Being;
+import genericRPG.being.Being;
 import genericRPG.skills.OffensiveSkill;
 
 public class Weapon extends Item{

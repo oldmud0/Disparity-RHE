@@ -1,14 +1,16 @@
-package genericRPG.skills;
+package genericRPG.skills.offensiveSkills;
 
-import genericRPG.beingTypes.Being;
+import genericRPG.being.Being;
+import genericRPG.skills.OffensiveSkill;
 
-public class TwoHanded extends OffensiveSkill{
-	public TwoHanded(Being b){
-		name = "Two Handed";
+public class Archery extends OffensiveSkill{
+
+	public Archery(Being b){
+		name = "Archery";
 		lvl = 5;
 		exp = 0;
 		lvlXp = 20;
-		desc = "Skill that is the basis of all physical Two handed attacks.";
+		desc = "Skill that is the basis of all physical ranged attacks.";
 		damBonus = this.getDamBonus();
 		addAbilities(b);
 	}

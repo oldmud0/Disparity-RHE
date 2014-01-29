@@ -1,6 +1,6 @@
 package genericRPG.skills;
 
-import genericRPG.beingTypes.Being;
+import genericRPG.being.Being;
 
 public class DefensiveSkill extends Skill{
 	public int defBonus;
@@ -13,6 +13,10 @@ public class DefensiveSkill extends Skill{
 	}
 
 	public int getDefBonus(){
+		return lvl / 2;
+	}
+	
+	public int getAgiBonus(){
 		return lvl / 2;
 	}
 

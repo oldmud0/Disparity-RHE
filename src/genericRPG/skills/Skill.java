@@ -1,6 +1,6 @@
 package genericRPG.skills;
 
-import genericRPG.beingTypes.Being;
+import genericRPG.being.Being;
 import genericRPG.items.Weapon;
 
 public abstract class Skill{

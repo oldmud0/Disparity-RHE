@@ -1,7 +1,5 @@
 package genericRPG.items.armor;
 
-import genericRPG.skills.DefensiveSkill;
-import genericRPG.beingTypes.Being;
 import genericRPG.items.Armor;
 
 public class Leggings extends Armor{
