@@ -20,8 +20,8 @@ public class Armor extends Item{
 	//GET SKILL ARMOR DEFENSE BONUS
 	public DefensiveSkill getSADB(Being b){
 		if(skill instanceof LightArmor)
-			return new LightArmor();
+			return new LightArmor(b);
 		else
-			return new HeavyArmor();
+			return new HeavyArmor(b);
 	}
 }
