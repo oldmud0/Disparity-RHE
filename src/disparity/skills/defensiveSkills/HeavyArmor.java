@@ -10,7 +10,8 @@ public class HeavyArmor extends DefensiveSkill{
 		exp = 0;
 		lvlXp = 20;
 		desc = "Skill that determines the usefullness of Heavy Armor.";
-		defBonus = this.getDefBonus();
+		defBonus = lvl;
+		agiChange = -(lvl / 2);
 		addAbilities(b);
 	}
 

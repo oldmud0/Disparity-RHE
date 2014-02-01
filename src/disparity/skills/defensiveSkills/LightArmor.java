@@ -10,7 +10,8 @@ public class LightArmor extends DefensiveSkill{
 		exp = 0;
 		lvlXp = 20;
 		desc = "Skill that determines the usefullness of Light Armor.";
-		defBonus = this.getDefBonus();
+		defBonus = lvl / 5;
+		agiChange = lvl;
 		addAbilities(b);
 	}
 

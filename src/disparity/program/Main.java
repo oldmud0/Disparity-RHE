@@ -1,14 +1,6 @@
 package disparity.program;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.SlickException;
-
 import disparity.being.Character;
-import disparity.program.editor.RPGDevMainWindow;
-import disparity.program.game.RPGGame;
 
 public class Main {
 

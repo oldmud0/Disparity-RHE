@@ -4,7 +4,9 @@ import disparity.being.Being;
 
 public class DefensiveSkill extends Skill{
 	public int defBonus;
-
+	public int agiChange;
+	
+	@Override
 	public void level(Being b){
 		if(exp >= lvlXp)
 			lvl++;
@@ -15,11 +17,8 @@ public class DefensiveSkill extends Skill{
 	public int getDefBonus(){
 		return lvl / 2;
 	}
-	
-	public int getAgiBonus(){
-		return lvl / 2;
-	}
 
+	@Override
 	public void skillStats(){
 		super.skillStats();
 		System.out.println("Defense Bonus "+ defBonus);

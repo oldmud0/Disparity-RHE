@@ -24,6 +24,7 @@ import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
 import javax.swing.UIManager;
+import javax.swing.WindowConstants;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -48,6 +49,7 @@ public class RPGDevMainWindow {
 	 */
 	public static void run(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					RPGDevMainWindow window = new RPGDevMainWindow();
@@ -83,11 +85,12 @@ public class RPGDevMainWindow {
 		frmJustAnotherRpg = new JFrame();
 		frmJustAnotherRpg.setTitle("Just Another RPG Editor");
 		frmJustAnotherRpg.setBounds(100, 100, 525, 565);
-		frmJustAnotherRpg.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frmJustAnotherRpg.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frmJustAnotherRpg.getContentPane().setLayout(springLayout);
 		
 		list.addListSelectionListener(new ListSelectionListener() { //Change when character is selected
+			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
 				
 				if(list.getSelectedValue() == null) { //Prevent an exception by not doing anything if we somehow un-selected an item
@@ -114,6 +117,7 @@ public class RPGDevMainWindow {
 		list.getActionMap().put("delete", new AbstractAction() {
 			private static final long serialVersionUID = 1L; //required
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				removeCharacter((Character)list.getSelectedValue());
 			}
@@ -135,6 +139,7 @@ public class RPGDevMainWindow {
 		springLayout.putConstraint(SpringLayout.SOUTH, btnNewCharacter, -10, SpringLayout.SOUTH, frmJustAnotherRpg.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, btnNewCharacter, -10, SpringLayout.EAST, frmJustAnotherRpg.getContentPane());
 		btnNewCharacter.addActionListener(new ActionListener() { //Character creation menu
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String name;
 				name = (String)JOptionPane.showInputDialog(null, "Character name:","New character",JOptionPane.PLAIN_MESSAGE,null,null,"Player");
@@ -158,6 +163,7 @@ public class RPGDevMainWindow {
 		springLayout.putConstraint(SpringLayout.EAST, btnUpdateCharacter, -10, SpringLayout.EAST, frmJustAnotherRpg.getContentPane());
 		
 		btnUpdateCharacter.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) { //Update our character stats
 				if(list.isSelectionEmpty())return;
 				
@@ -193,6 +199,7 @@ public class RPGDevMainWindow {
 		springLayout.putConstraint(SpringLayout.WEST, btnShowStats, 10, SpringLayout.WEST, frmJustAnotherRpg.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, btnShowStats, -10, SpringLayout.EAST, frmJustAnotherRpg.getContentPane());
 		btnShowStats.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) { //When "Show me the stats" button is pressed
 				if(list.getSelectedValue() == null || !characters.containsKey( list.getSelectedValue().toString() ))JOptionPane.showMessageDialog(null, "No character was selected.","Character Stats",JOptionPane.ERROR_MESSAGE);
 				else JOptionPane.showMessageDialog(null, characters.get(list.getSelectedValue().toString()).printStats(), "Character Stats", JOptionPane.INFORMATION_MESSAGE); 
@@ -210,6 +217,7 @@ public class RPGDevMainWindow {
 		springLayout.putConstraint(SpringLayout.NORTH, btnDeleteCharacter, -124, SpringLayout.SOUTH, frmJustAnotherRpg.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, btnDeleteCharacter, -99, SpringLayout.SOUTH, frmJustAnotherRpg.getContentPane());
 		btnDeleteCharacter.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				removeCharacter((Character)list.getSelectedValue());
 			}
