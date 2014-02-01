@@ -16,54 +16,45 @@ We hope to expect new members that will help us with the game art and music (if 
 
 1. Add blocking and shields 
 2. Add magic 
-    1. Add Spells (extends magic?) 
-        1. Fireball 
-        2. Water Whip 
-        3. Shade Claw 
-
+    a. Add Spells (extends magic?) 
+        i. Fireball 
+        ii. Water Whip 
+        iii. Shade Claw 
 3. Add character races 
-    1. Half-Elf  
-    2. Half-Orc 
-    3. Littling (hobbit-esque) 
-
+    a. Half-Elf  
+    b. Half-Orc 
+    c. Littling (hobbit-esque) 
 4. Read monster objects from JSON file 
-    1. Get rid of Gryphon 
-    2. Hold all monster race info in JSON 
-
+    a. Get rid of Gryphon 
+    b. Hold all monster race info in JSON 
 5. Make levels dynamic, and based on amount of skill levels per level 
 6. Make it so that skills add abilities to a hashmap when levelled to certain levels 
-    1. Find a good way to reference a method that runs the skill 
-
+    a. Find a good way to reference a method that runs the skill 
 7. Add *diablo-esc II* levelling 
-    1. Ability tree, ability points, can only get ability if skill lvl is high enough, etc. 
-
+    a. Ability tree, ability points, can only get ability if skill lvl is high enough, etc. 
 8. Add GUI application that allows for the following: 
-    1. Create a Character 
-    2. View Created Characters Stats 
-        1. Inventory 
-        2. Base Stats 
-        3. Skills 
-            1. Level 
-            2. Damage Bonuses and such 
+    a. Create a Character 
+    b. View Created Characters Stats 
+        i. Inventory 
+        ii. Base Stats 
+        iii. Skills 
+            - Level 
+            - Damage Bonuses and such 
 
-        4. Equipped armor 
-        5. All Abilities and Spells 
-
-    3. Save Character as serialized data, so that players may not edit it easily 
-        1. Put in a .ser with Java’s Serializable class 
-
-    4. Allow character to do a text based battle vs a random monster of their level 
-
+        iv. Equipped armor 
+        v. All Abilities and Spells 
+    c. Save Character as serialized data, so that players may not edit it easily 
+        i. Put in a .ser with Java’s Serializable class 
+    d. Allow character to do a text based battle vs a random monster of their level 
 9. Using Slick2D, create a graphics Engine 
-    1. Texture everything 
-    2. Animate everything 
-    3. Set up in game GUI 
-    4. Set up overworld map 
-    5. Set up battles 
-        1. Set up multi-character vs multi-monster battles 
-
+    a. Texture everything 
+    b. Animate everything 
+    c. Set up in game GUI 
+    d. Set up overworld map 
+    e. Set up battles 
+        i. Set up multi-character vs multi-monster battles 
 10. Add a storyline 
-    1. WIP, always need more lore
+    - WIP, always need more lore
 
 
 -----------------------
