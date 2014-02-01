@@ -5,6 +5,65 @@ layout: index
 Disparity: Rise of the Half-Elf
 ===============================
 
+An ambitious attempt at an RPG game in Java using Slick2D. Right now, the game isn't playable. There's a lot going on behind the scenes, including character creation and things like that.
+
+We hope to expect new members that will help us with the game art and music (if we ever reach that stage, of course).
+
+
+## To-Do
+
+  
+
+1. Add blocking and shields 
+2. Add magic 
+    1. Add Spells (extends magic?) 
+        1. Fireball 
+        2. Water Whip 
+        3. Shade Claw 
+
+3. Add character races 
+    1. Half-Elf  
+    2. Half-Orc 
+    3. Littling (hobbit-esque) 
+
+4. Read monster objects from JSON file 
+    1. Get rid of Gryphon 
+    2. Hold all monster race info in JSON 
+
+5. Make levels dynamic, and based on amount of skill levels per level 
+6. Make it so that skills add abilities to a hashmap when levelled to certain levels 
+    1. Find a good way to reference a method that runs the skill 
+
+7. Add *diablo-esc II* levelling 
+    1. Ability tree, ability points, can only get ability if skill lvl is high enough, etc. 
+
+8. Add GUI application that allows for the following: 
+    1. Create a Character 
+    2. View Created Characters Stats 
+        1. Inventory 
+        2. Base Stats 
+        3. Skills 
+            1. Level 
+            2. Damage Bonuses and such 
+
+        4. Equipped armor 
+        5. All Abilities and Spells 
+
+    3. Save Character as serialized data, so that players may not edit it easily 
+        1. Put in a .ser with Java’s Serializable class 
+
+    4. Allow character to do a text based battle vs a random monster of their level 
+
+9. Using Slick2D, create a graphics Engine 
+    1. Texture everything 
+    2. Animate everything 
+    3. Set up in game GUI 
+    4. Set up overworld map 
+    5. Set up battles 
+        1. Set up multi-character vs multi-monster battles 
+
+10. Add a storyline 
+    1. WIP, always need more lore
 
 
 -----------------------
