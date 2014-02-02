@@ -11,44 +11,50 @@ We hope to expect new members that will help us with the game art and music (if 
 
 
 ## To-Do
-1. Make Races fit in with lore
-	a. Add Elfin [extends Race]
-	b. Add Half - Races [half human/half orc]
-2. Add references to the gods and storyline
-3. Add blocking and shields
-4. Add magic [Make it so that a spell’s power is different depending upon skill lvl]
-	a. Add Spells (extends magic?)
-		i. Fireball
-		ii. Water Whip
-		iii. Shade Claw
-5. Read monster objects from JSON file
-	a. Get rid of Gryphon
-	b. Hold all monster race info in JSON
-6. Make levels dynamic, and based on amount of skill levels per level
-	a. Make it so that skills add abilities to a hashmap when levelled to certain levels
-	b. Find a good way to reference a method that runs the skill
-9. Add *diablo-esc II* levelling
-	a. Ability tree, ability points, can only get ability if skill lvl is high enough, etc.
-11. Add GUI application that allows for the following:
-	a. Create a Character
-	b. View Created Characters Stats
-		i. Inventory
-		ii. Base Stats
-		iii. Skills
-			1. Level
-			2. Damage Bonuses and such
-		iv. Equipped armor
-		v. All Abilities and Spells
-		vi. Set up multi-character vs multi-monster battles
-	c. Save Character as serialized data, so that players may not edit it easily
-		i. Put in a .ser with Java’s Serializable class
-	d. Allow character to do a text based battle vs a random monster of their level
-12. Using Slick2D, create a graphics Engine
-	i. Texture everything
-	ii. Animate everything
-	iii. Set up in game GUI
-	iv. Set up overworld map
-	v. Set up battles
+1. Make Races fit in with lore 
+    1. Add Elfin [extends Race] 
+    2. Add Half - Races [half human/half orc] 
+2. Add references to the gods and storyline 
+3. Add blocking and shields 
+4. Add magic [Make it so that a spell’s power is different depending upon skill lvl] 
+    1. Death Magic 
+        1. General Attacking 
+    2. Life Magic 
+        1. Healing 
+        2. vs. Undead 
+    3. Beauty Magic 
+        1. Disguise 
+        2. Wards 
+5. Read monster objects from JSON file 
+    1. Get rid of Gryphon 
+    2. Hold all monster info in JSON 
+6. Make levels dynamic, and based on amount of skill levels per level 
+7. Make it so that skills add abilities to a hashmap when levelled to certain levels 
+    1. Find a good way to reference a method that runs the skill 
+8. Add *diablo-esc II* levelling 
+    1. Ability tree, ability points, can only get ability if skill lvl is high enough, etc. 
+9. Add GUI application that allows for the following: 
+    1. Create a Character 
+    2. View Created Characters Stats 
+        1. Inventory 
+        2. Base Stats 
+        3. Skills 
+	4. Level
+	5. Damage Bonuses and such
+        1. Equipped armor 
+        2. All Abilities and Spells 
+    3. Save Character as serialized data, so that players may not edit it easily 
+        1. Put in a .ser with Java’s Serializable class 
+    4. Allow character to do a text based battle vs a random monster of their level 
+10. Using Slick2D, create a graphics Engine 
+    1. Texture everything 
+    2. Animate everything 
+    3. Set up in game GUI 
+    4. Set up overworld map 
+    5. Set up battles 
+        1. Set up multi-character vs multi-monster battles 
+11. Add a storyline 
+    1. WIP, always need more lore
 
 -----------------------
 <!--- Don't delete me! :( -->
