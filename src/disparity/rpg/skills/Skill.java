@@ -21,7 +21,7 @@ public abstract class Skill{
 	public static byte doesHit(Being a, Weapon w, Being b){//Min + (int)(Math.random() * ((Max - Min) + 1)) 
 		int i = 0;
 		double max = 100.0;
-		double min = w.base_dmg + w.getSWDB(a).getDamBonus();
+		double min = w.baseDmg + w.getSWDB(a).getDamBonus();
 		if(min + Math.random() * ((max - min) + 1) <= b.calcAC())	i += 1; 		//checks to see if target blocked the attack [1 = block]
 		else if(min + Math.random() * ((max - min) + 1) <= b.dodge)	i += 2; //checks to see if target dodged the attack [2 = dodge]
 																			//if target does not block or dodge, attack hits [default = hit]

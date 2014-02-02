@@ -5,10 +5,20 @@ import java.util.Map.Entry;
 
 import disparity.rpg.items.Armor;
 import disparity.rpg.items.Weapon;
-import disparity.rpg.items.armor.*;
-import disparity.rpg.races.*;
-import disparity.rpg.skills.defensiveSkills.*;
-import disparity.rpg.skills.offensiveSkills.*;
+import disparity.rpg.items.armor.Boots;
+import disparity.rpg.items.armor.Chestplate;
+import disparity.rpg.items.armor.Helmet;
+import disparity.rpg.items.armor.Leggings;
+import disparity.rpg.races.Race;
+import disparity.rpg.races.player.Human;
+import disparity.rpg.races.player.Littling;
+import disparity.rpg.races.player.Pech;
+import disparity.rpg.skills.defensiveSkills.HeavyArmor;
+import disparity.rpg.skills.defensiveSkills.LightArmor;
+import disparity.rpg.skills.offensiveSkills.Archery;
+import disparity.rpg.skills.offensiveSkills.Magic;
+import disparity.rpg.skills.offensiveSkills.OneHanded;
+import disparity.rpg.skills.offensiveSkills.TwoHanded;
 
 public abstract class Being {
 	public String name;
@@ -78,14 +88,14 @@ public abstract class Being {
 
 	public Race getRace(String rce, Being b) {
 		switch (rce.toUpperCase()) {
-		case "ELF":
-			return new Elf(b);
-		case "DWARF":
-			return new Dwarf(b);
+		//case "ELF":
+		//	return new Elf(b);
+		case "PECH":
+			return new Pech(b);
 		case "HUMAN":
 			return new Human(b);
-		case "GNOME":
-			return new Gnome(b);
+		case "LITTLING":
+			return new Littling(b);
 		//MONSTER AND CHARACTER RACES DEFINED IN SAID CLASSES
 		default:
 			throw new IllegalArgumentException(rce + " is not a valid Race...");

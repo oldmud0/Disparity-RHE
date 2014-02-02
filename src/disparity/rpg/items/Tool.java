@@ -1,9 +1,8 @@
 package disparity.rpg.items;
 
 public class Tool extends Item{
-	String quality;
-	public Tool(String n, String qal){
+	public Tool(String n, Quality quality){
 		super(n, 1);
-		quality = qal;
+		this.quality = quality;
 	}
 }

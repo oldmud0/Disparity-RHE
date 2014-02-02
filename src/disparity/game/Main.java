@@ -17,6 +17,7 @@ public class Main {
 		//Run the actual Slick2D game
 		Thread graphicsWindow = new Thread(new Runnable() {
 			
+			@Override
 			public void run() {
 				try {
 					AppGameContainer appgc = new AppGameContainer(new DisparityGame("RPG Game"));
@@ -35,6 +36,7 @@ public class Main {
 		//Open the editor window
 		Thread editorWindow = new Thread(new Runnable() {
 			
+			@Override
 			public void run() {
 				RPGDevMainWindow.run(args);
 			}
