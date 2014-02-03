@@ -15,4 +15,5 @@ public class Item{
 		name = n;
 		qnt = a;
 	}
+	
 }

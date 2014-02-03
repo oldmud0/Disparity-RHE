@@ -1,6 +1,11 @@
 package disparity.game;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -18,7 +23,10 @@ public class DisparityGame extends StateBasedGame {
 		super(title);
 	}
 	
-
+	public void init() throws FileNotFoundException, SlickException {
+		Resources.loadResources();
+	}
+	
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
 		addState(new GameMenu());
