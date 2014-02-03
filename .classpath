@@ -29,5 +29,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="lib" path="lib/Slick2D/lib/tinylinepp.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

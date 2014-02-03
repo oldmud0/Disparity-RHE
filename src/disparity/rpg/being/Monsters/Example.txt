@@ -1,8 +1,0 @@
-Race
-Level 
-tHP
-tMP
-str
-agi
-con
-wis

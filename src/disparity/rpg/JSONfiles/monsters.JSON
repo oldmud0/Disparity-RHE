@@ -1,0 +1,43 @@
+[
+{
+	"Gryphon" : {
+		"name" : "Gryphon",
+		"str" : 8,
+		"agi" : 8,
+		"wis" : 8,
+		"con" : 8,
+
+		"race" : {
+			"name" : "Gryphon",
+			"lol" : 
+		},
+
+		"helm" : {
+			"name" : "Leather Cap",
+			"base_def" : 1
+		},
+		"chest" : {
+			"name" : "Leather Armor",
+			"base_def" : 2
+		},
+		"legs" : {
+			"name" : "Leather Pants",
+			"base_def" : 0
+		},
+		"boots" : {
+			"name" : "Leather Boots",
+			"base_def" : 1
+		},
+		"wep" : {
+			"name" : "Shortsword",
+			"base_dam" : 3
+		},
+		
+	}
+}
+
+{
+	"Goblin" : {
+	}
+}
+]
