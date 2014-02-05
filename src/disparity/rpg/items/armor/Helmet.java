@@ -9,4 +9,8 @@ public class Helmet extends Armor{
 		base_def = 3 + quality;
 		skill = s;
 	}
+	
+	public Helmet(){
+		
+	}
 }

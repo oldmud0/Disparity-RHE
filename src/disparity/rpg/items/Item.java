@@ -16,4 +16,7 @@ public class Item{
 		qnt = a;
 	}
 	
+	public Item(){
+		
+	}
 }

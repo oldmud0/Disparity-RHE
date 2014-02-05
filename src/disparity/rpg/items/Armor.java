@@ -23,4 +23,8 @@ public class Armor extends Item{
 		else
 			return new HeavyArmor(b);
 	}
+	
+	public Armor(){
+		
+	}
 }

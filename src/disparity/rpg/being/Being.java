@@ -100,6 +100,7 @@ public abstract class Being {
 		default:
 			throw new IllegalArgumentException(rce + " is not a valid Race...");
 		}
+		//return new Class.forName(rce);
 	}
 
 	public double calcAC() {
