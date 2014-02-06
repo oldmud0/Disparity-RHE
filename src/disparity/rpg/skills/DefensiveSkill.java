@@ -3,6 +3,10 @@ package disparity.rpg.skills;
 import disparity.rpg.being.Being;
 
 public class DefensiveSkill extends Skill{
+	public DefensiveSkill() {
+		super();
+	}
+
 	public int defBonus;
 	public int agiChange;
 	

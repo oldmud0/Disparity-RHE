@@ -6,6 +6,9 @@ import disparity.rpg.items.Weapon;
 import disparity.rpg.skills.OffensiveSkill;
 
 public class Battleaxe extends Weapon{
+	public Battleaxe() {
+		super();
+	}
 	public Battleaxe(Quality quality){
 		super("Battleaxe", 2, quality, 7);
 	}

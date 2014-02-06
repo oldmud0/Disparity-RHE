@@ -1,6 +1,7 @@
 package disparity.rpg.items.armor;
 
 import disparity.rpg.items.Armor;
+import disparity.rpg.items.Quality;
 import disparity.rpg.skills.DefensiveSkill;
 
 public class Helmet extends Armor{
@@ -10,7 +11,7 @@ public class Helmet extends Armor{
 		skill = s;
 	}
 	
-	public Helmet(){
-		
+	public Helmet(Quality quality) {
+		super(quality);
 	}
 }

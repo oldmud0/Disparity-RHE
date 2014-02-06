@@ -1,6 +1,7 @@
 package disparity.rpg.items.armor;
 
 import disparity.rpg.items.Armor;
+import disparity.rpg.items.Quality;
 import disparity.rpg.skills.DefensiveSkill;
 
 public class Leggings extends Armor{
@@ -8,5 +9,9 @@ public class Leggings extends Armor{
 		super("Leggings");
 		base_def = 3 + quality;
 		skill = s;
+	}
+	
+	public Leggings(Quality quality) {
+		super(quality);
 	}
 }

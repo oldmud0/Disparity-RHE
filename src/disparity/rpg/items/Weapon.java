@@ -10,6 +10,9 @@ public class Weapon extends Item{
 		this.hand = hand;
 		this.baseDmg = quality.getValue() + baseDmgBonus;
 	}
+	public Weapon() {
+		
+	}
 	public void giveName(String mat, String qDesc){
 		name = mat + " " + name + " " + qDesc;
 

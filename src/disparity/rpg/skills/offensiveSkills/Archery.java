@@ -5,6 +5,10 @@ import disparity.rpg.skills.OffensiveSkill;
 
 public class Archery extends OffensiveSkill{
 
+	public Archery() {
+		super();
+	}
+
 	public Archery(Being b){
 		name = "Archery";
 		lvl = 5;

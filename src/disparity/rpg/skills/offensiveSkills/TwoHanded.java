@@ -4,6 +4,10 @@ import disparity.rpg.being.Being;
 import disparity.rpg.skills.OffensiveSkill;
 
 public class TwoHanded extends OffensiveSkill{
+	public TwoHanded() {
+		super();
+	}
+
 	public TwoHanded(Being b){
 		name = "Two Handed";
 		lvl = 5;

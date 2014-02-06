@@ -3,6 +3,10 @@ package disparity.rpg.skills;
 import disparity.rpg.being.Being;
 
 public class OffensiveSkill extends Skill{
+	public OffensiveSkill() {
+		super();
+	}
+
 	public int damBonus;
 
 	@Override

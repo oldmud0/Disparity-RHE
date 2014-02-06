@@ -4,6 +4,7 @@ import disparity.rpg.being.Being;
 import disparity.rpg.items.Weapon;
 
 public class Fight{
+
 	public static byte doesHit(Being a, Weapon w, Being b){
 		int i = 0;
 		double max = 100.0;

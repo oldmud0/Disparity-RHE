@@ -4,6 +4,10 @@ import disparity.rpg.being.Being;
 import disparity.rpg.skills.DefensiveSkill;
 
 public class HeavyArmor extends DefensiveSkill{
+	public HeavyArmor() {
+		super();
+	}
+
 	public HeavyArmor(Being b){
 		name = "Heavy Armor";
 		lvl = 5;

@@ -6,6 +6,9 @@ import disparity.rpg.items.Weapon;
 import disparity.rpg.skills.OffensiveSkill;
 
 public class Shortsword extends Weapon{
+	public Shortsword() {
+		super();
+	}
 	public Shortsword(Quality quality){
 		super("Shortsword", 1, quality, 5);
 	}

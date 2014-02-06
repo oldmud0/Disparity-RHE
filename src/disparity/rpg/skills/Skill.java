@@ -9,13 +9,15 @@ public abstract class Skill{
 	public int lvl;
 	public String desc;
 
+	public Skill() {}
+
 	public void skillStats(){
 		System.out.println("-"+name+"-");
 		System.out.println(desc);
 		System.out.println("Level " + lvl);
 		System.out.println("Experience " + exp + "/"+lvlXp);
 	}
-
+	
 	//ABILITIES
 
 	public static byte doesHit(Being a, Weapon w, Being b){//Min + (int)(Math.random() * ((Max - Min) + 1)) 

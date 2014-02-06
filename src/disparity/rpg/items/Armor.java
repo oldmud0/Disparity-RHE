@@ -8,7 +8,15 @@ public class Armor extends Item{
 	public DefensiveSkill skill;
 	
 	public Armor(String n){
-		super(n, 1);
+		super(n);
+	}
+	public Armor(Quality quality, DefensiveSkill skill){
+		base_def += quality.getValue();
+		name = quality.getName() + name;
+		this.skill = skill;
+	}
+	public Armor(){
+		
 	}
 	public void giveName(String mat, String qDesc){
 		name = mat + " " + name + " " + qDesc;
@@ -24,7 +32,5 @@ public class Armor extends Item{
 			return new HeavyArmor(b);
 	}
 	
-	public Armor(){
-		
-	}
+
 }

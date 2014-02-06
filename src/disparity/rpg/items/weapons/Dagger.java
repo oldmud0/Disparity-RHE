@@ -6,6 +6,10 @@ import disparity.rpg.items.Weapon;
 import disparity.rpg.skills.OffensiveSkill;
 
 public class Dagger extends Weapon{
+	public Dagger() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Dagger(Quality quality){
 		super("Dagger", 1, quality, 4);
 	}

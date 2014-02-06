@@ -6,6 +6,9 @@ import disparity.rpg.items.Weapon;
 import disparity.rpg.skills.OffensiveSkill;
 
 public class Warhammer extends Weapon{
+	public Warhammer() {
+		super();
+	}
 	public Warhammer(Quality quality){
 		super("Warhammer", 2, quality, 8);
 	}
