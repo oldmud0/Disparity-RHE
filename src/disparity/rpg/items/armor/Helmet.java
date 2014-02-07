@@ -5,13 +5,18 @@ import disparity.rpg.items.Quality;
 import disparity.rpg.skills.DefensiveSkill;
 
 public class Helmet extends Armor{
+	public Helmet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Helmet(int quality, DefensiveSkill s){
 		super("Helmet");
 		base_def = 3 + quality;
 		skill = s;
 	}
 	
-	public Helmet(Quality quality) {
-		super(quality);
+	public Helmet(Quality q, DefensiveSkill s) {
+		super("Helmet", q, s);
 	}
 }

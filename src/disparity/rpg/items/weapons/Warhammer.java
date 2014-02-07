@@ -6,11 +6,16 @@ import disparity.rpg.items.Weapon;
 import disparity.rpg.skills.OffensiveSkill;
 
 public class Warhammer extends Weapon{
+	public Warhammer(String n, int baseDmgBonus) {
+		super(n, baseDmgBonus);
+		// TODO Auto-generated constructor stub
+	}
+	public Warhammer(String n, Quality q) {
+		super(n, q);
+		// TODO Auto-generated constructor stub
+	}
 	public Warhammer() {
 		super();
-	}
-	public Warhammer(Quality quality){
-		super("Warhammer", 2, quality, 8);
 	}
 	//SKILL WEAPON DAMAGE BONUS 
 	public OffensiveSkill getSWDB(Being b){

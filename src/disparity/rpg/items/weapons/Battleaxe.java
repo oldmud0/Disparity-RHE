@@ -10,7 +10,10 @@ public class Battleaxe extends Weapon{
 		super();
 	}
 	public Battleaxe(Quality quality){
-		super("Battleaxe", 2, quality, 7);
+		super("Battleaxe", quality);
+	}
+	public Battleaxe(int base){
+		super("Battleaxe", base);
 	}
 	//SKILL WEAPON DAMAGE BONUS 
 	public OffensiveSkill getSWDB(Being b){

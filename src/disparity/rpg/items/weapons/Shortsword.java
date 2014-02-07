@@ -6,11 +6,16 @@ import disparity.rpg.items.Weapon;
 import disparity.rpg.skills.OffensiveSkill;
 
 public class Shortsword extends Weapon{
+	public Shortsword(String n, int baseDmgBonus) {
+		super(n, baseDmgBonus);
+		// TODO Auto-generated constructor stub
+	}
+	public Shortsword(String n, Quality q) {
+		super(n, q);
+		// TODO Auto-generated constructor stub
+	}
 	public Shortsword() {
 		super();
-	}
-	public Shortsword(Quality quality){
-		super("Shortsword", 1, quality, 5);
 	}
 	//SKILL WEAPON DAMAGE BONUS 
 	public OffensiveSkill getSWDB(Being b){

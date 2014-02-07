@@ -27,20 +27,20 @@
     },
     "wep": {
       "name": "Talon",
-      "base_dam": 3,
+      "base_dam" : 3,
       "SWDB": "oneHanded"
     },
     "skills": [
       {
         "skill": {
-        "name":"oneHanded,
-        "lvl": 5
+          "name": "oneHanded",
+          "lvl": 5
         }
       },
       {
         "skill": {
-        "name":"lArmor,
-        "lvl": 2
+          "name": "lArmor",
+          "lvl": 2
         }
       }
     ]
@@ -83,20 +83,20 @@
     ],
     "wep": {
       "name": "Shortsword",
-      "base_dam": 3,
+      "quality": "STEEL",
       "SWDB": "oneHanded"
     },
     "skills": [
       {
         "skill": {
-        "name":"oneHanded,
-        "lvl": 5
+          "name": "oneHanded",
+          "lvl": 5
         }
       },
       {
         "skill": {
-        "name":"lArmor,
-        "lvl": 3
+          "name": "lArmor",
+          "lvl": 3
         }
       }
     ]

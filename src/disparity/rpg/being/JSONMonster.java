@@ -7,39 +7,41 @@ import org.json.JSONTokener;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import disparity.rpg.items.Weapon;
+
 public class JSONMonster{
 	public static Monster readMonster(String monsterName){
 		Monster monster = new Monster();
 		try{
-			JSONObject JSONFile = new JSONObject(new JSONTokener(new FileReader("src/disparity/rpg/JSONfiles/monsters.JSON")));
+			JSONObject jsonFile = new JSONObject(new JSONTokener(new FileReader("src/disparity/rpg/JSONfiles/monsters.JSON")));
 			//Create temp Var of Monster for reference
-			JSONObject JSONMonster = (JSONObject) JSONFile.get(monsterName);
+			JSONObject jsonMonster = (JSONObject) jsonFile.get(monsterName);
 			//Create temp Var of Monster's Objects for reference
-			JSONObject JSONHelm = (JSONObject) JSONMonster.get("helm");
-			JSONObject JSONChest = (JSONObject) JSONMonster.get("chest");
-			JSONObject JSONLegs = (JSONObject) JSONMonster.get("legs");
-			JSONObject JSONBoots = (JSONObject) JSONMonster.get("boots");
-			JSONObject JSONWep = (JSONObject) JSONMonster.get("wep");
-			JSONArray JSONSkills = (JSONArray) JSONMonster.get("skills");
+			JSONObject jsonHelm = (JSONObject) jsonMonster.get("helm");
+			JSONObject jsonChest = (JSONObject) jsonMonster.get("chest");
+			JSONObject jsonLegs = (JSONObject) jsonMonster.get("legs");
+			JSONObject jsonBoots = (JSONObject) jsonMonster.get("boots");
+			JSONObject jsonWep = (JSONObject) jsonMonster.get("wep");
+			JSONArray jsonSkills = (JSONArray) jsonMonster.get("skills");
 			//Assign Name
-			monster.name = (String) JSONMonster.get("name");
+			monster.name = (String) jsonMonster.get("name");
 			//Assign Armor Values
-			monster.helm.name = (String) JSONHelm.getString("name");
-			monster.helm.base_def = (int) JSONHelm.getInt("base_def");
-			monster.chest.name = (String) JSONChest.getString("name");
-			monster.chest.base_def = (int) JSONChest.getInt("base_def");
-			monster.legs.name = (String) JSONLegs.getString("name");
-			monster.legs.base_def = (int) JSONLegs.getInt("base_def");
-			monster.boots.name = (String) JSONBoots.getString("name");
-			monster.boots.base_def = (int) JSONBoots.getInt("base_def");
+			monster.helm.name = (String) jsonHelm.getString("name");
+			monster.helm.base_def = (int) jsonHelm.getInt("base_def");
+			monster.chest.name = (String) jsonChest.getString("name");
+			monster.chest.base_def = (int) jsonChest.getInt("base_def");
+			monster.legs.name = (String) jsonLegs.getString("name");
+			monster.legs.base_def = (int) jsonLegs.getInt("base_def");
+			monster.boots.name = (String) jsonBoots.getString("name");
+			monster.boots.base_def = (int) jsonBoots.getInt("base_def");
 			//Assign Stats
-			monster.str = (int) JSONMonster.getInt("str");
-			monster.agi = (int) JSONMonster.getInt("agi");
-			monster.wis = (int) JSONMonster.getInt("wis");
-			monster.con = (int) JSONMonster.getInt("con");
+			monster.str = (int) jsonMonster.getInt("str");
+			monster.agi = (int) jsonMonster.getInt("agi");
+			monster.wis = (int) jsonMonster.getInt("wis");
+			monster.con = (int) jsonMonster.getInt("con");
 			//Assign Skills
-			for(int i=0;i>JSONSkills.length();i++){
-				JSONObject skill = (JSONObject) (((JSONObject) JSONSkills.get(i))).get("skill");
+			for(int i=0;i>jsonSkills.length();i++){
+				JSONObject skill = (JSONObject) (((JSONObject) jsonSkills.get(i))).get("skill");
 				switch((String) skill.getString("name")){
 					//Assign Offensive Skills
 					case "oneHanded": monster.oneHand.lvl = (int) skill.get("lvl"); continue;
@@ -52,8 +54,17 @@ public class JSONMonster{
 					default: continue;
 				}
 			}
+			String jsonWepName = jsonWep.getString("name");
 			
-			return monster;
+			if(jsonWep.getInt("base_dam") != 0){
+				int jsonBaseDam = (int) jsonWep.getInt("base_dam");
+				monster.wep = Weapon.getWeapon(jsonWepName, jsonBaseDam);
+			}
+			else{
+				String jsonWepQuality = jsonWep.getString("SWDB");
+				monster.wep = Weapon.getWeapon(jsonWepName, jsonWepQuality);
+				return monster;
+			}
 		}catch(FileNotFoundException e){
 			e.printStackTrace();
 		}

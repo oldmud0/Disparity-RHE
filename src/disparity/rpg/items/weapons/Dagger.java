@@ -6,13 +6,22 @@ import disparity.rpg.items.Weapon;
 import disparity.rpg.skills.OffensiveSkill;
 
 public class Dagger extends Weapon{
+
 	public Dagger() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Dagger(Quality quality){
-		super("Dagger", 1, quality, 4);
+
+	public Dagger(String n, int baseDmgBonus) {
+		super(n, baseDmgBonus);
+		// TODO Auto-generated constructor stub
 	}
+
+	public Dagger(String n, Quality q) {
+		super(n, q);
+		// TODO Auto-generated constructor stub
+	}
+
 	//SKILL WEAPON DAMAGE BONUS 
 	public OffensiveSkill getSWDB(Being b){
 		return b.oneHand;

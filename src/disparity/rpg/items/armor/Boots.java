@@ -13,7 +13,7 @@ public class Boots extends Armor{
 	}
 	
 	public Boots(Quality q, DefensiveSkill s){
-		super(q);
+		super("Boots", q, s);
 	}
 	
 	public Boots(){

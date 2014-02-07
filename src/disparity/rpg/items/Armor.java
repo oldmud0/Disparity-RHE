@@ -1,4 +1,5 @@
 package disparity.rpg.items;
+
 import disparity.rpg.being.Being;
 import disparity.rpg.skills.DefensiveSkill;
 import disparity.rpg.skills.defensiveSkills.*;
@@ -10,9 +11,9 @@ public class Armor extends Item{
 	public Armor(String n){
 		super(n);
 	}
-	public Armor(Quality quality, DefensiveSkill skill){
+	public Armor(String name, Quality quality, DefensiveSkill skill){
 		base_def += quality.getValue();
-		name = quality.getName() + name;
+		this.name = quality.getName()+" "+name;
 		this.skill = skill;
 	}
 	public Armor(){
@@ -31,6 +32,4 @@ public class Armor extends Item{
 		else
 			return new HeavyArmor(b);
 	}
-	
-
 }

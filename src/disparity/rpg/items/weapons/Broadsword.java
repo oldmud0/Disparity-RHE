@@ -6,12 +6,14 @@ import disparity.rpg.items.Weapon;
 import disparity.rpg.skills.OffensiveSkill;
 
 public class Broadsword extends Weapon{
+	public Broadsword(int base) {
+		super("Broadsword", base);
+	}
 	public Broadsword() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Broadsword(Quality quality){
-		super("Broadsword", 2, quality, 6);
+		super("Broadsword", quality);
 	}
 	//SKILL WEAPON DAMAGE BONUS 
 	public OffensiveSkill getSWDB(Being b){
