@@ -15,7 +15,7 @@ public class HeavyArmor extends DefensiveSkill{
 		lvlXp = 20;
 		desc = "Skill that determines the usefullness of Heavy Armor.";
 		defBonus = lvl;
-		agiChange = -(lvl / 2);
+		agiChange = -1 * (lvl / 1);
 		addAbilities(b);
 	}
 

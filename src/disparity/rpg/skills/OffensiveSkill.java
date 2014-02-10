@@ -13,11 +13,11 @@ public class OffensiveSkill extends Skill{
 	public void level(Being b){
 		if(exp >= lvlXp)
 			lvl++;
-		damBonus = this.getDamBonus();
+		damBonus = this.getBonus();
 		addAbilities(b);
 	}
 
-	public int getDamBonus(){
+	public int getBonus(){
 		return lvl / 2;
 	}
 

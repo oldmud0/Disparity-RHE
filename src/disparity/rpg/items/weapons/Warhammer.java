@@ -3,22 +3,20 @@ package disparity.rpg.items.weapons;
 import disparity.rpg.being.Being;
 import disparity.rpg.items.Quality;
 import disparity.rpg.items.Weapon;
-import disparity.rpg.skills.OffensiveSkill;
+import disparity.rpg.skills.Skill;
 
 public class Warhammer extends Weapon{
-	public Warhammer(String n, int baseDmgBonus) {
-		super(n, baseDmgBonus);
-		
-	}
-	public Warhammer(String n, Quality q) {
-		super(n, q);
-		
-	}
 	public Warhammer() {
 		super();
 	}
-	//SKILL WEAPON DAMAGE BONUS 
-	public OffensiveSkill getSWDB(Being b){
+	public Warhammer(Quality quality){
+		super("Warhammer", quality);
+	}
+	public Warhammer(int base){
+		super("Warhammer", base);
+	}
+	//Weapon Skill 
+	public Skill getSkill(Being b){
 		return b.twoHand;
 	}
 }

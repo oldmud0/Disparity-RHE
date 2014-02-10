@@ -8,27 +8,27 @@
     "helm": {
       "name": "Beak",
       "base_def": 1,
-      "SADB": "lArmor"
+      "skill": "lArmor"
     },
     "chest": {
       "name": "Feathers",
       "base_def": 2,
-      "SADB": "lArmor"
+      "skill": "lArmor"
     },
     "legs": {
       "name": "Feathers",
       "base_def": 0,
-      "SADB": "lArmor"
+      "skill": "lArmor"
     },
     "boots": {
       "name": "Feet",
       "base_def": 1,
-      "SADB": "lArmor"
+      "skill": "lArmor"
     },
     "wep": {
       "name": "Talon",
       "base_dam" : 3,
-      "SWDB": "oneHanded"
+      "skill": "oneHanded"
     },
     "skills": [
       {
@@ -56,28 +56,28 @@
         "helm": {
           "name": "Leather Cap",
           "base_def": 1,
-          "SADB": "lArmor"
+          "skill": "lArmor"
         }
       },
       {
         "chest": {
           "name": "Leather Armor",
           "base_def": 2,
-          "SADB": "lArmor"
+          "skill": "lArmor"
         }
       },
       {
         "legs": {
           "name": "Leather Pants",
           "base_def": 0,
-          "SADB": "lArmor"
+          "skill": "lArmor"
         }
       },
       {
         "boots": {
           "name": "Leather Boots",
           "base_def": 1,
-          "SADB": "lArmor"
+          "skill": "lArmor"
         }
       }
     ],

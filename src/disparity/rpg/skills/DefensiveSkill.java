@@ -14,12 +14,11 @@ public class DefensiveSkill extends Skill{
 	public void level(Being b){
 		if(exp >= lvlXp)
 			lvl++;
-		defBonus = this.getDefBonus();
 		addAbilities(b);
 	}
 
-	public int getDefBonus(){
-		return lvl / 2;
+	public int getBonus(){
+		return defBonus;
 	}
 
 	@Override

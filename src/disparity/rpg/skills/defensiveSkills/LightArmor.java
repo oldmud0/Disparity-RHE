@@ -9,7 +9,7 @@ public class LightArmor extends DefensiveSkill{
 	}
 
 	public LightArmor(Being b){
-		name = "Heavy Armor";
+		name = "Light Armor";
 		lvl = 5;
 		exp = 0;
 		lvlXp = 20;

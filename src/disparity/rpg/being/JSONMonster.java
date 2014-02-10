@@ -1,13 +1,17 @@
 package disparity.rpg.being;
-import java.io.File;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 import org.json.JSONTokener;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONException;
 
 import disparity.rpg.items.Weapon;
+import disparity.rpg.skills.defensiveSkills.*;
+import disparity.rpg.skills.offensiveSkills.*;
+import disparity.rpg.items.Equippable;
 
 public class JSONMonster{
 	public static Monster readMonster(String monsterName){
@@ -28,12 +32,16 @@ public class JSONMonster{
 			//Assign Armor Values
 			monster.helm.name = (String) jsonHelm.getString("name");
 			monster.helm.base_def = (int) jsonHelm.getInt("base_def");
+			setItemSkill(jsonHelm.getString("skill"), monster.helm);
 			monster.chest.name = (String) jsonChest.getString("name");
 			monster.chest.base_def = (int) jsonChest.getInt("base_def");
+			setItemSkill(jsonChest.getString("skill"), monster.chest);
 			monster.legs.name = (String) jsonLegs.getString("name");
 			monster.legs.base_def = (int) jsonLegs.getInt("base_def");
+			setItemSkill(jsonLegs.getString("skill"), monster.legs);
 			monster.boots.name = (String) jsonBoots.getString("name");
 			monster.boots.base_def = (int) jsonBoots.getInt("base_def");
+			setItemSkill(jsonBoots.getString("skill"), monster.boots);
 			//Assign Stats
 			monster.str = (int) jsonMonster.getInt("str");
 			monster.agi = (int) jsonMonster.getInt("agi");
@@ -54,17 +62,18 @@ public class JSONMonster{
 					default: continue;
 				}
 			}
-			String jsonWepName = jsonWep.getString("name");
-			
-			if(jsonWep.getInt("base_dam") != 0){
-				int jsonBaseDam = (int) jsonWep.getInt("base_dam");
-				monster.wep = Weapon.getWeapon(jsonWepName, jsonBaseDam);
-			}
-			else{
-				String jsonWepQuality = jsonWep.getString("SWDB");
-				monster.wep = Weapon.getWeapon(jsonWepName, jsonWepQuality);
-				return monster;
-			}
+			String jsonWepName = (String) jsonWep.getString("name");
+			int base_dam;
+					try{
+						base_dam = jsonWep.getInt("base_dam");
+					}catch(JSONException j){
+						int jsonBaseDam = (int) jsonWep.getInt("base_dam");
+						monster.wep = Weapon.getWeapon(jsonWepName, Integer.toString(jsonBaseDam));
+					} finally {
+						String jsonWepQuality = jsonWep.getString("skill");
+						monster.wep = Weapon.getWeapon(jsonWepName, jsonWepQuality);
+						return monster;
+					}
 		}catch(FileNotFoundException e){
 			e.printStackTrace();
 		}
@@ -76,4 +85,28 @@ public class JSONMonster{
 		m = readMonster("Gryphon");
 		System.out.println(m.helm.name);
 	}
+	
+	static void setItemSkill(String s, Equippable i){
+		switch(s.toUpperCase()){
+		case "LARMOR":
+			i.setSkill(new LightArmor());
+			break;
+		case "HARMOR":
+			i.setSkill(new HeavyArmor());
+			break;
+		case "ARCHERY":
+			i.setSkill(new Archery());
+			break;
+		case "ONEHANDED":
+			i.setSkill(new OneHanded());
+			break;
+		case "TWOHANDED":
+			i.setSkill(new TwoHanded());
+			break;
+		case "MAGIC":
+			i.setSkill(new Magic());
+			break;
+		}
+	}
+	
 }

@@ -61,20 +61,15 @@ public abstract class Being {
 		twoHand = new TwoHanded(this);
 		magic = new Magic(this);
 		dodge = (double) (agi) / 50;
-		helm = new Helmet(-1, lArmor);
-		chest = new Chestplate(-1, lArmor);
-		legs = new Leggings(-1, lArmor);
-		boots = new Boots(-1, lArmor);
-		agi += agiArmorChange();
 	}
 	
 	public int agiArmorChange(){
 		Armor[] body = {helm, chest, legs, boots};
 		int h = 0, l = 0;
 		for(Armor armor : body){
-			if(armor.getSADB(this) instanceof LightArmor)
+			if(armor.getSkill(this) instanceof LightArmor)
 				l++;
-			if(armor.getSADB(this) instanceof HeavyArmor)
+			if(armor.getSkill(this) instanceof HeavyArmor)
 				h++;
 		}
 		if(l == 4)
@@ -111,8 +106,8 @@ public abstract class Being {
 	}
 
 	public double getDefenseBonus() {
-		return boots.getSADB(this).defBonus + legs.getSADB(this).defBonus
-				+ chest.getSADB(this).defBonus + helm.getSADB(this).defBonus;
+		return boots.getSkill(this).getBonus() + legs.getSkill(this).getBonus()
+				+ chest.getSkill(this).getBonus() + helm.getSkill(this).getBonus();
 	}
 
 	/**
@@ -233,7 +228,7 @@ public abstract class Being {
 		return "--" + name + "--" + "\n" + "Race " + race.name + "\n"
 				+ "Level " + lvl + "\n" + "---" + "\n" + "HP " + hp + "/" + tHP
 				+ "\n" + "MP " + mp + "/" + tMP + "\n" + "Dodge " + dodge
-				+ "\n" + "AC " + calcAC() + "\n" + "---" + "\n" + "Strength "
+				+ "\n" + "AC " + "\n" + "---" + "\n" + "Strength "
 				+ str + "\n" + "Agility " + agi + "\n" + "Constitution " + con
 				+ "\n" + "Wisdom " + wis;
 	}

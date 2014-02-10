@@ -14,7 +14,7 @@ public class Magic extends OffensiveSkill{
 		exp = 0;
 		lvlXp = 20;
 		desc = "Skill that governors all abilities in magic.";
-		damBonus = this.getDamBonus();
+		damBonus = this.getBonus();
 		addAbilities(b);
 	}
 

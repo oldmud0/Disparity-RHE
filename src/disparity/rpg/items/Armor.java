@@ -2,9 +2,10 @@ package disparity.rpg.items;
 
 import disparity.rpg.being.Being;
 import disparity.rpg.skills.DefensiveSkill;
+import disparity.rpg.skills.Skill;
 import disparity.rpg.skills.defensiveSkills.*;
 
-public class Armor extends Item{
+public class Armor extends Equippable{
 	public int base_def;
 	public DefensiveSkill skill;
 	
@@ -23,10 +24,10 @@ public class Armor extends Item{
 		name = mat + " " + name + " " + qDesc;
 	}
 	public void applySkill(){
-		//WILL USE LATER
+		//Placeholder
 	}
-	//GET SKILL ARMOR DEFENSE BONUS
-	public DefensiveSkill getSADB(Being b){
+	//Get armor skill bonus
+	public Skill getSkill(Being b){
 		if(skill instanceof LightArmor)
 			return new LightArmor(b);
 		else

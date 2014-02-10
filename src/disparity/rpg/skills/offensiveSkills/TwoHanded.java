@@ -14,7 +14,7 @@ public class TwoHanded extends OffensiveSkill{
 		exp = 0;
 		lvlXp = 20;
 		desc = "Skill that is the basis of all physical Two handed attacks.";
-		damBonus = this.getDamBonus();
+		damBonus = this.getBonus();
 		addAbilities(b);
 	}
 

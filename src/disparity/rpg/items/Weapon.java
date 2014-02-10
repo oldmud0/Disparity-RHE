@@ -1,10 +1,10 @@
 package disparity.rpg.items;
 
 import disparity.rpg.being.Being;
-import disparity.rpg.skills.OffensiveSkill;
+import disparity.rpg.skills.Skill;
 import disparity.rpg.items.weapons.*;
 
-public class Weapon extends Item{
+public class Weapon extends Equippable{
 	public int baseDmg;
 	public Weapon(String n, int baseDmgBonus){
 		name = n;
@@ -25,11 +25,11 @@ public class Weapon extends Item{
 
 	}
 	public void applySkill(){
-		//WILL USE LATER
+		//Placeholder
 	}
-	//GET SKILL WEAPON DAMAGE BONUS
-	public OffensiveSkill getSWDB(Being b){
-		return new OffensiveSkill();
+	//Get weapon skill
+	public Skill getSkill(Being b){
+		return new Skill();
 	}
 	
 	public static Weapon getWeapon(String wep, String q){
@@ -45,7 +45,11 @@ public class Weapon extends Item{
 			case "BATTLEAXE":
 				return new Battleaxe(Quality.valueOf(q));
 			default:
-				return new Weapon();
+				Weapon w = new Weapon();
+				w.name = wep;
+				w.baseDmg = Integer.parseInt(q);
+				return w;
+				
 		}
 	}
 	

@@ -3,7 +3,7 @@ package disparity.rpg.items.weapons;
 import disparity.rpg.being.Being;
 import disparity.rpg.items.Quality;
 import disparity.rpg.items.Weapon;
-import disparity.rpg.skills.OffensiveSkill;
+import disparity.rpg.skills.Skill;
 
 public class Broadsword extends Weapon{
 	public Broadsword(int base) {
@@ -15,8 +15,8 @@ public class Broadsword extends Weapon{
 	public Broadsword(Quality quality){
 		super("Broadsword", quality);
 	}
-	//SKILL WEAPON DAMAGE BONUS 
-	public OffensiveSkill getSWDB(Being b){
+	//Weapon Skill 
+	public Skill getSkill(Being b){
 		return b.twoHand;
 	}
 }
