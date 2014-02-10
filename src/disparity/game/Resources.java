@@ -6,7 +6,7 @@ import java.util.HashMap;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-public class Resources {
+public class Resources { 
 	private static HashMap<String, Object> resourceMap = new HashMap<String, Object>();
 	
 	public static void loadResources() throws SlickException	{

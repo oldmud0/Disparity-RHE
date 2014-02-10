@@ -1,14 +1,14 @@
 package disparity.rpg.items;
 
 public enum Quality {
-	CRAP			(-1, "Crappy"),
-	WOOD			(0, "Wooden"),
-	STONE			(1, "Stone"),
-	IRON			(2, "Iron"),
-	GOLD			(3, "Gold"), /* GOLD IS NOT GOOD ARMOR IT WEIGHS LIKE 1 TON PER CUBIC FOOT */
-	STEEL           (4, "Steel"),
-	DIAMOND			(4, "Diamond"),
-	MIRTIS_SPAWN	(9001, "Spawn of Mirtis");	//Now lore friendly!
+	CRAP			(-1,	"Crappy",			0),
+	WOOD			(0,		"Wooden",			1),
+	STONE			(1,		"Stone",			2),
+	IRON			(2,		"Iron",				3),
+	GOLD			(3,		"Gold",				7), /* GOLD IS NOT GOOD ARMOR IT WEIGHS LIKE 1 TON PER CUBIC FOOT */
+	STEEL           (4,		"Steel",			5),
+	DIAMOND			(4,		"Diamond",			5),
+	MIRTIS_SPAWN	(9001,	"Spawn of Mirtis",	3);	//Now lore friendly!
 	
 	/*
 	 * When we declare a Quality above, we're actually instantiating a new Quality, 
@@ -21,9 +21,17 @@ public enum Quality {
 	 */
 	private int value; 
 	private String name;
-	private Quality(int val, String n) {
-		this.value = val;
-		this.name = n;
+	private int weight;
+	private Quality(int value, String name, int weight) {
+		this.value = value;
+		this.name = name;
+		this.weight = weight;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return getName();
 	}
 	
 	public int getValue() {
@@ -32,5 +40,9 @@ public enum Quality {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public int getWeight() {
+		return weight;
 	}
 }

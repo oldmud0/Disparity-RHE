@@ -7,7 +7,7 @@ import disparity.rpg.skills.DefensiveSkill;
 public class Leggings extends Armor{
 	public Leggings() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Leggings(int quality, DefensiveSkill s){
