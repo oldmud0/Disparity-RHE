@@ -1,6 +1,5 @@
 package disparity.game;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 import org.newdawn.slick.Image;

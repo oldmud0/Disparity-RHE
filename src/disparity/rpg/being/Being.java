@@ -99,10 +99,14 @@ public abstract class Being {
 	}
 
 	public double calcAC() {
-		double armorAC = boots.base_def + legs.base_def + chest.base_def
-				+ helm.base_def;
-		double skillBonus = this.getDefenseBonus();
-		return (armorAC + skillBonus) / 50;
+		if(helm != null && boots != null && chest != null && legs != null){
+			double armorAC = boots.base_def + legs.base_def + chest.base_def
+					+ helm.base_def;
+			double skillBonus = this.getDefenseBonus();
+			return (armorAC + skillBonus) / 50;
+		}else{
+			return 0;
+		}
 	}
 
 	public double getDefenseBonus() {
@@ -228,7 +232,7 @@ public abstract class Being {
 		return "--" + name + "--" + "\n" + "Race " + race.name + "\n"
 				+ "Level " + lvl + "\n" + "---" + "\n" + "HP " + hp + "/" + tHP
 				+ "\n" + "MP " + mp + "/" + tMP + "\n" + "Dodge " + dodge
-				+ "\n" + "AC " + "\n" + "---" + "\n" + "Strength "
+				+ "\n" + "AC " + calcAC() + "\n" + "---" + "\n" + "Strength "
 				+ str + "\n" + "Agility " + agi + "\n" + "Constitution " + con
 				+ "\n" + "Wisdom " + wis;
 	}

@@ -22,7 +22,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/Slick2D/lib/natives-mac.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/Slick2D/lib/natives-windows.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/Slick2D/lib/slick-examples.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/Slick2D/lib/slick.jar" sourcepath="lib/Slick2D/src">
+	<classpathentry exported="true" kind="lib" path="lib/Slick2D/lib/slick.jar" sourcepath="lib/Slick2D/src/slick2d-source.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="http://slick.ninjacave.com/javadoc/"/>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="Generic-RPG/lib/Slick2D"/>

@@ -6,6 +6,9 @@ import java.util.List;
 public class Race{
 	public String name;
 	
+	public Race(){
+	}
+	
 	public static List<String> getAllRaces() {
 		List<String> races = new ArrayList<String>();
 		races.add("HUMAN");

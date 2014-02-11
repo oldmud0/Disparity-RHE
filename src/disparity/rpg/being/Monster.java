@@ -2,6 +2,7 @@ package disparity.rpg.being;
 
 import disparity.rpg.items.Weapon;
 import disparity.rpg.items.armor.*;
+import disparity.rpg.races.Race;
 import disparity.rpg.skills.defensiveSkills.HeavyArmor;
 import disparity.rpg.skills.defensiveSkills.LightArmor;
 import disparity.rpg.skills.offensiveSkills.Archery;
@@ -11,6 +12,8 @@ import disparity.rpg.skills.offensiveSkills.TwoHanded;
 
 public class Monster extends Being{
 	public Monster(){
+		race = new Race();
+		
 		helm = new Helmet();
 		chest = new Chestplate();
 		legs = new Leggings();

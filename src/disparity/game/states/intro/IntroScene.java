@@ -9,6 +9,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import disparity.game.objects.TypewriterTextBox;
+import disparity.game.states.StateID;
 
 public class IntroScene extends BasicGameState {
 	
@@ -37,7 +38,7 @@ public class IntroScene extends BasicGameState {
 
 	@Override
 	public int getID() {
-		return 0;
+		return StateID.INTRO_SCENE.ordinal();
 	}
 
 }
