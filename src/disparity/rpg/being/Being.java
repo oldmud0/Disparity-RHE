@@ -10,9 +10,14 @@ import disparity.rpg.items.armor.Chestplate;
 import disparity.rpg.items.armor.Helmet;
 import disparity.rpg.items.armor.Leggings;
 import disparity.rpg.races.Race;
+import disparity.rpg.races.player.HalfElfin;
+import disparity.rpg.races.player.HalfOrc;
 import disparity.rpg.races.player.Human;
 import disparity.rpg.races.player.Littling;
 import disparity.rpg.races.player.Pech;
+import disparity.rpg.races.player.elfin.Elf;
+import disparity.rpg.races.player.elfin.Nymph;
+import disparity.rpg.races.player.elfin.Sprite;
 import disparity.rpg.skills.defensiveSkills.HeavyArmor;
 import disparity.rpg.skills.defensiveSkills.LightArmor;
 import disparity.rpg.skills.offensiveSkills.Archery;
@@ -91,6 +96,20 @@ public abstract class Being {
 			return new Human(b);
 		case "LITTLING":
 			return new Littling(b);
+		case "HALF ORC":
+			return new HalfOrc(b);
+		case "ELF":
+			return new Elf(b);
+		case "NYMPH":
+			return new Nymph(b);
+		case "SPRITE":
+			return new Sprite(b);
+		case "HALF ELF":
+			return new HalfElfin(b, rce);
+		case "HALF NYMPH":
+			return new HalfElfin(b, rce);
+		case "HALF SPRITE":
+			return new HalfElfin(b, rce);
 		//MONSTER AND CHARACTER RACES DEFINED IN SAID CLASSES
 		default:
 			throw new IllegalArgumentException(rce + " is not a valid Race...");

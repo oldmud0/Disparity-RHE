@@ -32,7 +32,7 @@ public class Weapon extends Equippable{
 		return new Skill();
 	}
 	
-	public static Weapon getWeapon(String wep, String q){
+	public static Weapon getWeapon(String wep, String q, int bdmg){
 		switch(wep.toUpperCase()){
 			case "SHORTSWORD":
 				return new Shortsword(Quality.valueOf(q));
@@ -45,11 +45,17 @@ public class Weapon extends Equippable{
 			case "BATTLEAXE":
 				return new Battleaxe(Quality.valueOf(q));
 			default:
-				Weapon w = new Weapon();
-				w.name = wep;
-				w.baseDmg = Integer.parseInt(q);
-				return w;
-				
+				if(q.equals("")){
+					Weapon w = new Weapon();
+					w.name = wep;
+					w.baseDmg = bdmg;
+					return w;
+				}else{
+					Weapon w = new Weapon();
+					w.name = wep;
+					w.baseDmg = (Quality.valueOf(q)).getValue() + bdmg;
+					return w;
+				}
 		}
 	}
 	

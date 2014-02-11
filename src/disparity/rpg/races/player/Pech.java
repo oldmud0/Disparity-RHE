@@ -12,7 +12,7 @@ public class Pech extends Race{
 		b.str += 2;
 		b.tHP += 2;
 		b.tMP -= 3;
-		b.wis -= 2;
+		b.agi -= 2;
 		b.wep = new Warhammer(Quality.CRAP);
 	}
 }

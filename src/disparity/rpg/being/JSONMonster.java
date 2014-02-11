@@ -67,13 +67,9 @@ public class JSONMonster{
 				}
 			}
 			String jsonWepName = jsonWep.getString("name");
-			int base_dam;
-					try{
-						base_dam = jsonWep.getInt("base_dam");
-					}catch(JSONException j){
-						int jsonBaseDam = jsonWep.getInt("base_dam");
-						monster.wep = Weapon.getWeapon(jsonWepName, Integer.toString(jsonBaseDam));
-					}
+			int jsonWepBaseDam = jsonWep.getInt("base_dam");
+			String jsonWepQuality = jsonWep.getString("quality");
+			monster.wep = Weapon.getWeapon(jsonWepName, jsonWepQuality, jsonWepBaseDam);
 		}catch(FileNotFoundException e){
 			e.printStackTrace();
 		}
@@ -88,8 +84,8 @@ public class JSONMonster{
 	
 	public static void main(String[] args){
 		Monster m = new Monster();
-		m = readMonster("Gryphon");
-		System.out.println(m.helm.name);
+		m = readMonster("Goblin");
+		System.out.println(m.wep.baseDmg);
 	}
 	
 	static void setItemSkill(String s, Equippable i){
