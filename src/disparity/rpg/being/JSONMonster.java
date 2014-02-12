@@ -18,6 +18,7 @@ import disparity.rpg.skills.offensiveSkills.OneHanded;
 import disparity.rpg.skills.offensiveSkills.TwoHanded;
 
 public class JSONMonster{
+	
 	public static Monster readMonster(String monsterName){
 		Monster monster = new Monster();
 		try {

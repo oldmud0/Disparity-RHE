@@ -1,19 +1,40 @@
 package disparity.characterCreation;
 
 import java.awt.EventQueue;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
+
+import java.awt.Font;
+import java.io.File;
+import java.io.IOException;
 
 public class StartScreen {
+	
+    private Font getFont(int size){
+    	// Avg size is about 24 (for reference)
+    	if(size == 0){
+    		size = 24;
+    	}
 
+		try {
+			GraphicsEnvironment.getLocalGraphicsEnvironment().
+				registerFont(Font.createFont(Font.PLAIN, new File("AESYSMAT.fon")));
+		} catch (FontFormatException | IOException e) {
+			e.printStackTrace();
+		}
+    	Font font = new Font("AESYSMAT", Font.PLAIN, size);
+        return font;
+    }
+	
 	private JFrame frame;
 
 	/**
@@ -45,7 +66,7 @@ public class StartScreen {
 			ColoredButton b = (ColoredButton)e.getSource();
 			switch(b.getName()){
 			case "createButton":
-				frame.setContentPane(CharacterCreationScreen.getScreen());
+				//frame.setContentPane(CharacterCreationScreen.getScreen());
 				break;
 			case "exitButton":
 				System.exit(0);
@@ -62,13 +83,18 @@ public class StartScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 606, 479);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		ColoredButton createButton = new ColoredButton("res/createButtonNormal.png", "res/createButtonClick.png", "res/createButtonRoll.png", "createButton");
-		ColoredButton exitButton = new ColoredButton("res/exitButtonNormal.png", "res/exitButtonRoll.png", "res/exitButtonClick.png", "exitButton");
+		ColoredButton createButton = new ColoredButton("createButton");
+		ColoredButton exitButton = new ColoredButton("exitButton");
 		ColoredButton[] buttons = {createButton, exitButton};
+		
+		JButton buttonEx = new JButton("Hello World!");
+		buttonEx.setFont(getFont(0));
+		
 		for(ColoredButton c : buttons){
 			c.addActionListener(buttonListener);
 		}
@@ -80,6 +106,7 @@ public class StartScreen {
 					.addGap(181)
 					.addComponent(createButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addComponent(exitButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(buttonEx, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(226, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
