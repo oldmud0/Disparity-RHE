@@ -27,7 +27,7 @@ public class StartScreen {
 
 		try {
 			GraphicsEnvironment.getLocalGraphicsEnvironment().
-				registerFont(Font.createFont(Font.PLAIN, new File("AESYSMAT.fon")));
+				registerFont(Font.createFont(Font.PLAIN, new File("res/Fonts/AESYSMAT.FON")));
 		} catch (FontFormatException | IOException e) {
 			e.printStackTrace();
 		}
