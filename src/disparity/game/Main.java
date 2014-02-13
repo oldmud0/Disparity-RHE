@@ -34,7 +34,7 @@ public class Main {
 		graphicsWindow.start();
 		
 		//Open the editor window
-		Thread editorWindow = new Thread(new Runnable() {
+		/*Thread editorWindow = new Thread(new Runnable() {
 			
 			@Override
 			public void run() {
@@ -43,6 +43,7 @@ public class Main {
 			
 		});
 		editorWindow.start();
+		*/
 
 
 	}

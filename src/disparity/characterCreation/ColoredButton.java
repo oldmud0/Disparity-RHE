@@ -25,33 +25,35 @@ public class ColoredButton extends JButton {
 	private ImageIcon image;
 	private final int width = 150, height = 50;
 
-	protected ColoredButton(String name, Boolean hasPNG) {
+	protected ColoredButton(String name, Color color) {
 		this.name = name;
 		this.setSize(width, height);
 		setBorderPainted(false);
 		setRolloverEnabled(true);
 		setContentAreaFilled(false);
-		if(hasPNG == true){
-			setIcon(new ImageIcon(getClass().getResource("res/Buttons/"+name+"Normal.png")));
-			setRolloverIcon(new ImageIcon(getClass().getResource("res/Buttons/"+name+"Roll.png")));
-			setPressedIcon(new ImageIcon(getClass().getResource("res/Buttons/"+name+"Click.png")));
-		}else{
-		    try{
-		        Image overlay = ImageIO.read(ColoredButton.class.getResourceAsStream("res/Buttons/buttonFormat.png"));
-		        BufferedImage surface = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-		        Graphics mix = surface.getGraphics();
-		        mix.setColor(Color.red);
-		        mix.drawRect(0, 0, width, height);
-				mix.drawImage(overlay, 0, 0, null);
-		        this.setIcon(new ImageIcon(surface));
-		    }catch(IOException ex){
-		        ex.printStackTrace();
-		    }
-		}
+		setIcon(getImageIcon(color, false));
+		setRolloverIcon(getImageIcon(color.darker(), false));
+		setPressedIcon(getImageIcon(color, true));
 	}
 	
-	public ImageIcon getRoll(){
-		//Image icon = new Image();
+	public ImageIcon getImageIcon(Color backColor, Boolean isPress){
+		try {
+			String f;
+			if(isPress)
+				f = "res/Buttons/buttonPressFormat.png";
+			else
+				f = "res/Buttons/buttonFormat.png";
+			BufferedImage overlay = ImageIO.read(getClass().getResourceAsStream(f));
+			BufferedImage surface = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+			Graphics g = surface.getGraphics();
+			g.setColor(backColor);
+			g.fillRect(0, 0, width, height);
+			g.drawImage((Image)overlay, 0, 0, null);
+			return new ImageIcon(surface);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return new ImageIcon();
 	}
 	

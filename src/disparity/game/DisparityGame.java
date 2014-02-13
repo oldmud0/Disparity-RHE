@@ -22,14 +22,13 @@ public class DisparityGame extends StateBasedGame {
 	
 	public void init() throws FileNotFoundException, SlickException {
 		Resources.loadResources();
+		getState(0).init(), DisparityGame);
 	}
 	
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
 		addState(new GameMenu());
 		addState(new IntroScene());
-		
-		
 	}
 
 }

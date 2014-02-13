@@ -9,7 +9,8 @@ public class Resources {
 	private static HashMap<String, Object> resourceMap = new HashMap<String, Object>();
 	
 	public static void loadResources() throws SlickException	{
-		addResource("typewriter", "res/typewriter.png");
+		//addResource("typewriter", "res/typewriter.png");
+		addResource("test_img", "res/test_img.png");
 	}
 	
 	protected static Object getResource(String name) {
