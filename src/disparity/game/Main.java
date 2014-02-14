@@ -6,8 +6,6 @@ import java.util.logging.Logger;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
-import disparity.game.editor.RPGDevMainWindow;
-
 public class Main {
 
 	private static int windowX = 640, windowY = 480;
@@ -25,8 +23,7 @@ public class Main {
 					appgc.setVSync(true);
 					appgc.start();
 				} catch (SlickException e) {
-					Logger.getLogger(DisparityGame.class.getName()).log(Level.SEVERE,
-							"An error has occurred.", e);
+					Logger.getLogger(DisparityGame.class.getName()).log(Level.SEVERE,"An error has occurred.", e);
 				}
 			}
 			

@@ -6,6 +6,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import disparity.game.states.StateID;
 import disparity.game.states.intro.IntroScene;
 import disparity.game.states.menu.GameMenu;
 
@@ -20,9 +21,9 @@ public class DisparityGame extends StateBasedGame {
 		super(title);
 	}
 	
-	public void init() throws FileNotFoundException, SlickException {
+	public void init(GameContainer gc, StateBasedGame sbg) throws FileNotFoundException, SlickException {
 		Resources.loadResources();
-		getState(0).init(), DisparityGame);
+		getState(StateID.INTRO_SCENE.ordinal()).enter(gc, sbg);
 	}
 	
 	@Override

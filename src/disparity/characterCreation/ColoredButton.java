@@ -2,16 +2,11 @@ package disparity.characterCreation;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
 import java.awt.image.*;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -22,9 +17,12 @@ public class ColoredButton extends JButton {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String name;
-	private ImageIcon image;
 	private final int width = 150, height = 50;
 
+	protected ColoredButton(){
+		new ColoredButton("undefined", Color.GRAY);
+	}
+	
 	protected ColoredButton(String name, Color color) {
 		this.name = name;
 		this.setSize(width, height);

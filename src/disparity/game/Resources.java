@@ -10,10 +10,10 @@ public class Resources {
 	
 	public static void loadResources() throws SlickException	{
 		//addResource("typewriter", "res/typewriter.png");
-		addResource("test_img", "res/test_img.png");
+		addResource("test_img", "src/disparity/game/res/test_img.png");
 	}
 	
-	protected static Object getResource(String name) {
+	public static Object getResource(String name) {
 		try {
 			return resourceMap.get(name);
 		} catch (NullPointerException e) {
