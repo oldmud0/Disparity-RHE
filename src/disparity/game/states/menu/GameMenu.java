@@ -2,15 +2,17 @@ package disparity.game.states.menu;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.Image;
-import java.io.InputStream;
+
+import disparity.game.Resources;
+import disparity.game.states.StateID;
 
 public class GameMenu extends BasicGameState {
 
-	private Image test_img = new Image(new InputStream("res/test_img.png"), "test_img", false); 
+	private Image test_img = Resources.getResource("test_img");
 	@Override
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
@@ -22,7 +24,7 @@ public class GameMenu extends BasicGameState {
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException{ 
-			g.drawImage(test_img, 0, 0);
+			//g.drawImage(test_img, 0, 0);
 			
 	}
 
@@ -36,7 +38,7 @@ public class GameMenu extends BasicGameState {
 	@Override
 	public int getID() {
 		
-		return 0;
+		return StateID.GAME_MENU.ordinal();
 	}
 
 }

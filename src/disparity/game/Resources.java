@@ -10,20 +10,26 @@ public class Resources {
 	
 	public static void loadResources() throws SlickException	{
 		//addResource("typewriter", "res/typewriter.png");
-		addResource("test_img", "src/disparity/game/res/test_img.png");
+		addResource("test_img", new Image("src/disparity/game/res/test_img.png"));
+		
 	}
 	
-	public static Object getResource(String name) {
+	@SuppressWarnings("unchecked") //I tend not to suppress warnings, but there's really no practical solution to check the cast.
+	public static <T> T getResource(String name) {
 		try {
-			return resourceMap.get(name);
+			return (T) resourceMap.get(name);
 		} catch (NullPointerException e) {
 			System.out.println("ERROR: Could not obtain the file " + name + " from the resource map!");
+			e.printStackTrace();
+			return null;
+		} catch (ClassCastException e) {
+			System.out.println("ERROR: couldn't cast from Object!");
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	protected static void addResource(String name, String path) throws SlickException {
-		resourceMap.put(name, new Image(path));
+	public static void addResource(String name, Object content) throws SlickException {
+		resourceMap.put(name, content);
 	}
 }

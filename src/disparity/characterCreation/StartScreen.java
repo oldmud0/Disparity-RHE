@@ -2,20 +2,19 @@ package disparity.characterCreation;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JOptionPane;
-
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Font;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class StartScreen {
 	
@@ -88,8 +87,8 @@ public class StartScreen {
 		frame.setBounds(100, 100, 606, 479);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		ColoredButton createButton = new ColoredButton("createButton", Color.MAGENTA);
-		ColoredButton exitButton = new ColoredButton("exitButton", Color.RED);
+		ColoredButton createButton = new ColoredButton("createButton", Color.MAGENTA, 5);
+		ColoredButton exitButton = new ColoredButton("exitButton", Color.RED, 5);
 		ColoredButton[] buttons = {createButton, exitButton};
 		
 		for(ColoredButton c : buttons){
@@ -100,18 +99,20 @@ public class StartScreen {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(181)
-					.addComponent(createButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addComponent(exitButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(226, Short.MAX_VALUE))
+					.addGap(189)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(exitButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(createButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGap(218))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(299, Short.MAX_VALUE)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addContainerGap(117, Short.MAX_VALUE)
 					.addComponent(createButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(exitButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(0))
+					.addGap(199))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
