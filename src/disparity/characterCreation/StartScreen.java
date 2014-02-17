@@ -15,6 +15,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class StartScreen {
 	
@@ -34,7 +36,7 @@ public class StartScreen {
         return font;
     }
 	
-	private JFrame frame;
+	private JFrame frmDisparity;
 
 	/**
 	 * Launch the application.
@@ -44,7 +46,7 @@ public class StartScreen {
 			public void run() {
 				try {
 					StartScreen window = new StartScreen();
-					window.frame.setVisible(true);
+					window.frmDisparity.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -83,11 +85,12 @@ public class StartScreen {
 	 */
 	private void initialize() {
 		
-		frame = new JFrame();
-		frame.setBounds(100, 100, 606, 479);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmDisparity = new JFrame();
+		frmDisparity.setTitle("Disparity");
+		frmDisparity.setBounds(100, 100, 606, 479);
+		frmDisparity.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		ColoredButton createButton = new ColoredButton("createButton", Color.MAGENTA, 5);
+		ColoredButton createButton = new ColoredButton("createButton", Color.BLUE, 5);
 		ColoredButton exitButton = new ColoredButton("exitButton", Color.RED, 5);
 		ColoredButton[] buttons = {createButton, exitButton};
 		
@@ -95,25 +98,34 @@ public class StartScreen {
 			c.addActionListener(buttonListener);
 		}
 		
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(StartScreen.class.getResource("/disparity/characterCreation/res/Title.png")));
+		
+		GroupLayout groupLayout = new GroupLayout(frmDisparity.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(189)
+					.addGap(190)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(exitButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(createButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addGap(218))
+						.addComponent(exitButton, GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+						.addComponent(createButton, GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
+					.addGap(217))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(79)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 379, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(140, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-					.addContainerGap(117, Short.MAX_VALUE)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(55, Short.MAX_VALUE)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE)
+					.addGap(40)
 					.addComponent(createButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(exitButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(199))
+					.addGap(56))
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		frmDisparity.getContentPane().setLayout(groupLayout);
 	}
 }

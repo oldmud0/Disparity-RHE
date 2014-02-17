@@ -45,11 +45,11 @@ public class TypewriterTextBox {
 	public void render(Graphics g) {
 		g.setLineWidth(5);
 		g.setColor(Color.white);
-		g.drawRoundRect(10, 500, 200, 100, 5); //starts at (10,500), 200 wide, 100 high
+		g.drawRect(10, 100, 200, 150); //starts at (10,100), 200 wide, 100 high
 		g.resetLineWidth();
 		
-		g.setFont(typeWriterFont);
-		g.drawString(writtenText.substring(0, 3), 16, 520);
+		//g.setFont(typeWriterFont);
+		g.drawString(writtenText.substring(0, 3), 16, 400);
 		g.resetFont();
 	}
 	

@@ -2,8 +2,9 @@ package disparity.game.objects;
 
 public class TypewriterText {
 
-	private String text;
-	private TypewriterTextType type;
+	private final String text;
+	private final TypewriterTextType type;
+
 	
 	public TypewriterText(String str, TypewriterTextType textType) {
 		this.text = str;
@@ -16,6 +17,10 @@ public class TypewriterText {
 	
 	public char[] getTextToCharArray() {
 		return text.toCharArray();
+	}
+	
+	protected TypewriterTextType getType() {
+		return type;
 	}
 
 }

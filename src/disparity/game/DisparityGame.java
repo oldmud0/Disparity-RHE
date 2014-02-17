@@ -25,7 +25,7 @@ public class DisparityGame extends StateBasedGame {
 	public void init(GameContainer gc, StateBasedGame sbg) throws FileNotFoundException, SlickException {
 		Resources.loadResources();
 		assert(getState(StateID.INTRO_SCENE.ordinal()) == null);
-		getState(StateID.INTRO_SCENE.ordinal()).enter(gc, sbg);
+		//getState(StateID.INTRO_SCENE.ordinal()).enter(gc, sbg);
 	}
 	
 	@Override

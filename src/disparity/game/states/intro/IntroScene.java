@@ -39,6 +39,7 @@ public class IntroScene extends BasicGameState {
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
+		g.drawString("We hate unfinished code", 300, 300);
 		g.setColor(Color.white);
 		textBox.render(textBox.getGraphics());
 		g.drawImage(textBox.getDrawBuffer(), textBox.x, textBox.y); //BUG - not drawing?
