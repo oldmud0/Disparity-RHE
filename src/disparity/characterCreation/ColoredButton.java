@@ -17,15 +17,14 @@ public class ColoredButton extends JButton {
 	
 	private Font createFont(){
 		try {
-			URL fontUrl = getClass().getClassLoader().getResource("res/Fonts/aesysmatt.ttf");
-			Font font = Font.createFont(Font.TRUETYPE_FONT, fontUrl.openStream());
-			GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(font);
-			return font;
+			URL fontUrl = getClass().getResource("res/Fonts/aesymatt.ttf");
+			Font mFont = Font.createFont(Font.PLAIN, fontUrl.openStream());
+			GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(mFont);
+			return mFont;
 		} catch (FontFormatException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return font;
+		return null;
 	}
 	
 	private static final long serialVersionUID = 1L;
@@ -33,25 +32,28 @@ public class ColoredButton extends JButton {
 	private final int width = 150, height = 50;
 
 	protected ColoredButton(){
-		new ColoredButton("undefined", Color.GRAY, 1);
+		new ColoredButton("undefined", Color.GRAY);
 	}
-	public Font font;
-	protected ColoredButton(String name, Color color, int resize) {
-		name = name;
-		setSize(width * resize, height * resize);
+	public Font aesymatt = createFont()
+			.deriveFont(20f);
+	protected ColoredButton(String name, Color color) {
+		this.name = name;
+		setSize(width, height);
 		setBorderPainted(false);
 		setRolloverEnabled(true);
 		setContentAreaFilled(false);
-		setIcon(getImageIcon(color, false, resize));
-		setRolloverIcon(getImageIcon(color.darker(), false, resize));
-		setPressedIcon(getImageIcon(color, true, resize));
-		font = createFont();
-		setFont(font);
+		
+		setIcon(getImageIcon(color, false));
+		setRolloverIcon(getImageIcon(color.darker(), false));
+		setPressedIcon(getImageIcon(color, true));
+		
+		setFont(aesymatt);
+		setForeground(new Color(255,255,255));
 		setText(name);
 		setHorizontalTextPosition(JButton.CENTER);
 	}
 	
-	public ImageIcon getImageIcon(Color backColor, Boolean isPress, int resize){
+	public ImageIcon getImageIcon(Color backColor, Boolean isPress){
 		try {
 			String f;
 			if(isPress)
@@ -62,7 +64,7 @@ public class ColoredButton extends JButton {
 			BufferedImage surface = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 			Graphics g = surface.getGraphics();
 			g.setColor(backColor);
-			g.fillRect(0, 0, width * resize, height * resize);
+			g.fillRect(0, 0, width, height);
 			g.drawImage((Image)overlay, 0, 0, null);
 			return new ImageIcon(surface);
 		} catch (IOException e) {
