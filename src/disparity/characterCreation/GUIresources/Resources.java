@@ -6,14 +6,11 @@ import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 public class Resources {
 	private static Font createFont(){
@@ -27,7 +24,6 @@ public class Resources {
 		}
 		return null;
 	}
-	
 	private static Font aesymatt = createFont().deriveFont(20f);
 	
 	public static Font getFont(){

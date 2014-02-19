@@ -12,6 +12,7 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 
 public class ColoredTabs extends JTabbedPane {
@@ -42,9 +43,10 @@ public class ColoredTabs extends JTabbedPane {
 		setFont(Resources.getFont());
 		setBackground(Color.YELLOW);
 		for(int i = 0; i < names.length; i++){
-			addTab(names[i], components[i]);
+			addTab("", components[i]);
 			setBackgroundAt(i, colors[i]);
-			setIconAt(i, new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)));
+			JLabel l = new JLabel(names[i], JLabel.CENTER);
+			setIconAt(i, l.getIcon());
 			
 		}
 	}
