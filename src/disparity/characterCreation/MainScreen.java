@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import disparity.characterCreation.screens.TitleScreen;
+
 public class MainScreen {
 	
 	public JFrame frmDisparity;
@@ -12,12 +14,15 @@ public class MainScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainScreen window = new TitleScreen();
-					window.frmDisparity.setVisible(true);
+					TitleScreen window = new TitleScreen();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+	}
+	
+	public JFrame getFrame() {
+		return frmDisparity;
 	}
 }
