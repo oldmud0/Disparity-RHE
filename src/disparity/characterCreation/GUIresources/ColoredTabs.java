@@ -43,10 +43,8 @@ public class ColoredTabs extends JTabbedPane {
 		setFont(Resources.getFont());
 		setBackground(Color.YELLOW);
 		for(int i = 0; i < names.length; i++){
-			addTab("", components[i]);
+			addTab(names[i], components[i]);
 			setBackgroundAt(i, colors[i]);
-			JLabel l = new JLabel(names[i], JLabel.CENTER);
-			setIconAt(i, l.getIcon());
 			
 		}
 	}

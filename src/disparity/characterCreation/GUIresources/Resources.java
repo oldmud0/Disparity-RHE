@@ -31,6 +31,9 @@ public class Resources {
 	}
 	public static final int width = 150, height = 50;
 	
+	
+	
+	
 	public static ImageIcon getImageIcon(Color backColor, Boolean isPress){
 		try {
 			String f;
