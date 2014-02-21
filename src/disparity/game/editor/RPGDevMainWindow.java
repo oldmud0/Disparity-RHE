@@ -148,7 +148,7 @@ public class RPGDevMainWindow {
 				}
 				if(name == null || name.length() == 0) return;
 				
-				Object[] races = Race.getCharacterRaces().toArray();
+				Object[] races = Race.getCharacterRaces().values().toArray();
 				String race = (String)JOptionPane.showInputDialog(null, "Race:", "Select race",JOptionPane.PLAIN_MESSAGE,null,races,"HUMAN");
 				
 				addCharacter(new Character(name, race));

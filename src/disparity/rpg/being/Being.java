@@ -57,7 +57,7 @@ public abstract class Being {
 	//Object Creator
 	public Being(String n, String rce) {
 		name = n;
-		race = getRace(rce, this);
+		race = Race.getRace(rce, this);
 		hp = tHP;
 		mp = tMP;
 		lvl = 1;
@@ -84,37 +84,6 @@ public abstract class Being {
 		return 0;
 			
 		
-	}
-
-	public Race getRace(String rce, Being b) {
-		switch (rce.toUpperCase()) {
-		//case "ELF":
-		//	return new Elf(b);
-		case "PECH":
-			return new Pech(b);
-		case "HUMAN":
-			return new Human(b);
-		case "LITTLING":
-			return new Littling(b);
-		case "HALF ORC":
-			return new HalfOrc(b);
-		case "ELF":
-			return new Elf(b);
-		case "NYMPH":
-			return new Nymph(b);
-		case "SPRITE":
-			return new Sprite(b);
-		case "HALF ELF":
-			return new HalfElfin(b, rce);
-		case "HALF NYMPH":
-			return new HalfElfin(b, rce);
-		case "HALF SPRITE":
-			return new HalfElfin(b, rce);
-		//MONSTER AND CHARACTER RACES DEFINED IN SAID CLASSES
-		default:
-			throw new IllegalArgumentException(rce + " is not a valid Race...");
-		}
-		//return new Class.forName(rce);
 	}
 
 	public double calcAC() {

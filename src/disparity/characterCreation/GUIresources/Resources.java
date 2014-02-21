@@ -53,4 +53,13 @@ public class Resources {
 		}
 		return new ImageIcon();
 	}
-}
+	//adapted from 'http://stackoverflow.com/questions/4212675/wrap-the-string-after-a-number-of-character-word-wise-in-java'
+	public static String addEndl(String st){
+		StringBuilder s = new StringBuilder(st);
+		int i = 0;
+		while (i + 25 < s.length() && (i = s.lastIndexOf(" ", i + 25)) != -1) {
+		    s.replace(i, i + 1, "\n");
+		}
+		return s.toString();
+	}
+} 

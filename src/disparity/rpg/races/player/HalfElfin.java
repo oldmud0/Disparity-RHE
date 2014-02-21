@@ -6,6 +6,7 @@ import disparity.rpg.items.weapons.Dagger;
 import disparity.rpg.races.Race;
 
 public class HalfElfin extends Race{
+	String desc = "To be replaced with an actual description";
 	public HalfElfin(Being b, String rce){
 		switch(rce.toUpperCase()){
 		case "HALF ELF":

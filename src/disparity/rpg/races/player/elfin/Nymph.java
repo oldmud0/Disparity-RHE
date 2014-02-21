@@ -6,6 +6,7 @@ import disparity.rpg.items.weapons.Dagger;
 import disparity.rpg.races.Elfin;
 
 public class Nymph extends Elfin{
+	String desc = "To be replaced with an actual description";
 	public Nymph(Being b){
 		name = "Nymph";
 		b.con += 2;

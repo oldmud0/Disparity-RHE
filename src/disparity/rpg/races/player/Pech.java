@@ -6,7 +6,7 @@ import disparity.rpg.items.weapons.Warhammer;
 import disparity.rpg.races.Race;
 
 public class Pech extends Race{
-
+	String desc = "To be replaced with an actual description";
 	public Pech(Being b){
 		name = "Pech";
 		b.str += 2;

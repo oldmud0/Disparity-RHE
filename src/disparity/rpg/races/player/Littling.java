@@ -6,7 +6,7 @@ import disparity.rpg.items.weapons.Dagger;
 import disparity.rpg.races.Race;
 
 public class Littling extends Race{
-
+	String desc = "To be replaced with an actual description";
     public Littling(Being b) {
     	name = "Gnome";
     	b.agi += 2;

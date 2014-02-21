@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 public class InfoPanel extends JPanel {
 	private JTextArea info;
@@ -19,7 +20,21 @@ public class InfoPanel extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Disparity");
 		frame.setBounds(100, 100, 606, 479);
-		frame.getContentPane().add(new InfoPanel("Human", "The Human is one of the most versatile of all the races of Saulis. Also being one of the newest, the Humans were able to create many amazing diverse, large, and important colonies to the World of Saulis, although they are currently under the dark control of Mirtis.", "../res/Races/Example.png"));
+		frame.getContentPane().add(new InfoPanel(
+				"Human", Resources.addEndl(
+				"The Humans are one of the " + 
+				"most versatile of all the " + 
+				"races of Saulis. Also being " + 
+				"one of the newest, the Humans " + 
+				"were able to create many amazing " + 
+				"diverse, large, and important " + 
+				"colonies to the World of Saulis, " + 
+				"although they are currently under " + 
+				"the dark control of Mirtis," + 
+				"They have completed much. " + 
+				"Humans are generally disliked" + 
+				"by the other races..."),
+				"../res/Races/Example.png"));
 	
 		frame.setVisible(true);
 	}
@@ -40,6 +55,8 @@ public class InfoPanel extends JPanel {
 			}
 		}
 		info = new JTextArea();
+		info.setBackground(UIManager.getColor("Button.background"));
+		info.setLineWrap(true);
 		info.setEditable(false);
 		info.setColumns(10);
 		info.setFont(Resources.getFont());
@@ -58,20 +75,20 @@ public class InfoPanel extends JPanel {
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(46)
-					.addComponent(info, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-					.addGap(254))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-							.addGap(213)
-							.addComponent(titleText, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap(272, Short.MAX_VALUE)
+							.addGap(213)
+							.addComponent(titleText, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap(307, Short.MAX_VALUE)
 							.addComponent(pic)))
 					.addGap(178))
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(46)
+					.addComponent(info, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(114, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
