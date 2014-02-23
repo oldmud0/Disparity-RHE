@@ -15,29 +15,6 @@ import javax.swing.UIManager;
 
 public class InfoPanel extends JPanel {
 	private JTextArea info;
-	public static void main(String[] args){
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Disparity");
-		frame.setBounds(100, 100, 606, 479);
-		frame.getContentPane().add(new InfoPanel(
-				"Human", Resources.addEndl(
-				"The Humans are one of the " + 
-				"most versatile of all the " + 
-				"races of Saulis. Also being " + 
-				"one of the newest, the Humans " + 
-				"were able to create many amazing " + 
-				"diverse, large, and important " + 
-				"colonies to the World of Saulis, " + 
-				"although they are currently under " + 
-				"the dark control of Mirtis," + 
-				"They have completed much. " + 
-				"Humans are generally disliked" + 
-				"by the other races..."),
-				"../res/Races/Example.png"));
-	
-		frame.setVisible(true);
-	}
 	
 	public InfoPanel(String Title, String Info, String picSrc){
 		char[] infoAsCharA = Info.toCharArray();
@@ -56,7 +33,6 @@ public class InfoPanel extends JPanel {
 		}
 		info = new JTextArea();
 		info.setBackground(UIManager.getColor("Button.background"));
-		info.setLineWrap(true);
 		info.setEditable(false);
 		info.setColumns(10);
 		info.setFont(Resources.getFont());

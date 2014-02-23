@@ -1,12 +1,15 @@
 package disparity.rpg.races.player.elfin;
 
+import java.awt.Color;
+
 import disparity.rpg.being.Being;
 import disparity.rpg.items.Quality;
 import disparity.rpg.items.weapons.Dagger;
 import disparity.rpg.races.Elfin;
 
 public class Sprite extends Elfin{
-	String desc = "To be replaced with an actual description";
+	private static String desc = "To be replaced with an actual description";
+	private static Color raceColor = new Color(120, 150, 125);
 	public Sprite(Being b){
 		name = "Sprite";
 		b.agi += 2;
@@ -14,5 +17,12 @@ public class Sprite extends Elfin{
 		b.tMP -= 3;
 		b.con -= 2;
 		b.wep = new Dagger(Quality.CRAP);
+	}
+	public static String getDesc(){
+		return desc;
+	}
+	
+	public static Color getColor(){
+		return raceColor;
 	}
 }

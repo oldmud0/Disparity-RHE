@@ -12,7 +12,7 @@ public class ColoredButton extends JButton {
 		new ColoredButton("undefined", Color.GRAY);
 	}
 	public ColoredButton(String name, Color color) {
-		this.name = name;
+		this.setName(name);
 		setSize(Resources.width, Resources.height);
 		setBorderPainted(false);
 		setRolloverEnabled(true);
@@ -26,9 +26,5 @@ public class ColoredButton extends JButton {
 		setForeground(new Color(255,255,255));
 		setText(name);
 		setHorizontalTextPosition(JButton.CENTER);
-	}
-	
-	public String getName(){
-		return name;
 	}
 }

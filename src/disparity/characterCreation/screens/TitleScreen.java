@@ -2,53 +2,37 @@ package disparity.characterCreation.screens;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentListener;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 import disparity.characterCreation.GUIresources.ColoredButton;
 import disparity.characterCreation.GUIresources.DisplayImage;
 
 import javax.swing.SpringLayout;
 
-public class TitleScreen {
-	
-	/*public static void main(String[] args){
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TitleScreen window = new TitleScreen();
-					window.frmDisparity.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
+public class TitleScreen extends JPanel{
+	private JFrame main;
 		/**
 		 * Initialize the contents of the Screen1.
 		 * @wbp.parser.entryPoint
 		 */
-		public TitleScreen() {
-			
-			JFrame frmDisparity = new JFrame();
-			frmDisparity.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/disparity/characterCreation/res/Backgrounds/DisparityICON.png")));
-			frmDisparity.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frmDisparity.setTitle("Disparity");
-			frmDisparity.setBounds(100, 100, 606, 479);
-			
+		public TitleScreen(JFrame jf) {
+			this.main = jf;
 			JPanel titlePanel = new JPanel();
-			
-			frmDisparity.getContentPane().setLayout(new CardLayout(0, 0));
-			frmDisparity.getContentPane().add(titlePanel, "name_10907673180820");
+			this.setLayout(new CardLayout(0, 0));
+			this.add(titlePanel, "name_10907673180820");
 			
 			JLabel disparityLogoLabel =new JLabel("");
 			disparityLogoLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -75,34 +59,16 @@ public class TitleScreen {
 			sl_titlePanel.putConstraint(SpringLayout.EAST, exitButton, -211, SpringLayout.EAST, titlePanel);
 			titlePanel.add(exitButton);
 			
-			ColoredButton[] buttons = {createButton, exitButton};
-			
-			ActionListener buttonListener = new ActionListener(){
-				@Override
+			exitButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
-					ColoredButton b = (ColoredButton)e.getSource();
-					switch(b.getName()){
-					case "Create":
-						new SelectRaceScreen().getFrame().setVisible(true);
-						break;
-					case "Exit":
-						System.exit(0);
-						break;
-					default:
-						JOptionPane.showMessageDialog(null,  "Button event not found...","Error",JOptionPane.ERROR_MESSAGE);
-						break;
-					}
+					System.exit(0);
+			}});			
+			createButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+			        main.setContentPane(new SelectRaceScreen());
 				}
-				
-			};
-			
-
-			
-			for(ColoredButton c : buttons){
-				c.addActionListener(buttonListener);
-			}
-			
-			frmDisparity.setVisible(true);
+			});
+			this.setVisible(true);
 		}
 		
 

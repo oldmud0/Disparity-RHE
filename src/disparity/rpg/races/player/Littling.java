@@ -1,12 +1,15 @@
 package disparity.rpg.races.player;
 
+import java.awt.Color;
+
 import disparity.rpg.being.Being;
 import disparity.rpg.items.Quality;
 import disparity.rpg.items.weapons.Dagger;
 import disparity.rpg.races.Race;
 
 public class Littling extends Race{
-	String desc = "To be replaced with an actual description";
+	static String desc = "To be replaced with an actual description";
+	private static Color raceColor = new Color(230, 255, 0);
     public Littling(Being b) {
     	name = "Gnome";
     	b.agi += 2;
@@ -14,6 +17,13 @@ public class Littling extends Race{
     	b.tHP -= 1;
     	b.wep = new Dagger(Quality.CRAP);
     }
+	public static String getDesc(){
+		return desc;
+	}
+	
+	public static Color getColor(){
+		return raceColor;
+	}
     
     
 }
