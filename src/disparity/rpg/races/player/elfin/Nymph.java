@@ -8,7 +8,7 @@ import disparity.rpg.items.weapons.Dagger;
 import disparity.rpg.races.Elfin;
 
 public class Nymph extends Elfin{
-	private static String desc = "To be replaced with an actual description";
+	private static String desc = "Nymphs are minor nature dieties, with power to manipulate feral flora and fauna to their will. Nymphs are well versed in the magic of various natural elements, such as Fire, Water, Wind, and Earth.";
 	private static Color raceColor = new Color(250, 90, 235);
 	public Nymph(Being b){
 		name = "Nymph";

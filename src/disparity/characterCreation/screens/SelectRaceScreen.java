@@ -21,9 +21,10 @@ import disparity.rpg.races.player.elfin.*;
 import disparity.rpg.races.player.*;
 
 public class SelectRaceScreen extends JPanel{
+	JFrame main;
 	
-	
-	public SelectRaceScreen() {
+	public SelectRaceScreen(JFrame jframe) {
+		this.main = jframe;
 		init();
 	}
 	
@@ -39,7 +40,7 @@ public class SelectRaceScreen extends JPanel{
 		Color[] colors = Race.getAllRaceColors().toArray(new Color[Race.getAllRaceColors().size()]);
 		JComponent[] components = new JComponent[descs.length];
 		for(int i = 0;i<descs.length;i++){
-			components[i] = new InfoPanel(names[i], descs[i], "");
+			components[i] = new InfoPanel(names[i], descs[i], "", main);
 		}
 		UIManager.put("TabbedPane.selected",getBackground());
 		ColoredTabs tab = new ColoredTabs(names, colors, components);

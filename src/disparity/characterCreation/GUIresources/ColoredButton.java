@@ -1,6 +1,7 @@
 package disparity.characterCreation.GUIresources;
 
 import java.awt.Color;
+
 import javax.swing.JButton;
 
 public class ColoredButton extends JButton {
@@ -13,14 +14,14 @@ public class ColoredButton extends JButton {
 	}
 	public ColoredButton(String name, Color color) {
 		this.setName(name);
-		setSize(Resources.width, Resources.height);
+		setSize(Resources.cbWidth, Resources.cbHeight);
 		setBorderPainted(false);
 		setRolloverEnabled(true);
 		setContentAreaFilled(false);
 		
-		setIcon(Resources.getImageIcon(color, false));
-		setRolloverIcon(Resources.getImageIcon(color.darker(), false));
-		setPressedIcon(Resources.getImageIcon(color, true));
+		setIcon(Resources.getImageIcon(color, false, "coloredButton", Resources.cbWidth, Resources.cbHeight));
+		setRolloverIcon(Resources.getImageIcon(color.darker(), false, "coloredButton", Resources.cbWidth, Resources.cbHeight));
+		setPressedIcon(Resources.getImageIcon(color, true, "coloredButton", Resources.cbWidth, Resources.cbHeight));
 		
 		setFont(Resources.getFont());
 		setForeground(new Color(255,255,255));

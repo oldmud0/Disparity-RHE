@@ -15,8 +15,12 @@ import javax.swing.UIManager;
 
 public class InfoPanel extends JPanel {
 	private JTextArea info;
+	/**
+	 * @wbp.nonvisual location=8,461
+	 */
+	private final MainMenuButton mainMenuButton = new MainMenuButton((JFrame) null);
 	
-	public InfoPanel(String Title, String Info, String picSrc){
+	public InfoPanel(String Title, String Info, String picSrc, JFrame src){
 		char[] infoAsCharA = Info.toCharArray();
 		int ind = 0;
 		boolean hasPutLine = false;
@@ -47,24 +51,32 @@ public class InfoPanel extends JPanel {
 		ComponentListener picListener = new DisplayImage(pic, "../res/Backgrounds/Title.png");
 		pic.addComponentListener(picListener);
 		
+		MainMenuButton mnmnbtnM = new MainMenuButton(src);
+		mnmnbtnM.setToolTipText("return to Main Menu");
+		
 
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(213)
-							.addComponent(titleText, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(213)
+									.addComponent(titleText, GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
+								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+									.addContainerGap(422, Short.MAX_VALUE)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(mnmnbtnM, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(pic, Alignment.TRAILING))))
+							.addGap(18))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap(307, Short.MAX_VALUE)
-							.addComponent(pic)))
-					.addGap(178))
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-					.addGap(46)
-					.addComponent(info, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(114, Short.MAX_VALUE))
+							.addGap(46)
+							.addComponent(info, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE)
+							.addGap(104)))
+					.addGap(160))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -74,7 +86,8 @@ public class InfoPanel extends JPanel {
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(info, GroupLayout.PREFERRED_SIZE, 430, GroupLayout.PREFERRED_SIZE)
-						.addComponent(pic)))
+						.addComponent(pic)
+						.addComponent(mnmnbtnM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 		);
 		setLayout(groupLayout);
 		

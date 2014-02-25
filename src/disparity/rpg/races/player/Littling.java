@@ -8,7 +8,7 @@ import disparity.rpg.items.weapons.Dagger;
 import disparity.rpg.races.Race;
 
 public class Littling extends Race{
-	static String desc = "Littlings are short, nimble, and use flanking tactics to dominate the battlefeild. wip ----";
+	static String desc = "Littlings are short, nimble, and use flanking tactics to ambush enemies without suffering a scratch.";
 	private static Color raceColor = new Color(230, 255, 0);
     public Littling(Being b) {
     	name = "Gnome";

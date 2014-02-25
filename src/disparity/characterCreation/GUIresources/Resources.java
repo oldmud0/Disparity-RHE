@@ -29,23 +29,22 @@ public class Resources {
 	public static Font getFont(){
 		return aesymatt;
 	}
-	public static final int width = 150, height = 50;
 	
 	
+	public static int smallSize = 50, cbHeight = 50, cbWidth = 150;
 	
-	
-	public static ImageIcon getImageIcon(Color backColor, Boolean isPress){
+	public static ImageIcon getImageIcon(Color backColor, Boolean isPress, String whatButton, int w, int h){
 		try {
 			String f;
-			if(isPress)
-				f = "../res/Buttons/buttonFormatPress.png";
+			if(!isPress)
+				f = "../res/Buttons/" + whatButton + ".png";
 			else
-				f = "../res/Buttons/buttonFormat.png";
+				f = "../res/Buttons/" + whatButton + "Press.png";
 			BufferedImage overlay = ImageIO.read(Resources.class.getResource(f));
-			BufferedImage surface = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+			BufferedImage surface = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 			Graphics g = surface.getGraphics();
 			g.setColor(backColor);
-			g.fillRect(0, 0, width, height);
+			g.fillRect(0, 0, w, h);
 			g.drawImage((Image)overlay, 0, 0, null);
 			return new ImageIcon(surface);
 		} catch (IOException e) {

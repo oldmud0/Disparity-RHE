@@ -8,7 +8,7 @@ import disparity.rpg.items.weapons.Dagger;
 import disparity.rpg.races.Elfin;
 
 public class Sprite extends Elfin{
-	private static String desc = "To be replaced with an actual description";
+	private static String desc = "Sprites are small, nimble, magical beings with wings that use their natural magical abilities to quickly scout the battlefield and ambush enemies.";
 	private static Color raceColor = new Color(120, 150, 125);
 	public Sprite(Being b){
 		name = "Sprite";

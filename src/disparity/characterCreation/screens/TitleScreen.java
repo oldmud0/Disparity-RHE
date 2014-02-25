@@ -65,7 +65,7 @@ public class TitleScreen extends JPanel{
 			}});			
 			createButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-			        main.setContentPane(new SelectRaceScreen());
+			        main.setContentPane(new SelectRaceScreen(main));
 			        main.revalidate();
 				}
 			});
