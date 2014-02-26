@@ -8,6 +8,7 @@ import disparity.rpg.skills.Skill;
 public class Shortsword extends Weapon{
 	public Shortsword() {
 		super();
+		desc = "A one handed shortsword that swings faster than a battleaxe, but does less damage.";
 	}
 	public Shortsword(Quality quality){
 		super("Shortsword", quality);

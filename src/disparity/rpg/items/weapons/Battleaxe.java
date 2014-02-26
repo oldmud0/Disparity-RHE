@@ -8,6 +8,7 @@ import disparity.rpg.skills.Skill;
 public class Battleaxe extends Weapon{
 	public Battleaxe() {
 		super();
+		desc = "A two handed battleaxe swings faster than a warhammer, but does less damage.";
 	}
 	public Battleaxe(Quality quality){
 		super("Battleaxe", quality);

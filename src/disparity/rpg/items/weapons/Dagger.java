@@ -9,6 +9,7 @@ public class Dagger extends Weapon{
 
 	public Dagger() {
 		super();
+		desc = "A one handed blade that swings faster than all other weapons, but does the least damage.";
 	}
 	public Dagger(Quality quality){
 		super("Dagger", quality);

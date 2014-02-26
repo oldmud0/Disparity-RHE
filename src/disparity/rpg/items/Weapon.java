@@ -6,6 +6,7 @@ import disparity.rpg.items.weapons.*;
 
 public class Weapon extends Equippable{
 	public int baseDmg;
+	public String desc;
 	public Weapon(String n, int baseDmgBonus){
 		name = n;
 		this.baseDmg += baseDmgBonus;

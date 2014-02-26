@@ -1,5 +1,7 @@
 package disparity.characterCreation.GUIresources;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentListener;
 
 import javax.swing.JFrame;
@@ -13,14 +15,21 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
+import java.awt.Color;
+
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+import java.awt.Component;
+
+import javax.swing.SpringLayout;
+
+import disparity.characterCreation.screens.SelectWeaponScreen;
+
 public class InfoPanel extends JPanel {
 	private JTextArea info;
-	/**
-	 * @wbp.nonvisual location=8,461
-	 */
-	private final MainMenuButton mainMenuButton = new MainMenuButton((JFrame) null);
-	
-	public InfoPanel(String Title, String Info, String picSrc, JFrame src){
+	private JFrame main;
+	public InfoPanel(final String Title, String Info, String picSrc, JFrame mainFrame, final String nextPanel){
+		this.main = mainFrame;
 		char[] infoAsCharA = Info.toCharArray();
 		int ind = 0;
 		boolean hasPutLine = false;
@@ -51,45 +60,43 @@ public class InfoPanel extends JPanel {
 		ComponentListener picListener = new DisplayImage(pic, "../res/Backgrounds/Title.png");
 		pic.addComponentListener(picListener);
 		
-		MainMenuButton mnmnbtnM = new MainMenuButton(src);
+		MainMenuButton mnmnbtnM = new MainMenuButton(main);
 		mnmnbtnM.setToolTipText("return to Main Menu");
-		
-
-		
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(213)
-									.addComponent(titleText, GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-									.addContainerGap(422, Short.MAX_VALUE)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(mnmnbtnM, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(pic, Alignment.TRAILING))))
-							.addGap(18))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(46)
-							.addComponent(info, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE)
-							.addGap(104)))
-					.addGap(160))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(titleText)
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(info, GroupLayout.PREFERRED_SIZE, 430, GroupLayout.PREFERRED_SIZE)
-						.addComponent(pic)
-						.addComponent(mnmnbtnM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-		);
-		setLayout(groupLayout);
+	
+		ColoredButton selectButton = new ColoredButton("Select", new Color(90, 20, 140));
+		selectButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				switch(nextPanel.toUpperCase()){
+				case"SELECTWEAPONSCREEN":
+					main.setContentPane(new SelectWeaponScreen(Title, main));
+			        main.revalidate();
+				}
+		}});	
+		selectButton.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		selectButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		SpringLayout springLayout = new SpringLayout();
+		springLayout.putConstraint(SpringLayout.NORTH, titleText, 0, SpringLayout.NORTH, mnmnbtnM);
+		springLayout.putConstraint(SpringLayout.WEST, titleText, 0, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, titleText, 0, SpringLayout.WEST, mnmnbtnM);
+		springLayout.putConstraint(SpringLayout.NORTH, mnmnbtnM, 18, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, mnmnbtnM, -146, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.EAST, mnmnbtnM, 0, SpringLayout.EAST, selectButton);
+		springLayout.putConstraint(SpringLayout.NORTH, selectButton, -79, SpringLayout.SOUTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, selectButton, -193, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, selectButton, -20, SpringLayout.SOUTH, this);
+		springLayout.putConstraint(SpringLayout.EAST, selectButton, -10, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, info, 52, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, info, 46, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, info, 482, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.EAST, info, 336, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, pic, 52, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, pic, 377, SpringLayout.WEST, this);
+		setLayout(springLayout);
+		add(pic);
+		add(info);
+		add(titleText);
+		add(mnmnbtnM);
+		add(selectButton);
 		
 	}
 }

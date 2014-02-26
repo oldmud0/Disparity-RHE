@@ -8,6 +8,7 @@ import disparity.rpg.skills.Skill;
 public class Warhammer extends Weapon{
 	public Warhammer() {
 		super();
+		desc = "A warhammer that swings the slowest of all the weapons, but does the most damage.";
 	}
 	public Warhammer(Quality quality){
 		super("Warhammer", quality);

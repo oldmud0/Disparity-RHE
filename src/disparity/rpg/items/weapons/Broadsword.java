@@ -8,6 +8,7 @@ import disparity.rpg.skills.Skill;
 public class Broadsword extends Weapon{
 	public Broadsword(int base) {
 		super("Broadsword", base);
+		desc = "A two handed broadsword that swings faster than a shortsword, but does more damage.";
 	}
 	public Broadsword() {
 		super();

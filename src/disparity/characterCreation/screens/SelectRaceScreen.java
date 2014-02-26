@@ -40,7 +40,7 @@ public class SelectRaceScreen extends JPanel{
 		Color[] colors = Race.getAllRaceColors().toArray(new Color[Race.getAllRaceColors().size()]);
 		JComponent[] components = new JComponent[descs.length];
 		for(int i = 0;i<descs.length;i++){
-			components[i] = new InfoPanel(names[i], descs[i], "", main);
+			components[i] = new InfoPanel(names[i], descs[i], "", main, "selectWeaponScreen");
 		}
 		UIManager.put("TabbedPane.selected",getBackground());
 		ColoredTabs tab = new ColoredTabs(names, colors, components);
