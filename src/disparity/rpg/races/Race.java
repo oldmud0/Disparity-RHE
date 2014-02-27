@@ -61,7 +61,6 @@ public class Race{
 		colors.add(HalfOrc.getColor());
 		colors.add(Nymph.getColor());
 		colors.add(Sprite.getColor());
-		
 		return colors;
 	}
 	

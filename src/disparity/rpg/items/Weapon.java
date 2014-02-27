@@ -1,15 +1,50 @@
 package disparity.rpg.items;
 
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+
 import disparity.rpg.being.Being;
 import disparity.rpg.skills.Skill;
 import disparity.rpg.items.weapons.*;
 
 public class Weapon extends Equippable{
 	public int baseDmg;
-	public String desc;
 	public Weapon(String n, int baseDmgBonus){
 		name = n;
 		this.baseDmg += baseDmgBonus;
+	}
+	
+	public static List<String> getWeaponDesc() {
+		List<String> desc = new ArrayList<String>();
+		desc.add(Dagger.getDesc());
+		desc.add(Shortsword.getDesc());
+		desc.add(Broadsword.getDesc());
+		desc.add(Battleaxe.getDesc());
+		desc.add(Warhammer.getDesc());
+		return desc;
+	}
+	public static List<String> getWeaponNames() {
+		List<String> name = new ArrayList<String>();
+		name.add(Dagger.getName());
+		name.add(Shortsword.getName());
+		name.add(Broadsword.getName());
+		name.add(Battleaxe.getName());
+		name.add(Warhammer.getName());
+		return name;
+	}
+	public static List<Color> getWeaponColors() {
+		List<Color> colors = new ArrayList<Color>();
+		colors.add(Dagger.getColor());
+		colors.add(Shortsword.getColor());
+		colors.add(Broadsword.getColor());
+		colors.add(Battleaxe.getColor());
+		colors.add(Warhammer.getColor());
+		return colors;
+	}
+	
+	public static Color getColor(){
+		return new Color(0,0,0);
 	}
 	
 	public Weapon(String n, Quality q) {
@@ -59,5 +94,4 @@ public class Weapon extends Equippable{
 				}
 		}
 	}
-	
 }

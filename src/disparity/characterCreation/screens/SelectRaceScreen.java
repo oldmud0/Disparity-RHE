@@ -3,6 +3,7 @@ package disparity.characterCreation.screens;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.swing.JComponent;
@@ -40,7 +41,7 @@ public class SelectRaceScreen extends JPanel{
 		Color[] colors = Race.getAllRaceColors().toArray(new Color[Race.getAllRaceColors().size()]);
 		JComponent[] components = new JComponent[descs.length];
 		for(int i = 0;i<descs.length;i++){
-			components[i] = new InfoPanel(names[i], descs[i], "", main, "selectWeaponScreen");
+			components[i] = new InfoPanel(names[i], descs[i], "", main, "selectWeaponScreen", new ArrayList<String>());
 		}
 		UIManager.put("TabbedPane.selected",getBackground());
 		ColoredTabs tab = new ColoredTabs(names, colors, components);

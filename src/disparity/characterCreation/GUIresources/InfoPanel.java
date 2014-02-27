@@ -20,6 +20,7 @@ import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import java.awt.Component;
+import java.util.List;
 
 import javax.swing.SpringLayout;
 
@@ -28,7 +29,7 @@ import disparity.characterCreation.screens.SelectWeaponScreen;
 public class InfoPanel extends JPanel {
 	private JTextArea info;
 	private JFrame main;
-	public InfoPanel(final String Title, String Info, String picSrc, JFrame mainFrame, final String nextPanel){
+	public InfoPanel(final String Title, String Info, String picSrc, JFrame mainFrame, final String nextPanel, final List<String> characterSettings){
 		this.main = mainFrame;
 		char[] infoAsCharA = Info.toCharArray();
 		int ind = 0;
@@ -68,7 +69,8 @@ public class InfoPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				switch(nextPanel.toUpperCase()){
 				case"SELECTWEAPONSCREEN":
-					main.setContentPane(new SelectWeaponScreen(Title, main));
+					characterSettings.add(Title);
+					main.setContentPane(new SelectWeaponScreen(characterSettings, main));
 			        main.revalidate();
 				}
 		}});	
