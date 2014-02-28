@@ -1,16 +1,9 @@
 package disparity.characterCreation.GUIresources;
 
 import java.awt.Color;
-import java.awt.Window;
 
 import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
-
-import disparity.rpg.races.Race;
 
 public class ColoredTabs extends JTabbedPane {
 	

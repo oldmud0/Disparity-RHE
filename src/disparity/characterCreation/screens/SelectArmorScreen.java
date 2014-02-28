@@ -1,32 +1,32 @@
 package disparity.characterCreation.screens;
 
+import javax.swing.JPanel;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.List;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import disparity.characterCreation.GUIresources.ColoredTabs;
 import disparity.characterCreation.GUIresources.InfoPanel;
 import disparity.characterCreation.GUIresources.Resources;
-import disparity.rpg.items.Weapon;
+import disparity.rpg.skills.DefensiveSkill;
 
-public class SelectWeaponScreen extends JPanel {
-	/**
+public class SelectArmorScreen extends JPanel {
+	/*
 	 * 
 	 */
-	private static final long serialVersionUID = -7937466465972095489L;
+	private static final long serialVersionUID = 6031046616352225577L;
 	JFrame main;
-	public SelectWeaponScreen(List<String> characterSettings, JFrame mainscreen){
+	public SelectArmorScreen(List<String> characterSettings, JFrame mainscreen){
 		this.main = mainscreen;
-		String[] descs = Weapon.getWeaponDesc().toArray(new String[Weapon.getWeaponDesc().size()]);
-		for(int i = 0 ;i < descs.length;i++){
+		String[] names = DefensiveSkill.getSkillNames().toArray(new String[DefensiveSkill.getSkillNames().size()]);
+		String[] descs = DefensiveSkill.getSkillDescs().toArray(new String[DefensiveSkill.getSkillNames().size()]);
+		Color[] colors = DefensiveSkill.getSkillColors().toArray(new Color[DefensiveSkill.getSkillNames().size()]);		for(int i = 0 ;i < descs.length;i++){
 			descs[i] = Resources.addEndl(descs[i]);
 		}
-		String[] names = Weapon.getWeaponNames().toArray(new String[Weapon.getWeaponNames().size()]);
-		Color[] colors = Weapon.getWeaponColors().toArray(new Color[Weapon.getWeaponColors().size()]);
 		JComponent[] infoPanels = new InfoPanel[descs.length];
 		for(int i = 0;i<descs.length;i++){
 			infoPanels[i] = new InfoPanel(names[i], descs[i], "", main, "SelectArmorScreen", characterSettings);
@@ -36,4 +36,4 @@ public class SelectWeaponScreen extends JPanel {
 		this.add(tabs, BorderLayout.CENTER);
 		this.setVisible(true);
 	}
-}	
+}

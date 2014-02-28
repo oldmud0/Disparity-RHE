@@ -1,22 +1,19 @@
 package disparity.characterCreation.GUIresources;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import disparity.characterCreation.screens.TitleScreen;
 
 public class MainMenuButton extends JButton {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3165926952785664340L;
 	private final int width = 50, height = 50;
 	private JFrame container;
 	public MainMenuButton(JFrame jframe){

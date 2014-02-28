@@ -2,27 +2,24 @@ package disparity.characterCreation.screens;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentListener;
 
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 
 import disparity.characterCreation.GUIresources.ColoredButton;
 import disparity.characterCreation.GUIresources.DisplayImage;
 
-import javax.swing.SpringLayout;
-
 public class TitleScreen extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6197091756601543002L;
 	private JFrame main;
 		/**
 		 * Initialize the contents of the Screen1.

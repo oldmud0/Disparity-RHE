@@ -2,26 +2,23 @@ package disparity.characterCreation.screens;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.List;
 import java.util.ArrayList;
-import java.util.Map;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
 
-import disparity.characterCreation.MainScreen;
 import disparity.characterCreation.GUIresources.ColoredTabs;
 import disparity.characterCreation.GUIresources.InfoPanel;
 import disparity.characterCreation.GUIresources.Resources;
 import disparity.rpg.races.Race;
-import disparity.rpg.races.player.elfin.*;
-import disparity.rpg.races.player.*;
 
 public class SelectRaceScreen extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6329347706332367081L;
 	JFrame main;
 	
 	public SelectRaceScreen(JFrame jframe) {

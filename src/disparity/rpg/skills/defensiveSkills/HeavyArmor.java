@@ -1,5 +1,7 @@
 package disparity.rpg.skills.defensiveSkills;
 
+import java.awt.Color;
+
 import disparity.rpg.being.Being;
 import disparity.rpg.skills.DefensiveSkill;
 
@@ -36,5 +38,16 @@ public class HeavyArmor extends DefensiveSkill{
 				System.out.println("Does not have any skills to add...");
 				break;
 		}
+	}
+	
+	public static String getName(){
+		return "Heavy Armor";
+	}
+	
+	public static String getDesc(){
+		return "Heavy armor slows you down and makes you louader while sneaking, but can deflect light blows and mitigate damage.";
+	}
+	public static Color getColor(){
+		return new Color(150, 85, 200);
 	}
 }

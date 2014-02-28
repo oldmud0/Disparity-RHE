@@ -1,32 +1,29 @@
 package disparity.characterCreation.GUIresources;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentListener;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
-import javax.swing.JTextField;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-import java.awt.Color;
-
-import javax.swing.LayoutStyle.ComponentPlacement;
-
-import java.awt.Component;
-import java.util.List;
-
-import javax.swing.SpringLayout;
-
+import disparity.characterCreation.screens.SelectArmorScreen;
 import disparity.characterCreation.screens.SelectWeaponScreen;
 
 public class InfoPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7467180593396391662L;
 	private JTextArea info;
 	private JFrame main;
 	public InfoPanel(final String Title, String Info, String picSrc, JFrame mainFrame, final String nextPanel, final List<String> characterSettings){
@@ -72,8 +69,12 @@ public class InfoPanel extends JPanel {
 					characterSettings.add(Title);
 					main.setContentPane(new SelectWeaponScreen(characterSettings, main));
 			        main.revalidate();
+				case"SELECTARMORSCREEN":
+					characterSettings.add(Title);
+					main.setContentPane(new SelectArmorScreen(characterSettings, main));
+			        main.revalidate();
 				}
-		}});	
+		}});
 		selectButton.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		selectButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		SpringLayout springLayout = new SpringLayout();
@@ -99,6 +100,9 @@ public class InfoPanel extends JPanel {
 		add(titleText);
 		add(mnmnbtnM);
 		add(selectButton);
-		
+		//TODO not working - we want to make ENTER the default key for the Select button...
+		//...without some 50-line KeyListener or a brand new JButton class! 
+		//NullPointerException
+		//((JFrame) SwingUtilities.get(this)).getRootPane().setDefaultButton(selectButton);
 	}
 }

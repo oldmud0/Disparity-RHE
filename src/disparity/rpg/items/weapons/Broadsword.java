@@ -32,7 +32,7 @@ public class Broadsword extends Weapon{
 		return wepColor;
 	}
 	public static String getName(){
-		return "Shortsword";
+		return "Broadsword";
 	}
 }
 
