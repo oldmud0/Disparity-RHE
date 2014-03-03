@@ -10,8 +10,7 @@ public class Resources {
 	
 	public static void loadResources() throws SlickException	{
 		//addResource("typewriter", "res/typewriter.png");
-		addResource("test_img", new Image("src/disparity/game/res/test_img.png"));
-		
+		addResource("test_img", new Image(Resources.class.getResourceAsStream("res/test_img.png"), "test_img", false));
 	}
 	
 	@SuppressWarnings("unchecked") //I tend not to suppress warnings, but there's really no practical solution to check the cast.

@@ -24,7 +24,8 @@ public class SelectArmorScreen extends JPanel {
 		this.main = mainscreen;
 		String[] names = DefensiveSkill.getSkillNames().toArray(new String[DefensiveSkill.getSkillNames().size()]);
 		String[] descs = DefensiveSkill.getSkillDescs().toArray(new String[DefensiveSkill.getSkillNames().size()]);
-		Color[] colors = DefensiveSkill.getSkillColors().toArray(new Color[DefensiveSkill.getSkillNames().size()]);		for(int i = 0 ;i < descs.length;i++){
+		Color[] colors = DefensiveSkill.getSkillColors().toArray(new Color[DefensiveSkill.getSkillNames().size()]);		
+		for(int i = 0 ;i < descs.length;i++){
 			descs[i] = Resources.addEndl(descs[i]);
 		}
 		JComponent[] infoPanels = new InfoPanel[descs.length];

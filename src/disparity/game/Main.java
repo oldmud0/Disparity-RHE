@@ -18,7 +18,7 @@ public class Main {
 			@Override
 			public void run() {
 				try {
-					AppGameContainer appgc = new AppGameContainer(new DisparityGame("RPG Game"));
+					AppGameContainer appgc = new AppGameContainer(new DisparityGame("Disparity"));
 					appgc.setDisplayMode(windowX, windowY, false);
 					appgc.setVSync(true);
 					appgc.start();

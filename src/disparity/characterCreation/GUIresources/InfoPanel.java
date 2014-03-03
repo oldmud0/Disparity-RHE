@@ -20,9 +20,7 @@ import disparity.characterCreation.screens.SelectArmorScreen;
 import disparity.characterCreation.screens.SelectWeaponScreen;
 
 public class InfoPanel extends JPanel {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -7467180593396391662L;
 	private JTextArea info;
 	private JFrame main;
@@ -100,9 +98,5 @@ public class InfoPanel extends JPanel {
 		add(titleText);
 		add(mnmnbtnM);
 		add(selectButton);
-		//TODO not working - we want to make ENTER the default key for the Select button...
-		//...without some 50-line KeyListener or a brand new JButton class! 
-		//NullPointerException
-		//((JFrame) SwingUtilities.get(this)).getRootPane().setDefaultButton(selectButton);
 	}
 }

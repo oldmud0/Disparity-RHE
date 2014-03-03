@@ -9,7 +9,9 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.Image;
 
+import disparity.game.Resources;
 import disparity.game.objects.TypewriterText;
 import disparity.game.objects.TypewriterTextBox;
 import disparity.game.objects.TypewriterTextType;
@@ -23,7 +25,7 @@ public class IntroScene extends BasicGameState {
 	private TypewriterTextBox textBox; 
 	
 	private StateBasedGame game;
-	
+	Image test_img;
 	@Override
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
@@ -32,6 +34,8 @@ public class IntroScene extends BasicGameState {
 		Queue<TypewriterText> twStack = new PriorityQueue<TypewriterText>();
 		twStack.add(new TypewriterText("Hello. asdadsadadsadsads", TypewriterTextType.NORMAL));
 		textBox = new TypewriterTextBox(twStack);
+		Resources.loadResources();
+		test_img = Resources.getResource("test_img");
 		textBox.nextText();
 		
 	}
@@ -43,6 +47,7 @@ public class IntroScene extends BasicGameState {
 		g.setColor(Color.white);
 		textBox.render(textBox.getGraphics());
 		g.drawImage(textBox.getDrawBuffer(), textBox.x, textBox.y); //BUG - not drawing?
+		test_img.draw(0 ,0);
 	}
 
 	@Override
