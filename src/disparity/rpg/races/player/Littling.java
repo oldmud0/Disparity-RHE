@@ -8,14 +8,13 @@ import disparity.rpg.items.weapons.Dagger;
 import disparity.rpg.races.Race;
 
 public class Littling extends Race{
-	static String desc = "Littlings are short, nimble, and use flanking tactics to ambush enemies without suffering a scratch.";
+	private static String desc = "Littlings are short, nimble, and use flanking tactics to ambush enemies without suffering a scratch.";
 	private static Color raceColor = new Color(230, 255, 0);
     public Littling(Being b) {
-    	name = "Gnome";
-    	b.agi += 2;
-    	b.str += 1;
-    	b.tHP -= 1;
-    	b.wep = new Dagger(Quality.CRAP);
+    	this.setName("Gnome");
+    	b.setAgi(b.getAgi() + 2);
+    	b.setStr(b.getStr() + 1);
+    	b.settHP(b.gettHP() - 1);
     }
 	public static String getDesc(){
 		return desc;

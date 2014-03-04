@@ -9,89 +9,53 @@ import disparity.rpg.skills.Skill;
 import disparity.rpg.items.weapons.*;
 
 public class Weapon extends Equippable{
-	public int baseDmg;
-	public Weapon(String n, int baseDmgBonus){
-		name = n;
-		this.baseDmg += baseDmgBonus;
+	private int baseDmg;
+	/**
+	 * Creates generic Weapon
+	 * @param name
+	 * @param baseDmgBonus
+	 */
+	public Weapon(String name, int baseDmgBonus){
+		this.setName(name);
+		this.setBaseDmg(this.getBaseDmg() + baseDmgBonus);
 	}
-	
-	public static List<String> getWeaponDesc() {
-		List<String> desc = new ArrayList<String>();
-		desc.add(Dagger.getDesc());
-		desc.add(Shortsword.getDesc());
-		desc.add(Broadsword.getDesc());
-		desc.add(Battleaxe.getDesc());
-		desc.add(Warhammer.getDesc());
-		return desc;
+	/**
+	 * Creates generic Weapon using Quality as a damage modifier
+	 * Sets name and damage to be consistent with Quality
+	 * @param n
+	 * @param q
+	 */
+	public Weapon(String name, Quality qal) {
+		name = qal.getName() + " " + name;
+		baseDmg += qal.getValue();
 	}
-	public static List<String> getWeaponNames() {
-		List<String> name = new ArrayList<String>();
-		name.add(Dagger.getName());
-		name.add(Shortsword.getName());
-		name.add(Broadsword.getName());
-		name.add(Battleaxe.getName());
-		name.add(Warhammer.getName());
-		return name;
-	}
-	public static List<Color> getWeaponColors() {
-		List<Color> colors = new ArrayList<Color>();
-		colors.add(Dagger.getColor());
-		colors.add(Shortsword.getColor());
-		colors.add(Broadsword.getColor());
-		colors.add(Battleaxe.getColor());
-		colors.add(Warhammer.getColor());
-		return colors;
-	}
-	
-	public static Color getColor(){
-		return new Color(0,0,0);
-	}
-	
-	public Weapon(String n, Quality q) {
-		name = q.getName() + " " + n;
-		baseDmg += q.getValue();
-	}
-	
+	/**
+	 * Creates an empty Weapon
+	 */
 	public Weapon(){
 		super();
 	}
-	
-	public void giveName(String mat, String qDesc){
-		name = mat + " " + name + " " + qDesc;
-
+	/**
+	 * Reassigns name given material and Quality
+	 * @param mat
+	 * @param qDesc
+	 */
+	public void giveName(String mat, Quality qal){
+		this.setName(mat + " " + this.getName() + " " + qal.getName());
 	}
-	public void applySkill(){
-		//Placeholder
+	/**
+	 * Returns Weapon baseDmg
+	 * @return
+	 */
+	public int getBaseDmg(){
+		return this.baseDmg;
 	}
-	//Get weapon skill
-	public Skill getSkill(Being b){
-		return new Skill();
-	}
-	
-	public static Weapon getWeapon(String wep, String q, int bdmg){
-		switch(wep.toUpperCase()){
-			case "SHORTSWORD":
-				return new Shortsword(Quality.valueOf(q));
-			case "BROADSWORD":
-				return new Broadsword(Quality.valueOf(q));
-			case "DAGGER":
-				return new Dagger(Quality.valueOf(q));
-			case "WARHAMMER":
-				return new Warhammer(Quality.valueOf(q));
-			case "BATTLEAXE":
-				return new Battleaxe(Quality.valueOf(q));
-			default:
-				if(q.equals("")){
-					Weapon w = new Weapon();
-					w.name = wep;
-					w.baseDmg = bdmg;
-					return w;
-				}else{
-					Weapon w = new Weapon();
-					w.name = wep;
-					w.baseDmg = (Quality.valueOf(q)).getValue() + bdmg;
-					return w;
-				}
-		}
+	/**
+	 * Sets Weapon baseDmg
+	 * @param dmg
+	 */
+	public void setBaseDmg(int dmg){
+		this.baseDmg = dmg;
 	}
 }
+

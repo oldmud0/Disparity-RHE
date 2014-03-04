@@ -25,7 +25,7 @@ public class IntroScene extends BasicGameState {
 	private TypewriterTextBox textBox; 
 	
 	private StateBasedGame game;
-	Image test_img;
+	Image test_img; // Public test_img initialized
 	@Override
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
@@ -34,8 +34,8 @@ public class IntroScene extends BasicGameState {
 		Queue<TypewriterText> twStack = new PriorityQueue<TypewriterText>();
 		twStack.add(new TypewriterText("Hello. asdadsadadsadsads", TypewriterTextType.NORMAL));
 		textBox = new TypewriterTextBox(twStack);
-		Resources.loadResources();
-		test_img = Resources.getResource("test_img");
+		Resources.loadResources(); // Load Resources from Resources
+		test_img = Resources.getResource("test_img"); // assign Image test_img from Resources to test_img
 		textBox.nextText();
 		
 	}

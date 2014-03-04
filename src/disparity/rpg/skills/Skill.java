@@ -9,8 +9,6 @@ public class Skill{
 	public int lvl;
 	public String desc;
 
-	public Skill() {}
-
 	public void skillStats(){
 		System.out.println("-"+name+"-");
 		System.out.println(desc);
@@ -25,7 +23,7 @@ public class Skill{
 		double max = 100.0;
 		double min = w.baseDmg + w.getSkill(a).getBonus();
 		if(min + Math.random() * ((max - min) + 1) <= b.calcAC())	i += 1; 		//checks to see if target blocked the attack [1 = block]
-		else if(min + Math.random() * ((max - min) + 1) <= b.dodge)	i += 2; //checks to see if target dodged the attack [2 = dodge]
+		else if(min + Math.random() * ((max - min) + 1) <= b.getDodge())	i += 2; //checks to see if target dodged the attack [2 = dodge]
 																			//if target does not block or dodge, attack hits [default = hit]
 		switch(i){
 			case 1:

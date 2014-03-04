@@ -14,14 +14,14 @@ public class Armor extends Equippable{
 	}
 	public Armor(String name, Quality quality, DefensiveSkill skill){
 		base_def += quality.getValue();
-		this.name = quality.getName()+" "+name;
+		this.setName(quality.getName()+" "+name);
 		this.skill = skill;
 	}
 	public Armor(){
 		
 	}
 	public void giveName(String mat, String qDesc){
-		name = mat + " " + name + " " + qDesc;
+		this.setName(mat + " " + this.getName() + " " + qDesc);
 	}
 	public void applySkill(){
 		//Placeholder
