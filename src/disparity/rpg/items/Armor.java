@@ -6,8 +6,8 @@ import disparity.rpg.skills.Skill;
 import disparity.rpg.skills.defensiveSkills.*;
 
 public class Armor extends Equippable{
-	public int base_def;
-	public DefensiveSkill skill;
+	private int base_def;
+	private DefensiveSkill skill;
 	
 	public Armor(String n){
 		super(n);
@@ -26,11 +26,33 @@ public class Armor extends Equippable{
 	public void applySkill(){
 		//Placeholder
 	}
-	//Get armor skill bonus
+	
+	/**
+	 * TODO Get rid of this!
+	 * @param b
+	 * @return
+	 */
 	public Skill getSkill(Being b){
 		if(skill instanceof LightArmor)
 			return new LightArmor(b);
 		else
 			return new HeavyArmor(b);
 	}
+	
+	public int getBaseDef(){
+		return this.base_def;
+	}
+	
+	public void setBaseDef(int base_def){
+		this.base_def = base_def;
+	}
+	
+	public DefensiveSkill getSkill(){
+		return this.skill;
+	}
+	
+	public void setSkill(DefensiveSkill skill){
+		this.skill = skill;
+	}
+	
 }

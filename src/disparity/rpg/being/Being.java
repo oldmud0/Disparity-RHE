@@ -1,9 +1,5 @@
 package disparity.rpg.being;
 
-import java.util.HashMap;
-import java.util.Map.Entry;
-
-import disparity.rpg.items.Armor;
 import disparity.rpg.items.Weapon;
 import disparity.rpg.items.armor.Boots;
 import disparity.rpg.items.armor.Chestplate;
@@ -74,6 +70,7 @@ public abstract class Being {
 	public Being(String name, Race race) {
 		this.setName(name);
 		this.setRace(race);
+		this.getRace().applyRacialBonus(this);
 		this.setHp(this.tHP);
 		this.setMp(this.tMP);
 		this.setLvl(1);
@@ -113,154 +110,35 @@ public abstract class Being {
 		}
 	}
 
-	/**
-	 * Summarizes the stats in a HashMap.
-	 * 
-	 * @return HashMap<String, Object> list
-	 */
-	public HashMap<String, Object> getStats() {
-		HashMap<String, Object> list = new HashMap<String, Object>();
-
-		list.put("name", name);
-		list.put("race", race.getName());
-		list.put("level", lvl);
-		list.put("hp", hp);
-		list.put("total_hp", tHP);
-		list.put("mp", mp);
-		list.put("total_mp", tMP);
-		list.put("dodge", dodge);
-		list.put("ac", calcAC());
-		list.put("strength", str);
-		list.put("agility", agi);
-		list.put("constitution", con);
-		list.put("wisdom", wis);
-
-		return list;
-	}
-
-	/**
-	 * Sets a stat based on its string. Until all of the stats can be placed in
-	 * a HashMap, this is the way to go.
-	 * 
-	 * @param ident
-	 * @param stat
-	 */
-	public void setStat(String ident, Object stat) throws Exception {
-		if (!getStats().containsKey(ident))
-			return;
-		else
-			switch (ident.toLowerCase()) {
-			case "name":
-				name = stat.toString();
-				break;
-			case "race":
-				race = (Race) stat;
-				break;
-			case "level":
-				lvl = Integer.valueOf((String) stat);
-				break; // You could actually do (int)stat, but that's only for
-						// Java 7.
-			case "hp":
-				hp = Integer.valueOf((String) stat);
-				break;
-			case "total_hp":
-				tHP = Integer.valueOf((String) stat);
-				break;
-			case "mp":
-				mp = Integer.valueOf((String) stat);
-				break;
-			case "total_mp":
-				tMP = Integer.valueOf((String) stat);
-				break;
-			case "dodge":
-				dodge = Double.valueOf((String) stat);
-				break;
-			case "strength":
-				str = Integer.valueOf((String) stat);
-				break;
-			case "agility":
-				agi = Integer.valueOf((String) stat);
-				break;
-			case "constitution":
-				con = Integer.valueOf((String) stat);
-				break;
-			case "wisdom":
-				wis = Integer.valueOf((String) stat);
-				break;
-			}
-	}
-
 	public int getAgi() {
 		return agi;
 	}
-
+	
 	/**
-	 * Returns all valid stat fields and their friendly names.
-	 * 
-	 * @return HashMap<String, Object> list
+	 * Arranges the stats of a Being into
+	 * an easily read format, mainly
+	 * used for debugging
+	 * @return
 	 */
-	public static HashMap<String, String> getStatFields() {
-		HashMap<String, String> list = new HashMap<String, String>();
-
-		list.put("name", "name");
-		list.put("level", "level");
-		list.put("hp", "health");
-		list.put("total_hp", "max health");
-		list.put("mp", "magic points");
-		list.put("total_mp", "max magic points");
-		list.put("dodge", "dodge");
-		list.put("ac", "AC");
-		list.put("strength", "strength");
-		list.put("agility", "agility");
-		list.put("constitution", "constitution");
-		list.put("wisdom", "wisdom");
-
-		return list;
-	}
-
-	public String printStats() {
-		return "--" + name + "--" + "\n" + "Race " + race.getName() + "\n"
-				+ "Level " + lvl + "\n" + "---" + "\n" + "HP " + hp + "/" + tHP
-				+ "\n" + "MP " + mp + "/" + tMP + "\n" + "Dodge " + dodge
-				+ "\n" + "AC " + calcAC() + "\n" + "---" + "\n" + "Strength "
-				+ str + "\n" + "Agility " + agi + "\n" + "Constitution " + con
-				+ "\n" + "Wisdom " + wis;
+	public String getFormStats() {
+		return "--" + name + "--" + "\n" 
+				+ "Race " + race.getName() + "\n"
+				+ "Level " + lvl + "\n" 
+				+ "---" + "\n" 
+				+ "HP " + hp + "/" + tHP
+				+ "\n" + "MP " + mp + "/" + tMP + "\n" 
+				+ "Dodge " + dodge
+				+ "\n" + "AC " + calcAC() + "\n" 
+				+ "---" + "\n" 
+				+ "Strength "+ str + "\n" 
+				+ "Agility " + agi + "\n" 
+				+ "Constitution " + con + "\n" 
+				+ "Wisdom " + wis;
 	}
 
 	@Override
 	public String toString() {
 		return name;
-	}
-
-	// LEVELING
-
-	/**
-	 * Summarizes all skills in a HashMap.
-	 * 
-	 * @return HashMap<String, Object> list
-	 */
-	public HashMap<String, Object> getAllSkills() {
-		HashMap<String, Object> list = new HashMap<String, Object>();
-
-		list.put(arc.name, arc.lvl);
-		list.put(oneHand.name, oneHand.lvl);
-		list.put(twoHand.name, twoHand.lvl);
-		list.put(magic.name, magic.lvl);
-		list.put(lArmor.name, lArmor.lvl);
-		list.put(hArmor.name, hArmor.lvl);
-
-		return list;
-	}
-
-	
-	public String printAllSkills() {
-		String out = "";
-		
-		for(Entry<String, Object> skill : getAllSkills().entrySet()) {
-			out += skill.getKey() + "-" + skill.getValue() + "\n";
-		}
-		
-		return out; 
 	}
 
 	public String getName() {

@@ -14,24 +14,22 @@ public class Item{
 	/**
 	 * Creates an empty Item with no name
 	 */
-	public Item(){
-		
+	public Item(){	
 	}
-	/**
-	 * Sets Item name to given String
-	 * @param n
-	 */
+
 	public void setName(String name){
 		this.name = name;
 	}
-	/**
-	 * Sets Item description to given String
-	 * @param d
-	 */
+	
+	public String getName(){
+		return this.name;
+	}
+	
 	public void setDesc(String desc){
 		this.desc = desc;
 	}
-	public String getName(){
-		return this.name;
+	
+	public String getDesc(){
+		return this.desc;
 	}
 }

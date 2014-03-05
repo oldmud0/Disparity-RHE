@@ -22,16 +22,6 @@ public class Battleaxe extends Weapon{
 	}
 	//Weapon Skill 
 	public Skill getSkill(Being b){
-		return b.twoHand;
-	}
-	public static String getDesc(){
-		return desc;
-	}
-	
-	public static Color getColor(){
-		return wepColor;
-	}
-	public static String getName(){
-		return "Battleaxe";
+		return b.getTwoHand();
 	}
 }

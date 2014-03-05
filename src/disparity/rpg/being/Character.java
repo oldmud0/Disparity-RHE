@@ -1,6 +1,9 @@
 package disparity.rpg.being;
+
+import disparity.rpg.races.Race;
+
 public class Character extends Being{
-	public Character(String n, String rce){
-		super(n, rce);
+	public Character(String name, Race race){
+		super(name, race);
 	}
 }

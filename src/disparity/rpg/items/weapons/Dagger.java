@@ -23,17 +23,6 @@ public class Dagger extends Weapon{
 
 	//Weapon Skill 
 	public Skill getSkill(Being b){
-		return b.oneHand;
-	}
-	public static String getDesc(){
-		return desc;
-	}
-
-	public static Color getColor(){
-		return wepColor;
-	}
-	
-	public static String getName(){
-		return "Dagger";
+		return b.getOneHand();
 	}
 }

@@ -18,8 +18,22 @@ public class Race{
 	private static String desc = "Nobody knows about this race.";
 	private static Color raceColor = new Color(0,0,0);
 	
-	public static String getDesc(){
-		return desc;
+	/**
+	 * Empty constructor for subclasses
+	 * to set the Name variable
+	 * @param name
+	 */
+	protected Race(String name){
+		this.setName(name);
+	}
+	
+	/**
+	 * Accepts being for Being creation,
+	 * applies racial Stat bonuses/penalties
+	 * @param being
+	 */
+	public void applyRacialBonus(Being being){
+		return;
 	}
 
 	public String getName() {
@@ -28,18 +42,6 @@ public class Race{
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public static Color getRaceColor() {
-		return raceColor;
-	}
-
-	public static void setRaceColor(Color raceColor) {
-		Race.raceColor = raceColor;
-	}
-
-	public static void setDesc(String desc) {
-		Race.desc = desc;
 	}
 
 }
