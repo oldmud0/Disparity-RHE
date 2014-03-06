@@ -12,8 +12,8 @@ public class Helmet extends Armor{
 
 	public Helmet(int quality, DefensiveSkill s){
 		super("Helmet");
-		base_def = 3 + quality;
-		skill = s;
+		this.setBaseDef(3 + quality);
+		this.setSkill(s);
 	}
 	
 	public Helmet(Quality q, DefensiveSkill s) {

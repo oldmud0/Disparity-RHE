@@ -13,7 +13,7 @@ public class Armor extends Equippable{
 		super(n);
 	}
 	public Armor(String name, Quality quality, DefensiveSkill skill){
-		base_def += quality.getValue();
+		setBaseDef(getBaseDef() + quality.getValue());
 		this.setName(quality.getName()+" "+name);
 		this.skill = skill;
 	}

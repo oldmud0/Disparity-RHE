@@ -28,15 +28,14 @@ public class HalfOrc extends Race{
 	 * applies racial Stat bonuses/penalties
 	 * 
 	 * HalfOrc is a Barbaric race. Will 
-	 * give bonuses to str and penalties to wis
+	 * give bonuses to str and con and penalties to wis
 	 * @param being
 	 */
 	public void applyRacialStats(Being being){
-		being.setName("Half-Orc");
 		being.setStr(being.getStr() + 2);
+		being.setCon(being.getCon() + 2);
 		being.setWis(being.getWis() - 2);
-		being.setHp(being.getHp() + 2);
-		being.setMp(being.getMp() + 3);
+		being.settHP(being.gettHP() + 2);
 	}
 
 	public String getDesc() {

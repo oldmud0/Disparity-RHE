@@ -17,8 +17,8 @@ public class Littling extends Race{
 	 * to set the Name variable
 	 * @param name
 	 */
-	public Littling(Being b) {
-    	super("Gnome");
+	public Littling() {
+    	super("Littling");
     }
 	
 	/**
@@ -30,10 +30,9 @@ public class Littling extends Race{
 	 * @param being
 	 */	
 	public void applyRacialStats(Being being){
-		being.setAgi(being.getAgi() + 2);
+		being.setAgi(being.getAgi() + 4);
 		being.setStr(being.getStr() - 2);
-    	being.setStr(being.getStr() + 1);
-    	being.settHP(being.gettHP() - 1);
+    	being.settMP(being.gettMP() + 2);
 	}
 
 	public static String getDesc() {

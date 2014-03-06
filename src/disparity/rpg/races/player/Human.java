@@ -21,7 +21,7 @@ public class Human extends Race{
 	 * Basic Human constructor
 	 * used as field for Being construction
 	 */
-	public Human(Being b) {
+	public Human() {
     	super("Human");
     }
 	

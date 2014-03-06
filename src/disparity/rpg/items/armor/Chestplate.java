@@ -11,8 +11,8 @@ public class Chestplate extends Armor{
 
 	public Chestplate(int quality, DefensiveSkill s){
 		super("Chestplate");
-		base_def = 5 + quality;
-		skill = s;
+		this.setBaseDef(5 + quality);
+		this.setSkill(s);
 	}
 
 	public Chestplate(Quality q, DefensiveSkill s) {

@@ -14,13 +14,13 @@ import disparity.rpg.skills.offensiveSkills.OneHanded;
 import disparity.rpg.skills.offensiveSkills.TwoHanded;
 
 public abstract class Being {
-	private String name;
-	private Race race;
+	protected String name;
+	protected Race race;
 
 	/**
 	 * Stat Variables
 	 */
-	private int 
+	protected int 
 		str = 10, 
 		agi = 10, 
 		con = 10, 
@@ -30,27 +30,27 @@ public abstract class Being {
 		tHP = (con / 2) + 10, 
 		tMP = (wis / 2) + 10,
 		lvl;
-	private double 
+	protected double 
 		dodge;
 
 	/**
 	 * Skill Variables
 	 */
-	private Archery arc;
-	private OneHanded oneHand;
-	private TwoHanded twoHand;
-	private Magic magic;
-	private Weapon wep;
-	private HeavyArmor hArmor;
-	private LightArmor lArmor;
+	protected Archery arc;
+	protected OneHanded oneHand;
+	protected TwoHanded twoHand;
+	protected Magic magic;
+	protected Weapon wep;
+	protected HeavyArmor hArmor;
+	protected LightArmor lArmor;
 
 	/**
 	 * Armor Variables
 	 */
-	private Helmet helm;
-	private Chestplate chest;
-	private Leggings legs;
-	private Boots boots;
+	protected Helmet helm;
+	protected Chestplate chest;
+	protected Leggings legs;
+	protected Boots boots;
 
 	/**
 	 * Being() no params allows
@@ -100,8 +100,8 @@ public abstract class Being {
 	 */
 	public double calcAC() {
 		if(helm != null && boots != null && chest != null && legs != null){
-			double armorAC = boots.base_def + legs.base_def + chest.base_def
-					+ helm.base_def;
+			double armorAC = boots.getBaseDef() + legs.getBaseDef() + chest.getBaseDef()
+					+ helm.getBaseDef();
 			double skillBonus = boots.getSkill(this).getBonus() + legs.getSkill(this).getBonus()
 					+ chest.getSkill(this).getBonus() + helm.getSkill(this).getBonus();;
 			return (armorAC + skillBonus) / 50;

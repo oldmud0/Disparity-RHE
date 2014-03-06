@@ -3,8 +3,6 @@ package disparity.rpg.races.player;
 import java.awt.Color;
 
 import disparity.rpg.being.Being;
-import disparity.rpg.items.Quality;
-import disparity.rpg.items.weapons.Warhammer;
 import disparity.rpg.races.Race;
 
 public class Pech extends Race{
@@ -20,7 +18,7 @@ public class Pech extends Race{
 	 * Basic Pech constructor
 	 * used as field for Being construction
 	 */	
-	public Pech(Being b){
+	public Pech(){
 		super("Pech");
 	}	
 	
@@ -33,10 +31,11 @@ public class Pech extends Race{
 	 * @param being
 	 */
 	public void applyRacialStats(Being being){
-		being.setStr(being.getCon() + 2);
+		being.setStr(being.getStr() + 4);
 		being.setAgi(being.getAgi() - 2);
+		being.setCon(being.getCon() + 2);
 		being.settHP(being.gettHP() + 2);
-		being.settMP(being.gettMP() - 3);
+		being.settMP(being.gettMP() - 2);
 	}
 	
 	public static String getDesc(){

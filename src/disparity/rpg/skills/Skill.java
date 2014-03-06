@@ -4,35 +4,16 @@ import disparity.rpg.being.Being;
 import disparity.rpg.items.Weapon;
 
 public class Skill{
-	public String name;
-	public double exp, lvlXp;
-	public int lvl;
-	public String desc;
+	protected String name;
+	protected double exp, lvlXp;
+	protected int lvl;
+	protected String desc;
 
 	public void skillStats(){
 		System.out.println("-"+name+"-");
 		System.out.println(desc);
 		System.out.println("Level " + lvl);
 		System.out.println("Experience " + exp + "/"+lvlXp);
-	}
-	
-	//ABILITIES
-
-	public static byte doesHit(Being a, Weapon w, Being b){//Min + (int)(Math.random() * ((Max - Min) + 1)) 
-		int i = 0;
-		double max = 100.0;
-		double min = w.baseDmg + w.getSkill(a).getBonus();
-		if(min + Math.random() * ((max - min) + 1) <= b.calcAC())	i += 1; 		//checks to see if target blocked the attack [1 = block]
-		else if(min + Math.random() * ((max - min) + 1) <= b.getDodge())	i += 2; //checks to see if target dodged the attack [2 = dodge]
-																			//if target does not block or dodge, attack hits [default = hit]
-		switch(i){
-			case 1:
-				return 1; 
-			case 2:
-				return 2;
-			default:
-				return 0;
-		}
 	}
 
 	public void level(Being b){
@@ -42,9 +23,50 @@ public class Skill{
 	}
 
 	public void addAbilities(Being b){
+		//TODO implement
 	}
 	
 	public int getBonus(){
 		return 0;
+	}
+	
+	protected final String getName() {
+		return name;
+	}
+
+	protected final void setName(String name) {
+		this.name = name;
+	}
+
+	protected final double getExp() {
+		return exp;
+	}
+
+	protected final void setExp(double exp) {
+		this.exp = exp;
+	}
+
+	protected final double getLvlXp() {
+		return lvlXp;
+	}
+
+	protected final void setLvlXp(double lvlXp) {
+		this.lvlXp = lvlXp;
+	}
+
+	protected final int getLvl() {
+		return lvl;
+	}
+
+	public final void setLvl(int lvl) {
+		this.lvl = lvl;
+	}
+
+	protected final String getDesc() {
+		return desc;
+	}
+
+	protected final void setDesc(String desc) {
+		this.desc = desc;
 	}
 }

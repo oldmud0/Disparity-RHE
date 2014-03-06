@@ -8,8 +8,8 @@ public class Boots extends Armor{
 
 	public Boots(int baseBonus, DefensiveSkill s){
 		super("Boots");
-		base_def = 2 + baseBonus;
-		skill = s;
+		this.setBaseDef(2 + baseBonus);
+		this.setSkill(s);
 	}
 	
 	public Boots(Quality q, DefensiveSkill s){

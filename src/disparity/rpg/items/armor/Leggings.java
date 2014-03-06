@@ -12,8 +12,8 @@ public class Leggings extends Armor{
 
 	public Leggings(int quality, DefensiveSkill s){
 		super("Leggings");
-		base_def = 3 + quality;
-		skill = s;
+		this.setBaseDef(3 + quality);
+		this.setSkill(s);
 	}
 	
 	public Leggings(Quality q, DefensiveSkill s) {

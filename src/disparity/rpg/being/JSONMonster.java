@@ -34,17 +34,17 @@ public class JSONMonster{
 			//Assign Name
 			monster.name = (String) jsonMonster.get("name");
 			//Assign Armor Values
-			monster.helm.name = jsonHelm.getString("name");
-			monster.helm.base_def = jsonHelm.getInt("base_def");
+			monster.helm.setName(jsonHelm.getString("name"));
+			monster.helm.setBaseDef(jsonHelm.getInt("base_def"));
 			setItemSkill(jsonHelm.getString("skill"), monster.helm);
-			monster.chest.name = jsonChest.getString("name");
-			monster.chest.base_def = jsonChest.getInt("base_def");
+			monster.chest.setName(jsonChest.getString("name"));
+			monster.chest.setBaseDef(jsonChest.getInt("base_def"));
 			setItemSkill(jsonChest.getString("skill"), monster.chest);
-			monster.legs.name = jsonLegs.getString("name");
-			monster.legs.base_def = jsonLegs.getInt("base_def");
+			monster.legs.setName(jsonLegs.getString("name"));
+			monster.legs.setBaseDef(jsonLegs.getInt("base_def"));
 			setItemSkill(jsonLegs.getString("skill"), monster.legs);
-			monster.boots.name = jsonBoots.getString("name");
-			monster.boots.base_def = jsonBoots.getInt("base_def");
+			monster.boots.setName(jsonBoots.getString("name"));
+			monster.boots.setBaseDef(jsonBoots.getInt("base_def"));
 			setItemSkill(jsonBoots.getString("skill"), monster.boots);
 			//Assign Stats
 			monster.str = jsonMonster.getInt("str");
@@ -56,13 +56,13 @@ public class JSONMonster{
 				JSONObject skill = (JSONObject) (((JSONObject) jsonSkills.get(i))).get("skill");
 				switch((String) skill.getString("name")){
 					//Assign Offensive Skills
-					case "oneHanded": monster.oneHand.lvl = skill.getInt("lvl"); continue;
-					case "twoHanded": monster.twoHand.lvl = skill.getInt("lvl"); continue;
-					case "arc": monster.arc.lvl = skill.getInt("lvl"); continue;
-					case "magic": monster.magic.lvl = skill.getInt("lvl"); continue;
+					case "oneHanded": monster.oneHand.setLvl(skill.getInt("lvl")); continue;
+					case "twoHanded": monster.twoHand.setLvl(skill.getInt("lvl")); continue;
+					case "arc": monster.arc.setLvl(skill.getInt("lvl")); continue;
+					case "magic": monster.magic.setLvl(skill.getInt("lvl")); continue;
 					//Assign Defensive Skills
-					case "hArmor": monster.hArmor.lvl = skill.getInt("lvl"); continue;
-					case "lArmor": monster.lArmor.lvl = skill.getInt("lvl"); continue;
+					case "hArmor": monster.hArmor.setLvl(skill.getInt("lvl")); continue;
+					case "lArmor": monster.lArmor.setLvl(skill.getInt("lvl")); continue;
 					default: continue;
 				}
 			}
@@ -73,7 +73,7 @@ public class JSONMonster{
 		}catch(FileNotFoundException e){
 			e.printStackTrace();
 		}
-		monster.race.name = monster.name;
+		monster.race.setName(monster.name);
 		//Normal Being calculations:
 		monster.hp  = monster.tHP;
 		monster.mp = monster.tMP;
@@ -85,7 +85,7 @@ public class JSONMonster{
 	public static void main(String[] args){
 		Monster m = new Monster();
 		m = readMonster("Goblin");
-		System.out.println(m.wep.baseDmg);
+		System.out.println(m.wep.getBaseDmg());
 	}
 	
 	static void setItemSkill(String s, Equippable i){
