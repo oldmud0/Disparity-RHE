@@ -23,13 +23,19 @@ public class Elf extends Elfin{
 	}
 	
 	/**
+	 * Accepts being for Being creation,
+	 * applies racial Stat bonuses/penalties
 	 * 
+	 * Elf is a Wizard/Warmage Class.
+	 * Elves receive a buff to HP, MP, and Wis
+	 * Elves revive a debuff to Con 
 	 * @param being
 	 */
+	@Override
 	public void applyRacialStats(Being being){
 		being.setWis(being.getWis() + 2);
 		being.setCon(being.getCon() - 2);
-		being.settHP(being.getHp() + 2);
+		being.settHP(being.gettHP() + 2);
 		being.settMP(being.gettMP() + 2);
 	}
 	

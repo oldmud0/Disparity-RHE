@@ -29,6 +29,7 @@ public class Littling extends Race{
 	 * str penalty
 	 * @param being
 	 */	
+	@Override
 	public void applyRacialStats(Being being){
 		being.setAgi(being.getAgi() + 4);
 		being.setStr(being.getStr() - 2);

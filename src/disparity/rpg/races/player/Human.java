@@ -34,9 +34,10 @@ public class Human extends Race{
 	 * bonuses
 	 * @param being
 	 */
+	@Override
     public void applyRacialStats(Being being){
-		being.setHp(being.getHp() + 2);
-		being.setMp(being.getMp() + 2);
+		being.settHP(being.gettHP() + 2);
+		being.settMP(being.gettMP() + 2);
 	}
 
 	public String getDesc() {

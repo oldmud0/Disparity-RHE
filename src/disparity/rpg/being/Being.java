@@ -68,14 +68,14 @@ public abstract class Being {
 	 * @param race
 	 */
 	public Being(String name, Race race) {
-		this.setName(name);
-		this.setRace(race);
-		this.getRace().applyRacialBonus(this);
-		this.setHp(this.tHP);
-		this.setMp(this.tMP);
-		this.setLvl(1);
+		this.name = name;
+		this.race = race;
+		this.race.applyRacialStats(this);
+		this.hp = this.tHP;
+		this.mp = this.tMP;
+		this.lvl = 1;
 		this.addSkills();
-		this.setDodge((double) (agi) / 50);
+		this.dodge = (double) (agi) / 50;
 	}
 	
 	/**

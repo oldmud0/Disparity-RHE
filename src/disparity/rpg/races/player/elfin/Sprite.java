@@ -25,6 +25,7 @@ public class Sprite extends Elfin{
 	 * bonus to Wis, and a penalty to Str
 	 * @param being
 	 */
+	@Override
 	public void applyRacialStats(Being being){
 		being.setStr(being.getStr() - 2);
 		being.setWis(being.getWis() + 2);

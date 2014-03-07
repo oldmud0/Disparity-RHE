@@ -29,7 +29,8 @@ public class Race{
 	 * applies racial Stat bonuses/penalties
 	 * @param being
 	 */
-	public void applyRacialBonus(Being being){
+	public void applyRacialStats(Being being) {
+		System.out.println(being.getName() + " stats were not changed by their race '" + being.getRace().getName() +"'...");
 		return;
 	}
 
@@ -40,5 +41,4 @@ public class Race{
 	public void setName(String name) {
 		this.name = name;
 	}
-
 }

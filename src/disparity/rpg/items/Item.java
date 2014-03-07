@@ -1,8 +1,8 @@
 package disparity.rpg.items;
 
 public class Item{
-	private String name;
-	private String desc;
+	protected String name;
+	protected String desc;
 	
 	/**
 	 * Creates a new, generic item.

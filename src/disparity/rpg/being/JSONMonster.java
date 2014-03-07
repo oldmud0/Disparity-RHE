@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import disparity.rpg.items.Equippable;
+import disparity.rpg.items.Quality;
 import disparity.rpg.items.Weapon;
 import disparity.rpg.skills.defensiveSkills.HeavyArmor;
 import disparity.rpg.skills.defensiveSkills.LightArmor;
@@ -68,8 +69,8 @@ public class JSONMonster{
 			}
 			String jsonWepName = jsonWep.getString("name");
 			int jsonWepBaseDam = jsonWep.getInt("base_dam");
-			String jsonWepQuality = jsonWep.getString("quality");
-			monster.wep = Weapon.getWeapon(jsonWepName, jsonWepQuality, jsonWepBaseDam);
+			Quality jsonWepQuality = Quality.stringToQuality(jsonWep.getString("quality"));
+			monster.wep = new Weapon(jsonWepName, jsonWepQuality, jsonWepBaseDam);
 		}catch(FileNotFoundException e){
 			e.printStackTrace();
 		}

@@ -30,6 +30,7 @@ public class Pech extends Race{
 	 * bonus, and a agi penalty
 	 * @param being
 	 */
+	@Override
 	public void applyRacialStats(Being being){
 		being.setStr(being.getStr() + 4);
 		being.setAgi(being.getAgi() - 2);

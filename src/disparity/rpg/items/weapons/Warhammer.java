@@ -10,13 +10,23 @@ import disparity.rpg.skills.Skill;
 public class Warhammer extends Weapon{
 	private static Color wepColor = new Color(150,50,170);
 	static String desc = "A warhammer that swings the slowest of all the weapons, but does the most damage.";
-
+	/**
+	 * Create a new empty Warhammer
+	 */
 	public Warhammer() {
 		super();
 	}
+	/**
+	 * Create new Warhammer with given Quality
+	 * @param quality
+	 */
 	public Warhammer(Quality quality){
 		super("Warhammer", quality);
 	}
+	/**
+	 * Create new Warhammer with given Base Damage
+	 * @param base
+	 */
 	public Warhammer(int base){
 		super("Warhammer", base);
 	}

@@ -11,7 +11,7 @@ import disparity.rpg.items.weapons.*;
 public class Weapon extends Equippable{
 	private int baseDmg;
 	/**
-	 * Creates generic Weapon
+	 * Creates generic Weapon with a given Base Damage
 	 * @param name
 	 * @param baseDmgBonus
 	 */
@@ -30,6 +30,16 @@ public class Weapon extends Equippable{
 		baseDmg += qal.getValue();
 	}
 	/**
+	 * Create new Weapon with given name, base_dmg, and Quality
+	 * @param name
+	 * @param qal
+	 * @param base_dmg
+	 */
+	public Weapon(String name, Quality qal, int base_dmg){
+		Weapon wep = new Weapon(name, base_dmg);
+		wep.setQuality(qal);
+	}
+	/**
 	 * Creates an empty Weapon
 	 */
 	public Weapon(){
@@ -43,17 +53,9 @@ public class Weapon extends Equippable{
 	public void giveName(String mat, Quality qal){
 		this.setName(mat + " " + this.getName() + " " + qal.getName());
 	}
-	/**
-	 * Returns Weapon baseDmg
-	 * @return
-	 */
 	public int getBaseDmg(){
 		return this.baseDmg;
 	}
-	/**
-	 * Sets Weapon baseDmg
-	 * @param dmg
-	 */
 	public void setBaseDmg(int dmg){
 		this.baseDmg = dmg;
 	}

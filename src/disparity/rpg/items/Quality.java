@@ -1,5 +1,8 @@
 package disparity.rpg.items;
 
+import java.util.Map;
+import java.util.HashMap;
+
 public enum Quality {
 	CRAP			(-1,	"Crappy",			0),
 	WOOD			(0,		"Wooden",			1),
@@ -23,6 +26,18 @@ public enum Quality {
 	private int value; 
 	private String name;
 	private int weight;
+	private static Map<String, Quality> qualityMap;
+	static{
+		qualityMap = new HashMap<String, Quality>();
+		qualityMap.put("CRAP", Quality.CRAP);
+		qualityMap.put("WOOD", Quality.WOOD);
+		qualityMap.put("STONE", Quality.STONE);
+		qualityMap.put("IRON", Quality.IRON);
+		qualityMap.put("GOLD", Quality.GOLD);
+		qualityMap.put("STEEL", Quality.STEEL);
+		qualityMap.put("DIAMOND", Quality.DIAMOND);
+		qualityMap.put("MIRTIS_SPAWN", Quality.MIRTIS_SPAWN);
+	}
 	private Quality(int value, String name, int weight) {
 		this.value = value;
 		this.name = name;
@@ -45,5 +60,9 @@ public enum Quality {
 	
 	public int getWeight() {
 		return weight;
+	}
+	
+	public static Quality stringToQuality(String qualityAsString){
+		return qualityMap.get(qualityAsString);
 	}
 }

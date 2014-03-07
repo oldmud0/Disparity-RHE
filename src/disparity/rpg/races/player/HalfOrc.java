@@ -31,6 +31,7 @@ public class HalfOrc extends Race{
 	 * give bonuses to str and con and penalties to wis
 	 * @param being
 	 */
+	@Override
 	public void applyRacialStats(Being being){
 		being.setStr(being.getStr() + 2);
 		being.setCon(being.getCon() + 2);

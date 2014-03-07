@@ -5,6 +5,7 @@ import disparity.rpg.skills.Skill;
 
 public class Equippable extends Item{
 	private Skill skill;
+	private Quality quality;
 	/**
 	 * Makes an Item that is intended to be equipped 
 	 * with a specified name, such as armor.
@@ -19,18 +20,16 @@ public class Equippable extends Item{
 	public Equippable(){
 		
 	}
-	/**
-	 * Returns Skill that modifies Equippable Item
-	 * @return 
-	 */
 	public Skill getSkill(){
 		return this.skill;
 	}
-	/**
-	 * Sets Skill that modifies Equippable Item
-	 * @param skill
-	 */
 	public void setSkill(Skill skill){
 		this.skill = skill;
+	}
+	public Quality getQuality(){
+		return this.quality;
+	}
+	public void setQuality(Quality quality){
+		this.quality = quality;
 	}
 }

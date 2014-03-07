@@ -31,6 +31,7 @@ public class Nymph extends Elfin{
 	 * rogues? Have agi bonus and con penalty
 	 * @param being
 	 */
+	@Override
 	public void applyRacialStats(Being being){
 		being.setAgi(being.getAgi() + 2);
 		being.setCon(being.getCon() - 2);
