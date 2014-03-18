@@ -1,5 +1,6 @@
 package disparity.rpg.being;
 
+import disparity.rpg.items.Armor;
 import disparity.rpg.items.Weapon;
 import disparity.rpg.items.armor.Boots;
 import disparity.rpg.items.armor.Chestplate;
@@ -14,6 +15,11 @@ import disparity.rpg.skills.offensiveSkills.OneHanded;
 import disparity.rpg.skills.offensiveSkills.TwoHanded;
 
 public abstract class Being {
+	private static final double DIVISOR = 2;
+	
+	/**
+	 * --Being Object Variables--
+	 */
 	protected String name;
 	protected Race race;
 
@@ -22,7 +28,8 @@ public abstract class Being {
 	 */
 	protected int 
 		str = 10, 
-		agi = 10, 
+		agi = 10,
+		dodgeBonus = agi,
 		con = 10, 
 		wis = 10, 
 		hp, 
@@ -31,7 +38,8 @@ public abstract class Being {
 		tMP = (wis / 2) + 10,
 		lvl;
 	protected double 
-		dodge;
+		dodge,
+		ac;
 
 	/**
 	 * Skill Variables
@@ -71,11 +79,13 @@ public abstract class Being {
 		this.name = name;
 		this.race = race;
 		this.race.applyRacialStats(this);
+		this.dodgeBonus = agi;
 		this.hp = this.tHP;
 		this.mp = this.tMP;
 		this.lvl = 1;
 		this.addSkills();
-		this.dodge = (double) (agi) / 50;
+		this.dodge = calcDodge();
+		this.ac = calcAC();
 	}
 	
 	/**
@@ -85,33 +95,53 @@ public abstract class Being {
 	 * the Being Object
 	 */
 	private void addSkills(){
-		this.setArc(new Archery(this));
-		this.setOneHand(new OneHanded(this));
-		this.setTwoHand(new TwoHanded(this));
-		this.setMagic(new Magic(this));
+		this.arc = new Archery(this);
+		this.oneHand = new OneHanded(this);
+		this.twoHand = new TwoHanded(this);
+		this.magic = new Magic(this);
+		this.lArmor = new LightArmor();
+		this.hArmor = new HeavyArmor();
 	}
 
 	/**
 	 * Calculates the AC of a being, with it's
-	 * given armor values. 
-	 * TODO edit calcAC() so that there is a AC
-	 * variables that is being edited. Maybe.
-	 * @return
+	 * given armor values.
 	 */
 	public double calcAC() {
-		if(helm != null && boots != null && chest != null && legs != null){
-			double armorAC = boots.getBaseDef() + legs.getBaseDef() + chest.getBaseDef()
-					+ helm.getBaseDef();
-			double skillBonus = boots.getSkill(this).getBonus() + legs.getSkill(this).getBonus()
-					+ chest.getSkill(this).getBonus() + helm.getSkill(this).getBonus();;
-			return (armorAC + skillBonus) / 50;
-		}else{
-			return 0;
+		double armorAC = 0;
+		if(this.helm != null){
+			armorAC += (double)this.helm.getBonus();
 		}
+		if(this.chest != null){
+			armorAC += (double)this.chest.getBonus();
+		}
+		if(this.legs != null){
+			armorAC += (double)this.legs.getBonus();
+		}
+		if(this.boots != null){
+			armorAC += (double)this.boots.getBonus();
+		}
+		armorAC /= DIVISOR;
+		if(armorAC < 1){
+			return (double)1;
+		}
+		return armorAC;
 	}
 
 	public int getAgi() {
 		return agi;
+	}
+	
+	/**
+	 * Calculates the dodge of a being
+	 * with it's given dodgeBonus
+	 * @return
+	 */
+	public double calcDodge(){
+		if(dodgeBonus / DIVISOR < 1){
+			return 1;
+		}
+		return this.dodgeBonus / DIVISOR;
 	}
 	
 	/**
@@ -122,23 +152,149 @@ public abstract class Being {
 	 */
 	public String getFormStats() {
 		return "--" + name + "--" + "\n" 
-				+ "Race " + race.getName() + "\n"
-				+ "Level " + lvl + "\n" 
-				+ "---" + "\n" 
-				+ "HP " + hp + "/" + tHP
-				+ "\n" + "MP " + mp + "/" + tMP + "\n" 
-				+ "Dodge " + dodge
-				+ "\n" + "AC " + calcAC() + "\n" 
-				+ "---" + "\n" 
-				+ "Strength "+ str + "\n" 
-				+ "Agility " + agi + "\n" 
-				+ "Constitution " + con + "\n" 
-				+ "Wisdom " + wis;
+				+ "Race 		" + race.getName() + "\n"
+				+ "Level 		" + lvl + "\n" 
+				+ "-Defenses-" + "\n" 
+				+ "HP 		" + hp + "/" + tHP + "\n" 
+				+ "MP		" + mp + "/" + tMP + "\n" 
+				+ "Dodge		" + dodge + "\n" 
+				+ "AC		" + ac + "\n" 
+				+ "-Stats-" + "\n" 
+				+ "Strength 	"+ str + "\n" 
+				+ "Agility 	" + agi + "\n" 
+				+ "Wisdom 		" + wis + "\n"
+				+ "Constitution 	" + con;
 	}
 
 	@Override
 	public String toString() {
 		return name;
+	}
+	
+	/*   --Setters for Armor Objects-- */
+	/** 
+	 *	 @see resetArmorStats
+	 *	 @see applyBonus
+	 * 	 @see setArmorStats
+	 */
+	public void setHelm(Helmet helm) {
+		this.resetArmorStats(this.helm);
+		this.helm = helm;
+		this.helm.applyBonus(this);
+		this.setArmorStats(this.helm);
+	}
+	/** 
+	 *	 @see resetArmorStats
+	 *	 @see applyBonus
+	 * 	 @see setArmorStats
+	 */
+	public void setChest(Chestplate chest) {
+		this.resetArmorStats(this.chest);
+		this.chest = chest;
+		this.chest.applyBonus(this);
+		this.setArmorStats(this.chest);
+	}
+	/** 
+	 *	 @see resetArmorStats
+	 *	 @see applyBonus
+	 * 	 @see setArmorStats
+	 */
+	public void setLegs(Leggings legs) {
+		this.resetArmorStats(this.legs);
+		this.legs = legs;
+		this.legs.applyBonus(this);
+		this.setArmorStats(this.legs);
+	}
+	/** 
+	 *	 @see resetArmorStats
+	 *	 @see applyBonus
+	 * 	 @see setArmorStats
+	 */
+	public void setBoots(Boots boots) {
+		this.resetArmorStats(this.boots);
+		this.boots = boots;
+		this.boots.applyBonus(this);
+		this.setArmorStats(this.boots);
+	}	
+	
+	/**
+	 * If @param armor != null this will reset all 
+	 * Armor Stats back to what they
+	 * would be without the original Armor Object
+	 * Equipped
+	 */
+	private void resetArmorStats(Armor armor){
+		if(armor != null){
+			switch(armor.getQuality().getType()){
+			case HEAVY:
+				this.dodgeBonus -= this.getHeavyArmorAgiBonus();
+				break;
+			case MEDIUM:
+				break;
+			case LIGHT:
+				this.dodgeBonus -= this.getLightArmorAgiBonus();
+				break;
+			}
+			this.ac -= armor.getBonus();
+			this.dodge = this.calcDodge();
+		}
+		return;
+	}
+	
+	/**
+	 * Recalculates ac with {@link #calcAC()}
+	 * Then depending on the type of the @param armor,
+	 * adds dodgeBonus, then calls {@link #calcDodge()}
+	 */
+	private void setArmorStats(Armor armor){
+		this.ac = calcAC();
+		switch(armor.getQuality().getType()){
+			case HEAVY:
+				this.dodgeBonus = this.dodgeBonus + this.getHeavyArmorAgiBonus();
+				break;
+			case MEDIUM:
+				break;
+			case LIGHT:
+				this.dodgeBonus = this.dodgeBonus + this.getLightArmorAgiBonus();
+				break;
+		}
+		this.ac = calcAC();
+		this.dodge = calcDodge();
+	}
+	
+	/**
+	 * Miscellaneous GETTERS/SETTERS
+	 */
+	public void setAgi(int agi) {
+		int agiOrg = this.agi;
+		if(agi < 1){
+			this.agi = 1;
+		}
+		this.agi = agi;
+		this.dodgeBonus += agiOrg - this.agi;
+	}
+	
+	public void setDodgeBonus(int dodgeBonus){
+		if(dodgeBonus < 1){
+			this.dodgeBonus = 1;
+		}
+		this.dodgeBonus = dodgeBonus;
+	}
+	
+	public int getHeavyArmorBonus(){
+		return this.hArmor.getBonus();
+	}
+	
+	public int getHeavyArmorAgiBonus(){
+		return this.hArmor.getAgiBonus();
+	}
+	
+	public int getLightArmorBonus(){
+		return this.lArmor.getBonus();
+	}
+	
+	public int getLightArmorAgiBonus(){
+		return this.lArmor.getAgiBonus();
 	}
 
 	public String getName() {
@@ -267,6 +423,7 @@ public abstract class Being {
 
 	public void setWep(Weapon wep) {
 		this.wep = wep;
+		wep.applyBonus(this);
 	}
 
 	public HeavyArmor gethArmor() {
@@ -289,35 +446,19 @@ public abstract class Being {
 		return helm;
 	}
 
-	public void setHelm(Helmet helm) {
-		this.helm = helm;
-	}
-
 	public Chestplate getChest() {
 		return chest;
-	}
-
-	public void setChest(Chestplate chest) {
-		this.chest = chest;
 	}
 
 	public Leggings getLegs() {
 		return legs;
 	}
 
-	public void setLegs(Leggings legs) {
-		this.legs = legs;
-	}
-
 	public Boots getBoots() {
 		return boots;
 	}
-
-	public void setBoots(Boots boots) {
-		this.boots = boots;
-	}
-
-	public void setAgi(int agi) {
-		this.agi = agi;
+	
+	public int getDodgeBonus(){
+		return this.dodgeBonus;
 	}
 }

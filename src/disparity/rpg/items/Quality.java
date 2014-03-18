@@ -4,14 +4,27 @@ import java.util.Map;
 import java.util.HashMap;
 
 public enum Quality {
-	CRAP			(-1,	"Crappy",			0),
-	WOOD			(0,		"Wooden",			1),
-	STONE			(1,		"Stone",			2),
-	IRON			(2,		"Iron",				3),
-	GOLD			(3,		"Gold",				7), /* GOLD IS NOT GOOD ARMOR IT WEIGHS LIKE 1 TON PER CUBIC FOOT */
-	STEEL           (4,		"Steel",			5),
-	DIAMOND			(4,		"Diamond",			5),
-	MIRTIS_SPAWN	(9001,	"Spawn of Mirtis",	3);	//Now lore friendly!
+	//Armors
+	/**
+	 * Light Armors
+	 * Will have lower AC bonus
+	 * less other penalties
+	 */
+	CRAP			(-1,	"Crappy",			Type.LIGHT),
+	WOOD			(0,		"Wooden",			Type.LIGHT),
+	SILVER			(2,		"Silver",			Type.LIGHT),
+	STEEL          (4,		"Steel",			Type.LIGHT),
+	DIAMOND		(4,		"Diamond",			Type.LIGHT),
+	/**
+	 * Heavy Armors
+	 * Will have higher AC bonus
+	 * more other penalties
+	 */
+	HARD_WOOD		(0,		"Hard Wooden",		Type.HEAVY),
+	STONE			(1,		"Stone",			Type.HEAVY),
+	IRON			(2,		"Iron",				Type.HEAVY),
+	GOLD			(3,		"Gold",				Type.HEAVY), /* GOLD IS NOT GOOD ARMOR IT WEIGHS LIKE 1 TON PER CUBIC FOOT */
+	MIRTIS_SPAWN	(9001,	"Spawn of Mirtis",	Type.HEAVY);	//Now lore friendly!
 	
 	/**
 	 * When we declare a Quality above, we're actually instantiating a new Quality, 
@@ -25,7 +38,15 @@ public enum Quality {
 	
 	private int value; 
 	private String name;
-	private int weight;
+	private Type type;
+	
+	/**
+	 * Create a hashmap, then store all possible
+	 * enum evaluations into it with corresponding
+	 * String variables, then we can use the 
+	 * stringToQuality(String qualityAsString) to
+	 * return the Quality enum
+	 */
 	private static Map<String, Quality> qualityMap;
 	static{
 		qualityMap = new HashMap<String, Quality>();
@@ -38,31 +59,43 @@ public enum Quality {
 		qualityMap.put("DIAMOND", Quality.DIAMOND);
 		qualityMap.put("MIRTIS_SPAWN", Quality.MIRTIS_SPAWN);
 	}
-	private Quality(int value, String name, int weight) {
+	
+	/**
+	 * Used for JSON being creation, allows
+	 * us to retrieve a String quality and 
+	 * get a enum Quality back
+	 * @param qualityAsString
+	 * @return
+	 */
+	public static Quality stringToQuality(String qualityAsString){
+		return qualityMap.get(qualityAsString);
+	}
+	
+	/**
+	 * We are using Type type to tell what the
+	 * weight of an equippable item is. @see Type
+	 */
+	private Quality(int value, String name, Type type) {
 		this.value = value;
 		this.name = name;
-		this.weight = weight;
+		this.type = type;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return getName();
+		return this.getName();
 	}
 	
 	public int getValue() {
-		return value;
+		return this.value;
 	}
 	
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	
-	public int getWeight() {
-		return weight;
-	}
-	
-	public static Quality stringToQuality(String qualityAsString){
-		return qualityMap.get(qualityAsString);
+	public Type getType(){
+		return type;
 	}
 }

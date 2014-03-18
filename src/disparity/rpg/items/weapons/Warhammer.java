@@ -1,37 +1,16 @@
 package disparity.rpg.items.weapons;
 
-import java.awt.Color;
-
-import disparity.rpg.being.Being;
 import disparity.rpg.items.Quality;
+import disparity.rpg.items.Type;
 import disparity.rpg.items.Weapon;
-import disparity.rpg.skills.Skill;
 
 public class Warhammer extends Weapon{
-	private static Color wepColor = new Color(150,50,170);
-	static String desc = "A warhammer that swings the slowest of all the weapons, but does the most damage.";
+	
 	/**
-	 * Create a new empty Warhammer
-	 */
-	public Warhammer() {
-		super();
-	}
-	/**
-	 * Create new Warhammer with given Quality
+	 * Create a Warhammer with the given Quality
 	 * @param quality
 	 */
 	public Warhammer(Quality quality){
-		super("Warhammer", quality);
-	}
-	/**
-	 * Create new Warhammer with given Base Damage
-	 * @param base
-	 */
-	public Warhammer(int base){
-		super("Warhammer", base);
-	}
-	//Weapon Skill 
-	public Skill getSkill(Being b){
-		return b.getTwoHand();
+		super("Warhammer", quality, Type.TWO_HANDED, 4);
 	}
 }

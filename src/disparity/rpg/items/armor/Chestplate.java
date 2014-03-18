@@ -2,20 +2,22 @@ package disparity.rpg.items.armor;
 
 import disparity.rpg.items.Armor;
 import disparity.rpg.items.Quality;
-import disparity.rpg.skills.DefensiveSkill;
 
 public class Chestplate extends Armor{
+
+	/**
+	 * Chestplate constructor
+	 * 
+	 * Chestplate have a base AC bonus of 3
+	 */
+	public Chestplate(Quality quality){
+		super("Chestplate", quality, 3);
+	}
+	
+	/**
+	 * Empty Constructor for reading
+	 * Beings from JSON files
+	 */
 	public Chestplate() {
-		super();
-	}
-
-	public Chestplate(int quality, DefensiveSkill s){
-		super("Chestplate");
-		this.setBaseDef(5 + quality);
-		this.setSkill(s);
-	}
-
-	public Chestplate(Quality q, DefensiveSkill s) {
-		super("Chestplate", q, s);
 	}
 }

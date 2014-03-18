@@ -6,14 +6,14 @@ import disparity.rpg.being.Being;
 import disparity.rpg.races.Elfin;
 
 public class Nymph extends Elfin{
-	private static String desc = 
+	private final String desc = 
 			"Nymphs are minor nature dieties, " + 
 			"with power to manipulate feral flora " + 
 			"and fauna to their will. Nymphs " + 
 			"are well versed in the magic of " + 
 			"various natural elements, such as " + 
 			"Fire, Water, Wind, and Earth.";
-	private static Color raceColor = new Color(250, 90, 235);
+	private final Color raceColor = new Color(250, 90, 235);
 	
 	/**
 	 * Basic Nymph constructor

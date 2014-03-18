@@ -36,16 +36,16 @@ public class JSONMonster{
 			monster.name = (String) jsonMonster.get("name");
 			//Assign Armor Values
 			monster.helm.setName(jsonHelm.getString("name"));
-			monster.helm.setBaseDef(jsonHelm.getInt("base_def"));
+			monster.helm.setBonus(jsonHelm.getInt("base_def"));
 			setItemSkill(jsonHelm.getString("skill"), monster.helm);
 			monster.chest.setName(jsonChest.getString("name"));
-			monster.chest.setBaseDef(jsonChest.getInt("base_def"));
+			monster.chest.setBonus(jsonChest.getInt("base_def"));
 			setItemSkill(jsonChest.getString("skill"), monster.chest);
 			monster.legs.setName(jsonLegs.getString("name"));
-			monster.legs.setBaseDef(jsonLegs.getInt("base_def"));
+			monster.legs.setBonus(jsonLegs.getInt("base_def"));
 			setItemSkill(jsonLegs.getString("skill"), monster.legs);
 			monster.boots.setName(jsonBoots.getString("name"));
-			monster.boots.setBaseDef(jsonBoots.getInt("base_def"));
+			monster.boots.setBonus(jsonBoots.getInt("base_def"));
 			setItemSkill(jsonBoots.getString("skill"), monster.boots);
 			//Assign Stats
 			monster.str = jsonMonster.getInt("str");
@@ -89,7 +89,7 @@ public class JSONMonster{
 		System.out.println(m.wep.getBaseDmg());
 	}
 	
-	static void setItemSkill(String s, Equippable i){
+	static void setItemSkill(String skillName, Equippable item){
 /*		try {
 			Class skillClass = Class.forName(s);
 			Constructor c = skillClass.getConstructor();
@@ -103,25 +103,25 @@ public class JSONMonster{
 		For future use?
 		*/
 		
-		
-		switch(s.toUpperCase()){
+		//TODO reimplement without **magic Strings**
+		switch(skillName.toUpperCase()){
 		case "LARMOR":
-			i.setSkill(new LightArmor());
+			item.setSkill(new LightArmor());
 			break;
 		case "HARMOR":
-			i.setSkill(new HeavyArmor());
+			item.setSkill(new HeavyArmor());
 			break;
 		case "ARCHERY":
-			i.setSkill(new Archery());
+			item.setSkill(new Archery());
 			break;
 		case "ONEHANDED":
-			i.setSkill(new OneHanded());
+			item.setSkill(new OneHanded());
 			break;
 		case "TWOHANDED":
-			i.setSkill(new TwoHanded());
+			item.setSkill(new TwoHanded());
 			break;
 		case "MAGIC":
-			i.setSkill(new Magic());
+			item.setSkill(new Magic());
 			break;
 		}
 	}

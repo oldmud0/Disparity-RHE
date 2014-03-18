@@ -1,63 +1,28 @@
 package disparity.rpg.items;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
-
-import disparity.rpg.being.Being;
-import disparity.rpg.skills.Skill;
-import disparity.rpg.items.weapons.*;
-
 public class Weapon extends Equippable{
-	private int baseDmg;
-	/**
-	 * Creates generic Weapon with a given Base Damage
-	 * @param name
-	 * @param baseDmgBonus
-	 */
-	public Weapon(String name, int baseDmgBonus){
-		this.setName(name);
-		this.setBaseDmg(this.getBaseDmg() + baseDmgBonus);
-	}
+	protected Type type;
 	/**
 	 * Creates generic Weapon using Quality as a damage modifier
 	 * Sets name and damage to be consistent with Quality
-	 * @param n
-	 * @param q
-	 */
-	public Weapon(String name, Quality qal) {
-		name = qal.getName() + " " + name;
-		baseDmg += qal.getValue();
-	}
-	/**
-	 * Create new Weapon with given name, base_dmg, and Quality
 	 * @param name
-	 * @param qal
-	 * @param base_dmg
+	 * @param quality
 	 */
-	public Weapon(String name, Quality qal, int base_dmg){
-		Weapon wep = new Weapon(name, base_dmg);
-		wep.setQuality(qal);
+	protected Weapon(String name, Quality qal, Type type, int baseDamage) {
+		this.name = quality.getName() + " " + name;
+		this.bonus = qal.getValue() + baseDamage;
+		this.type = type;
 	}
+
 	/**
 	 * Creates an empty Weapon
+	 * @See disparity.rpg.being.Monster.Monster
 	 */
 	public Weapon(){
 		super();
 	}
-	/**
-	 * Reassigns name given material and Quality
-	 * @param mat
-	 * @param qDesc
-	 */
-	public void giveName(String mat, Quality qal){
-		this.setName(mat + " " + this.getName() + " " + qal.getName());
-	}
-	public int getBaseDmg(){
-		return this.baseDmg;
-	}
-	public void setBaseDmg(int dmg){
-		this.baseDmg = dmg;
+	
+	public Type getType(){
+		return this.type;
 	}
 }
-

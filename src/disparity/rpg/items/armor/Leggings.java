@@ -2,21 +2,22 @@ package disparity.rpg.items.armor;
 
 import disparity.rpg.items.Armor;
 import disparity.rpg.items.Quality;
-import disparity.rpg.skills.DefensiveSkill;
 
 public class Leggings extends Armor{
-	public Leggings() {
-		super();
-		
-	}
-
-	public Leggings(int quality, DefensiveSkill s){
-		super("Leggings");
-		this.setBaseDef(3 + quality);
-		this.setSkill(s);
+	
+	/**
+	 * Leggings constructor
+	 * 
+	 * Leggings have a base AC bonus of 2
+	 */
+	public Leggings(Quality quality){
+		super("Leggings", quality, 2);
 	}
 	
-	public Leggings(Quality q, DefensiveSkill s) {
-		super("Leggings", q, s);
+	/**
+	 * Empty Constructor for reading
+	 * Beings from JSON files
+	 */
+	public Leggings() {
 	}
 }

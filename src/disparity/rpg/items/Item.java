@@ -8,13 +8,14 @@ public class Item{
 	 * Creates a new, generic item.
 	 * @param Name
 	 */
-	public Item(String n){
-		name = n;
+	public Item(String name){
+		this.name = name;
 	}
+	
 	/**
 	 * Creates an empty Item with no name
 	 */
-	public Item(){	
+	protected Item(){	
 	}
 
 	public void setName(String name){

@@ -1,35 +1,42 @@
 package disparity.rpg.items;
 
 import disparity.rpg.being.Being;
-import disparity.rpg.skills.Skill;
 
-public class Equippable extends Item{
-	private Skill skill;
-	private Quality quality;
+public abstract class Equippable extends Item{
+	protected double bonus;
+	protected Quality quality;
 	/**
 	 * Makes an Item that is intended to be equipped 
 	 * with a specified name, such as armor.
+	 * 
+	 * Should never create an object of Equippable
+	 * directly
 	 * @param n	the item's name
 	 */
-	public Equippable(String n){
-		super(n);
+	protected Equippable(String name){
+		super(name);
 	}
+	
 	/**
-	 * Makes an empty Equippable Item
+	 * Creates an empty Equippable object
 	 */
-	public Equippable(){
-		
+	protected Equippable(){
 	}
-	public Skill getSkill(){
-		return this.skill;
+	
+	/**
+	 * Used in sublclasses to determine
+	 * and create the bonus stat for
+	 * the Equippable item
+	 * @param being
+	 */
+	public void applyBonus(Being being){
+		return;
 	}
-	public void setSkill(Skill skill){
-		this.skill = skill;
-	}
+	
+	/**
+	 * Miscellaneous GETTERS/SETTERS
+	 */
 	public Quality getQuality(){
 		return this.quality;
-	}
-	public void setQuality(Quality quality){
-		this.quality = quality;
 	}
 }

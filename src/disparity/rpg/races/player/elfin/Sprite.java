@@ -13,7 +13,7 @@ public class Sprite extends Elfin{
 	 * Basic Sprite constructor
 	 * used as field for Being construction
 	 */	
-	public Sprite(Being b){
+	public Sprite(){
 		super("Sprite");
 	}
 
